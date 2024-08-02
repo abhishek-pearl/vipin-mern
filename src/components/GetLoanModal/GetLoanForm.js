@@ -5,9 +5,11 @@ import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { IoMdClose } from "react-icons/io";
 import { IoCheckmarkSharp } from "react-icons/io5";
+import { toast } from "sonner";
 
 const GetLoanForm = ({ setLoanModal, loanModal }) => {
   const [mounted, setMounted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -22,12 +24,18 @@ const GetLoanForm = ({ setLoanModal, loanModal }) => {
     const loanRequired = formData.get("loanRequired");
     const pincode = formData.get("pincode");
     try {
+      setLoading(true);
       const response = await axios.post(
         `https://vipin-backend-0kh7.onrender.com/api/v1/inquiry`,
         { name, email, mobile, typeOfLoan, loanRequired, pincode }
       );
+      setLoading(false);
+      toast.success("Successfully Submited...");
+
       console.log(response, "response");
     } catch (error) {
+      setLoading(false);
+      toast.success("Event has been created");
       console.log(error.message);
     }
 
@@ -168,12 +176,21 @@ const GetLoanForm = ({ setLoanModal, loanModal }) => {
                       </div>
                     </div>
 
-                    <button
-                      type="submit"
-                      className="w-full px-4 py-2 text-white font-medium bg-red-600 hover:bg-red-500 active:bg-red-600 rounded-lg duration-150"
-                    >
-                      Submit
-                    </button>
+                    {loading ? (
+                      <button
+                        type="button"
+                        className="w-full px-4 py-2 text-white font-medium bg-red-600 hover:bg-red-500 active:bg-red-600 rounded-lg duration-150"
+                      >
+                        Loading...
+                      </button>
+                    ) : (
+                      <button
+                        type="submit"
+                        className="w-full px-4 py-2 text-white font-medium bg-red-600 hover:bg-red-500 active:bg-red-600 rounded-lg duration-150"
+                      >
+                        Submit
+                      </button>
+                    )}
                   </form>
                 </div>
               </div>
