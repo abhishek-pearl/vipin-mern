@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
-import { createPortal } from "react-dom";
 import GetLoanForm from "../GetLoanModal/GetLoanForm";
 
 const Header = () => {
@@ -11,7 +10,7 @@ const Header = () => {
   return (
     <>
       <header>
-        <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 ">
+        <nav className="bg-red-500/90 shadow-[0_3px#ffffff] text-white border-gray-200 px-4 lg:px-6 py-2.5 ">
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <a href="/" className="flex items-center">
               <img
@@ -28,7 +27,7 @@ const Header = () => {
                 onClick={() => {
                   setLoanModal(true)
                 }}
-                className="text-white bg-red-500 hover:bg-red-700 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 transition duration-300 "
+                className="text-red-500 bg-white hover:bg-red-500 hover:text-white hover:shadow-[0_0_0_2px#ffffff]  font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 transition duration-300 "
               >
                 Get a Loan
               </button>
@@ -75,7 +74,7 @@ const Header = () => {
                 <li>
                   <Link
                     href="/"
-                    className="block py-2 pr-4 pl-3 text-gray-700 hover:text-red-500 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0  transition duration-300   "
+                    className="block py-2 pr-4 pl-3 text-white hover:shadow-[0_3px#ffffff] border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0  transition duration-300   "
                   >
                     Home
                   </Link>
@@ -83,7 +82,7 @@ const Header = () => {
                 <li>
                   <Link
                     href="/about"
-                    className="block py-2 pr-4 pl-3 text-gray-700 hover:text-red-500 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0  transition duration-300   "
+                    className="block py-2 pr-4 pl-3 text-white hover:shadow-[0_3px#ffffff] border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0  transition duration-300   "
                   >
                     About
                   </Link>
@@ -91,7 +90,7 @@ const Header = () => {
                 <li>
                   <a
                     href="/services"
-                    className="block py-2 pr-4 pl-3 text-gray-700 hover:text-red-500 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0  transition duration-300   "
+                    className="block py-2 pr-4 pl-3 text-white hover:shadow-[0_3px#ffffff] border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0  transition duration-300   "
                   >
                     Service
                   </a>
@@ -99,7 +98,7 @@ const Header = () => {
                 <li>
                   <a
                     href="blogs"
-                    className="block py-2 pr-4 pl-3 text-gray-700 hover:text-red-500 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0  transition duration-300   "
+                    className="block py-2 pr-4 pl-3 text-white hover:shadow-[0_3px#ffffff] border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0  transition duration-300   "
                   >
                     Blogs
                   </a>
@@ -108,7 +107,7 @@ const Header = () => {
                 <li>
                   <a
                     href="contactus"
-                    className="block py-2 pr-4 pl-3 text-gray-700 hover:text-red-500 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0  transition duration-300   "
+                    className="block py-2 pr-4 pl-3 text-white hover:shadow-[0_3px#ffffff] border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0  transition duration-300   "
                   >
                     Contact Us
                   </a>

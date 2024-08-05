@@ -4,7 +4,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { IoMdClose } from "react-icons/io";
-import { IoCheckmarkSharp } from "react-icons/io5";
 import { toast } from "sonner";
 
 const GetLoanForm = ({ setLoanModal, loanModal }) => {
@@ -26,7 +25,7 @@ const GetLoanForm = ({ setLoanModal, loanModal }) => {
     try {
       setLoading(true);
       const response = await axios.post(
-        `https://vipin-backend-0kh7.onrender.com/api/v1/inquiry`,
+        `${process.env.API_URL}/inquiry`,
         { name, email, mobile, typeOfLoan, loanRequired, pincode }
       );
       setLoading(false);
