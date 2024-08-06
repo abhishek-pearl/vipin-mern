@@ -11,12 +11,25 @@ const LoanForm = () => {
   const [modal, setModal] = useState(true);
   const [mounted, setMounted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [isFirstTime, setIsFirstTime] = useState(true)
 
   useEffect(() => {
     setMounted(true);
 
+
+
     return () => setMounted(false);
   }, []);
+  useEffect(() => {
+    if (mounted) {
+      if (localStorage.getItem('alreadyShown')) {
+        setIsFirstTime(false)
+      } else {
+        localStorage.setItem('alreadyShown', 'true')
+      }
+    }
+  }, [mounted])
+
 
   async function submitLoan(formData) {
     const name = formData.get("name");
@@ -48,11 +61,11 @@ const LoanForm = () => {
     console.log(name, email, mobile, typeOfLoan, loanRequired);
   }
   return (
-    <>
+    isFirstTime && <>
       {mounted &&
         modal &&
         createPortal(
-          <div className="  bg-black/30 backdrop-blur-sm fixed top-0 left-0  h-full w-full grid place-items-center ">
+          <div className="  bg-black/30 backdrop-blur-sm fixed top-0 left-0  h-full w-full grid place-items-center z-50 ">
             <button
               onClick={() => {
                 setModal(false);
