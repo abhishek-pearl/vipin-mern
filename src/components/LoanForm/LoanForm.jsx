@@ -27,7 +27,7 @@ const LoanForm = () => {
     const pincode = formData.get("pincode");
     try {
       setLoading(true);
-      const response = await axios.post(`${process.env.API_URL}/inquiry`, {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/inquiry`, {
         name,
         email,
         mobile,
@@ -41,7 +41,7 @@ const LoanForm = () => {
       console.log(response, "response");
     } catch (error) {
       setLoading(false);
-      toast.success("Event has been created");
+      toast.error("Server is busy. Please try again later.");
       console.log(error.message);
     }
 
