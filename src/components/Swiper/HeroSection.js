@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 // import Swiper and modules styles
 import "swiper/css";
 import "swiper/css/navigation";
@@ -15,9 +15,12 @@ const HeroSection = () => {
       pagination={{
         clickable: true,
       }}
-      modules={[Pagination]}
+      modules={[Pagination, Autoplay]}
+      autoplay={{
+        delay: 3000,
+      }}
     >
-      {["./slider-1.jpg", "./slider-2.webp"].map((el, i) => {
+      {["./slider-1.jpg", "./slider-2.jpg"].map((el, i) => {
         return (
           <SwiperSlide className="px-8 py-4" key={i}>
             <img src={el} className="h-[55vh] w-full object-cover" />

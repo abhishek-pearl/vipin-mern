@@ -17,7 +17,7 @@ export default function page({ params }) {
                   src={`https://cdn-icons-png.flaticon.com/128/9144/9144383.png`}
                 />
               </div>
-              {loanType.split("_").join(" ")}
+              {loanType.split("-").join(" ")}
             </h2>
             <h2 class="py-2 text-2xl font-bold text-gray-800">Loan Summary</h2>
             <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
