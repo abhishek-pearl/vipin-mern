@@ -24,10 +24,7 @@ const GetLoanForm = ({ setLoanModal, loanModal }) => {
   const submitLoan = async (data) => {
     try {
       setLoading(true);
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/inquiry`,
-        data
-      );
+      const response = await axios.post(`${process.env.API_URL}/inquiry`, data);
       setLoading(false);
       toast.success("Successfully Submitted...");
       console.log(response, "response");
@@ -41,8 +38,8 @@ const GetLoanForm = ({ setLoanModal, loanModal }) => {
   if (!mounted || !loanModal) return null;
 
   return createPortal(
-    <div className="bg-black/30 fixed top-0 left-0 h-full w-full flex items-center justify-center z-50">
-      <div className="bg-white w-full max-w-lg mx-4 md:mx-auto p-6 rounded-lg shadow-lg relative">
+    <div className="bg-black/30 fixed top-0 left-0 h-full w-full flex items-center justify-end z-50">
+      <div className="bg-white w-full max-w-lg h-full p-6 rounded-l-lg shadow-lg relative overflow-y-auto">
         <button
           onClick={() => setLoanModal(false)}
           className="absolute top-3 right-3 text-black"
