@@ -47,12 +47,6 @@ const GetLoanForm = ({ setLoanModal, loanModal }) => {
           <IoMdClose size={30} />
         </button>
         <div className="text-center mb-8">
-          <img
-            src="https://floatui.com/logo.svg"
-            width={150}
-            alt="Logo"
-            className="mx-auto"
-          />
           <h3 className="text-2xl font-bold text-gray-800 mt-5">
             Enquiry Form
           </h3>
