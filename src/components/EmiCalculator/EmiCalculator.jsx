@@ -15,15 +15,19 @@ const EmiCalculator = () => {
     const handleChange = (event) => {
         const input = event.target.value;
 
-        // Remove all non-numeric characters
-        const sanitizedInput = input.replace(/[^0-9]/g, '');
+        let number = 0
+        let formatted = 0
 
-        // Convert the cleaned number string to an integer
-        const number = parseInt(sanitizedInput, 10);
+        if (input.length > 0) {
+            // Remove all non-numeric characters
+            const sanitizedInput = input.replace(/[^0-9]/g, '');
 
-        // Format the number in Indian style
-        const formatted = number.toLocaleString('en-IN');
+            // Convert the cleaned number string to an integer
+            number = parseInt(sanitizedInput, 10);
 
+            // Format the number in Indian style
+            formatted = number.toLocaleString('en-IN');
+        }
         // Set the formatted value with commas
         setPrincipalAmount(formatted);
 
@@ -79,7 +83,7 @@ const EmiCalculator = () => {
                                     <span className='px-2'>
                                         %:
                                     </span>
-                                    <input type="number" className='bg-transparent px-2 text-xl w-[200px] text-center' value={interestRate} onChange={(e) => setInterestRate(e)} />
+                                    <input type="number" className='bg-transparent px-2 text-xl w-[200px] text-center' value={interestRate} onChange={(e) => setInterestRate(e.target.value)} />
                                 </span>
                             </div>
                             <input id="default-range" type="range" value={interestRate} onChange={(e) => setInterestRate(e.target.value)} min={0} max={20} step={0.01} class="w-full h-2 bg-red-800/50 accent-white rounded-lg appearance-none cursor-pointer dark:bg-gray-700" />
@@ -92,7 +96,7 @@ const EmiCalculator = () => {
                                     <span className='px-2'>
                                         Months:
                                     </span>
-                                    <input type="number" className='bg-transparent px-2 text-xl w-[200px] text-center' value={tenure} onChange={(e) => setTenure(e)} />
+                                    <input type="number" className='bg-transparent px-2 text-xl w-[200px] text-center' value={tenure} onChange={(e) => setTenure(e.target.value)} />
                                 </span>
                             </div>
                             <input id="default-range" type="range" value={tenure} onChange={(e) => setTenure(e.target.value)} min={24} max={360} step={1} class="w-full h-2 bg-red-800/50 accent-white rounded-lg appearance-none cursor-pointer dark:bg-gray-700" />
