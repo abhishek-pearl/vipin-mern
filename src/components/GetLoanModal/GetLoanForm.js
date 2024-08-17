@@ -24,9 +24,13 @@ const GetLoanForm = ({ setLoanModal, loanModal }) => {
   const submitLoan = async (data) => {
     try {
       setLoading(true);
-      const response = await axios.post(`${process.env.API_URL}/inquiry`, data);
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/contact/enquiry`,
+        data
+      );
       setLoading(false);
       toast.success("Successfully Submitted...");
+      setLoanModal(false);
       console.log(response, "response");
     } catch (error) {
       setLoading(false);

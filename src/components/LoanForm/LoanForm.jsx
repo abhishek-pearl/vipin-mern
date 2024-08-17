@@ -40,7 +40,7 @@ const LoanForm = () => {
     const pincode = formData.get("pincode");
     try {
       setLoading(true);
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/inquiry`, {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/contact/enquiry`, {
         name,
         email,
         mobile,
@@ -50,6 +50,7 @@ const LoanForm = () => {
       });
       setLoading(false);
       toast.success("Successfully Submited...");
+      setModal(false);
 
       console.log(response, "response");
     } catch (error) {
