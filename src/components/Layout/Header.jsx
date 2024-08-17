@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <>
       <header>
-        <nav className="bg-red-500/90 shadow-[0_3px#ffffff] text-white border-gray-200 px-4 lg:px-6 py-2.5 ">
+        <nav className="bg-red-500 shadow-[0_3px#ffffff] text-white border-gray-200 px-4 lg:px-6 py-2.5 ">
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <a href="/" className="flex items-center">
               <img
