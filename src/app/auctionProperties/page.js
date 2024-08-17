@@ -26,6 +26,7 @@ export default async function page({ searchParams }) {
           Auction Properties
         </div>
       </div>
+      {/* Filter Component */}
       <FilterComponent />
 
       {/* Auction Listing */}

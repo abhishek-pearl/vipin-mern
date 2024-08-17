@@ -1,6 +1,8 @@
 import React from "react";
 
 const page = () => {
+  // /contact
+
   return (
     <>
       <section className="py-14 px-20 flex flex-col space-y-10">

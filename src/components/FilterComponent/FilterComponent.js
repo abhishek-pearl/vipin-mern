@@ -123,21 +123,31 @@ const FilterComponent = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <input
-          className="p-2 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
-          type="date"
-          placeholder="Auction Start Date"
-          value={startDate}
-          onChange={(e) => setStartDate(e.target.value)}
-        />
+        <div className="flex flex-col relative">
+          <input
+            className="p-2 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+            type="date"
+            placeholder="Auction Start Date"
+            value={startDate}
+            onChange={(e) => setStartDate(e.target.value)}
+          />
+          <label className="absolute -bottom-7 left-2" htmlFor="">
+            Start Date
+          </label>
+        </div>
 
-        <input
-          className="p-2 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
-          type="date"
-          placeholder="Auction End Date"
-          value={endDate}
-          onChange={(e) => setEndDate(e.target.value)}
-        />
+        <div className="flex flex-col relative">
+          <input
+            className="p-2 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+            type="date"
+            placeholder="Auction End Date"
+            value={endDate}
+            onChange={(e) => setEndDate(e.target.value)}
+          />
+          <label className="absolute -bottom-7 left-2" htmlFor="">
+            End Date
+          </label>
+        </div>
 
         <input
           className="p-2 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
