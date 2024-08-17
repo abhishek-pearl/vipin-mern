@@ -3,7 +3,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer class="bg-white border-t">
+    <footer class="bg-red-500 text-white border-t">
       <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0">
@@ -23,7 +23,7 @@ const Footer = () => {
               {/* <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase ">
                 Resources
               </h2> */}
-              <ul class="text-gray-500  font-medium">
+              <ul class="  font-medium">
                 <li class="mb-4">
                   <Link href="/" class="hover:underline">
                     Home
@@ -40,7 +40,7 @@ const Footer = () => {
               {/* <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase ">
                 Follow us
               </h2> */}
-              <ul class="text-gray-500  font-medium">
+              <ul class="  font-medium">
                 <li class="mb-4">
                   <Link
                     href="/services"
@@ -64,7 +64,7 @@ const Footer = () => {
               {/* <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase ">
                 Legal
               </h2> */}
-              <ul class="text-gray-500  font-medium">
+              <ul class=" font-medium">
                 <li class="mb-4">
                   <Link href="/contactus" class="hover:underline">
                     Contact Us
@@ -77,7 +77,7 @@ const Footer = () => {
         </div>
         {/* <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" /> */}
         <div class="sm:flex sm:items-center sm:justify-between">
-          <span class="text-sm text-gray-500 sm:text-center ">
+          <span class="text-sm  sm:text-center ">
             © 2024{" "}
             <Link href="/" class="hover:underline">
               SDLK™
