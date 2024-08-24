@@ -140,8 +140,10 @@ const GetLoanForm = ({ setLoanModal, loanModal }) => {
               </p>
             )}
           </div>
-          <div>
-            <p className="font-medium mb-1 text-gray-500">Loan Required?</p>
+          {/* <div>
+            <p className="font-medium mb-1 text-gray-500">
+              Loan Requirement Amoutn
+            </p>
             <div className="flex gap-x-4">
               <label className="relative flex items-center justify-center w-1/2 bg-gray-50 px-4 py-3 font-medium text-gray-700 rounded-xl">
                 <input
@@ -171,6 +173,23 @@ const GetLoanForm = ({ setLoanModal, loanModal }) => {
             {errors.loanRequired && (
               <p className="text-red-500 text-sm mt-1">
                 {errors.loanRequired.message}
+              </p>
+            )}
+          </div> */}
+          <div>
+            <label className="font-medium">Loan Requirement Amount</label>
+            <input
+              type="number"
+              {...register("loanRequired", {
+                required: "Loan Requirement is required",
+              })}
+              className={`w-full mt-2 px-3 py-2 border rounded-lg shadow-sm focus:border-indigo-600 ${
+                errors.pincode ? "border-red-500" : "border-gray-300"
+              }`}
+            />
+            {errors.loanRequirement && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.loanRequirement.message}
               </p>
             )}
           </div>

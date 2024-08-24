@@ -143,6 +143,18 @@ const LoanForm = () => {
                     </select>
                   </div>
                   <div>
+                    <label className="font-medium">Loan Requirement Amount</label>
+                    <input
+                      type="number"
+                      name="loanRequired"
+                      required
+
+                      className={`w-full mt-2 px-3 py-2 border rounded-lg shadow-sm focus:border-indigo-600  border-gray-300
+                        }`}
+                    />
+
+                  </div>
+                  {/* <div>
                     <p class="font-medium mb-1 text-gray-500 text-sm">Loan Required?</p>
                     <div class="flex gap-x-4">
                       <div class="relative flex w-56 items-center justify-center rounded-xl bg-gray-50 px-3 py-2 font-medium text-gray-700">
@@ -182,7 +194,7 @@ const LoanForm = () => {
                         <span class="pointer-events-none z-10">No</span>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
 
                   {loading ? (
                     <button
