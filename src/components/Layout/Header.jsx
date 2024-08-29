@@ -1,8 +1,8 @@
 "use client"
 
-import Link from "next/link";
 import React, { useState } from "react";
 import GetLoanForm from "../GetLoanModal/GetLoanForm";
+import Link from "next/link";
 
 const Header = () => {
   //  Home page, About us, Services, Blog Page, Contact us,
@@ -11,16 +11,16 @@ const Header = () => {
     <>
       <header>
         <nav className="bg-red-500 shadow-[0_3px#ffffff] text-white border-gray-200 px-4 lg:px-6 py-2.5 ">
-          <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+          <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl">
             <Link href="/" className="flex items-center">
               <img
-                src="/LogoSDLK.jpeg"
+                src="/LogoSDL.jpeg"
                 className="mr-3 h-[3rem]"
                 alt=""
               />
-              <span className="self-center text-xl font-semibold whitespace-nowrap ">
+              {/* <span className="self-center text-xl font-semibold whitespace-nowrap ">
                 SDLK
-              </span>
+              </span> */}
             </Link>
             <div className="flex items-center lg:order-2">
               <button
@@ -31,6 +31,19 @@ const Header = () => {
               >
                 Get a Loan
               </button>
+              <Link
+                href='/signUp'
+                className="text-white bg-transparent border-2 hover:ring-4 ring-white/30     font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 transition duration-300 "
+              >
+                SignUp
+              </Link>
+              <Link
+                href='/login'
+                className="text-white bg-transparent border-2 hover:ring-4 ring-white/30    font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 transition duration-300 "
+              >
+                Login
+              </Link>
+
 
               <button
                 data-collapse-toggle="mobile-menu-2"
@@ -117,7 +130,10 @@ const Header = () => {
           </div>
         </nav>
       </header>
-      <GetLoanForm setLoanModal={setLoanModal} loanModal={loanModal} />
+      <div>
+
+        <GetLoanForm setLoanModal={setLoanModal} loanModal={loanModal} />
+      </div>
     </>
   );
 };
