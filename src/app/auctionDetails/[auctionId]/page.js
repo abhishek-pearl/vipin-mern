@@ -1,12 +1,21 @@
-"use client";
-import React from "react";
+async function getSingleAuction(auctionId) {
+  const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/auction/${auctionId}`;
+  const response = await fetch(apiUrl);
+  const result = await response.json();
+  console.log(result?.result, "result");
+  return result?.result;
+}
 
-const AuctionDetails = () => {
+const AuctionDetails = async ({ params }) => {
+  const { auctionId } = params;
+  // console.log(params, "params");
+  const data = await getSingleAuction(auctionId);
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-8 ">
       {/* Title */}
       <h1 className="text-4xl font-bold text-gray-800 mb-6">
-        Auction Details: Agricultural Land in Dindori, Nashik
+        {/* Auction Details: Agricultural Land in Dindori, Nashik */}
+        {data?.title}
       </h1>
 
       {/* Image and Key Info Section */}
@@ -26,10 +35,13 @@ const AuctionDetails = () => {
             Auction Information
           </h2>
           <p className="text-lg mb-2">
-            <span className="font-semibold">Starting Price:</span> ₹ 36,00,000
+            <span className="font-semibold">Starting Price:</span> ₹{" "}
+            {Number(data?.reservePrice).toLocaleString("en-IN")}
           </p>
           <p className="text-lg mb-2">
-            <span className="font-semibold">Auction Date:</span> 11-10-2024
+            <span className="font-semibold">Auction Date:</span>{" "}
+            {data?.auctionStartTime}
+            {/* 11-10-2024 */}
           </p>
           <p className="text-lg mb-2">
             <span className="font-semibold">Time:</span> 01:00 PM
@@ -38,7 +50,8 @@ const AuctionDetails = () => {
             <span className="font-semibold">Location:</span> Dindori, Nashik
           </p>
           <p className="text-lg mb-2">
-            <span className="font-semibold">Auction ID:</span> #313414
+            <span className="font-semibold">Auction ID:</span> #
+            {data?.auctionId}
           </p>
           <button className="w-full mt-6 bg-red-500 text-white py-2 rounded-lg hover:bg-red-500 transition-colors duration-300">
             Register for Auction
@@ -52,12 +65,13 @@ const AuctionDetails = () => {
           Description
         </h2>
         <p className="text-gray-600 leading-relaxed">
-          This auction is for agricultural land located in Dindori, Nashik. The
+          {data?.description}
+          {/* This auction is for agricultural land located in Dindori, Nashik. The
           land is ideal for farming and comes with a fertile soil profile,
           making it suitable for a variety of crops. The property is
           well-connected by roads and is in close proximity to essential
           amenities. It is a part of the debts recovery process and is available
-          at a starting price of ₹ 36,00,000.
+          at a starting price of ₹ 36,00,000. */}
         </p>
       </div>
 
@@ -73,7 +87,8 @@ const AuctionDetails = () => {
                 Borrower Name:{" "}
               </span>
               <span className="text-gray-800">
-                MR. KASHINATH SADASHIV DHAGE & ORS
+                {data?.borrowerName}
+                {/* MR. KASHINATH SADASHIV DHAGE & ORS */}
               </span>
             </div>
             <div>
@@ -86,13 +101,16 @@ const AuctionDetails = () => {
               <span className="font-semibold text-gray-700">
                 Property Type:{" "}
               </span>
-              <span className="text-gray-800">Agricultural Land</span>
+              <span className="text-gray-800">
+                {data?.propertyType}
+                {/* Agricultural Land */}
+              </span>
             </div>
             <div>
               <span className="font-semibold text-gray-700">
                 Auction Type:{" "}
               </span>
-              <span className="text-gray-800">Sarfaesi Auction</span>
+              <span className="text-gray-800">{data?.auctionType}</span>
             </div>
           </div>
           <div className="space-y-3">
@@ -100,13 +118,13 @@ const AuctionDetails = () => {
               <span className="font-semibold text-gray-700">
                 Auction Start Time:{" "}
               </span>
-              <span className="text-gray-800">10-10-2024 11:00 AM</span>
+              <span className="text-gray-800">{data?.auctionStartTime}</span>
             </div>
             <div>
               <span className="font-semibold text-gray-700">
                 Auction End Date:{" "}
               </span>
-              <span className="text-gray-800">10-10-2024 01:00 PM</span>
+              <span className="text-gray-800">{data?.auctionEndTime}</span>
             </div>
             <div>
               <span className="font-semibold text-gray-700">
