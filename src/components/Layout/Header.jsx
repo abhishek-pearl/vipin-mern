@@ -3,9 +3,12 @@
 import React, { useState } from "react";
 import GetLoanForm from "../GetLoanModal/GetLoanForm";
 import Link from "next/link";
+import { userStore } from "@/store/authStore";
 
 const Header = () => {
   //  Home page, About us, Services, Blog Page, Contact us,
+  const { user, error, loading, login, isUserLoggedIn, logout } = userStore();
+  console.log(user, isUserLoggedIn)
   const [loanModal, setLoanModal] = useState(false)
   return (
     <>
@@ -31,18 +34,27 @@ const Header = () => {
               >
                 Get a Loan
               </button>
-              <Link
-                href='/signUp'
-                className="text-white bg-transparent border-2 hover:ring-4 ring-white/30     font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 transition duration-300 "
-              >
-                SignUp
-              </Link>
-              <Link
-                href='/login'
-                className="text-white bg-transparent border-2 hover:ring-4 ring-white/30    font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 transition duration-300 "
-              >
-                Login
-              </Link>
+              {
+                isUserLoggedIn ? <button
+                  onClick={() => {
+                    logout()
+                  }}
+                  className="text-white bg-transparent border-2 hover:ring-4 ring-white/30     font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 transition duration-300 "
+                >Sign Out</button> : <div>
+                  <Link
+                    href='/signUp'
+                    className="text-white bg-transparent border-2 hover:ring-4 ring-white/30     font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 transition duration-300 "
+                  >
+                    SignUp
+                  </Link>
+                  <Link
+                    href='/login'
+                    className="text-white bg-transparent border-2 hover:ring-4 ring-white/30    font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 transition duration-300 "
+                  >
+                    Login
+                  </Link>
+                </div>
+              }
 
 
               <button

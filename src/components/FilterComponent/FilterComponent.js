@@ -1,8 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation"; // Next.js specific
 import { State, City } from "country-state-city";
 import Select from "react-select";
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { useDebouncedCallback } from "use-debounce";
 const FilterComponent = () => {
   const [category, setCategory] = useState("");
   const [state, setState] = useState("");
@@ -16,34 +17,46 @@ const FilterComponent = () => {
   const [maxPrice, setMaxPrice] = useState("");
 
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
 
-  useEffect(() => {
-    const query = new URLSearchParams();
+  const handleSearch = useDebouncedCallback((name, term) => {
+    const params = new URLSearchParams(searchParams);
+    if (term) {
+      params.set(name, term);
+    } else {
+      params.delete(name);
+    }
+    replace(`${pathname}?${params.toString()}`);
+  }, 500);
+  // useEffect(() => {
+  //   const query = new URLSearchParams();
 
-    if (category) query.set("category", category);
-    if (state) query.set("state", state);
-    if (city) query.set("city", city);
-    if (bank) query.set("bank", bank);
-    if (startDate) query.set("startDate", startDate);
-    if (endDate) query.set("endDate", endDate);
-    if (minPrice) query.set("minPrice", minPrice);
-    if (maxPrice) query.set("maxPrice", maxPrice);
+  //   if (category) query.set("category", category);
+  //   if (state) query.set("state", state);
+  //   if (city) query.set("city", city);
+  //   if (bank) query.set("bank", bank);
+  //   if (startDate) query.set("startDate", startDate);
+  //   if (endDate) query.set("endDate", endDate);
+  //   if (minPrice) query.set("minPrice", minPrice);
+  //   if (maxPrice) query.set("maxPrice", maxPrice);
 
-    router.push(`?${query.toString()}`, undefined, { shallow: true });
-  }, [category, state, city, bank, startDate, endDate, minPrice, maxPrice]);
+  //   router.push(`?${query.toString()}`, undefined, { shallow: true });
+  // }, [category, state, city, bank, startDate, endDate, minPrice, maxPrice]);
 
-  const handleSearch = () => {
-    console.log("filters:", {
-      category,
-      state,
-      city,
-      bank,
-      startDate,
-      endDate,
-      minPrice,
-      maxPrice,
-    });
-  };
+  // const handleSearch = () => {
+  //   console.log("filters:", {
+  //     category,
+  //     state,
+  //     city,
+  //     bank,
+  //     startDate,
+  //     endDate,
+  //     minPrice,
+  //     maxPrice,
+  //   });
+  // };
 
   // This block of code is used to set Indian states dropdown Values.
   useEffect(() => {
@@ -80,13 +93,13 @@ const FilterComponent = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <select
           className="p-2 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
+          // value={category}
+          onChange={(e) => handleSearch("category", e.target.value)}
         >
           <option value="">-- Category --</option>
-          <option value="category1">Commercial</option>
-          <option value="category2">Gold Auction</option>
-          <option value="category2">Ohter</option>
+          <option value="commercial">Commercial</option>
+          <option value="golAuction">Gold Auction</option>
+          <option value="other">Ohter</option>
         </select>
 
         <Select
@@ -95,12 +108,12 @@ const FilterComponent = () => {
           onChange={(val) => {
             // resetField("City");
             // onChange(val);
-            setState(val.label);
+            handleSearch("state", val.label);
             console.log(val);
             fetchCitiesList(val);
           }}
-          getOptionLabel={(e) => e.label}
-          getOptionValue={(e) => e.value}
+          // getOptionLabel={(e) => e.label}
+          // getOptionValue={(e) => e.value}
           // closeMenuOnSelect={true}
         />
 
@@ -108,7 +121,7 @@ const FilterComponent = () => {
           // value={value || null}
           options={cityList}
           onChange={(val) => {
-            setCity(val.value);
+            handleSearch("city", val.label);
             console.log(val);
           }}
         />
@@ -117,8 +130,8 @@ const FilterComponent = () => {
           className="p-2 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
           type="text"
           placeholder="Bank"
-          value={bank}
-          onChange={(e) => setBank(e.target.value)}
+          // value={bank}
+          onChange={(e) => handleSearch("bank", e.target.value)}
         />
       </div>
 
@@ -128,8 +141,8 @@ const FilterComponent = () => {
             className="p-2 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
             type="date"
             placeholder="Auction Start Date"
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
+            // value={startDate}
+            onChange={(e) => handleSearch("startDate", e.target.value)}
           />
           <label className="absolute -bottom-7 left-2" htmlFor="">
             Start Date
@@ -141,8 +154,8 @@ const FilterComponent = () => {
             className="p-2 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
             type="date"
             placeholder="Auction End Date"
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
+            // value={endDate}
+            onChange={(e) => handleSearch("endDate", e.target.value)}
           />
           <label className="absolute -bottom-7 left-2" htmlFor="">
             End Date
@@ -153,16 +166,17 @@ const FilterComponent = () => {
           className="p-2 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
           type="number"
           placeholder="Min Price"
-          value={minPrice}
-          onChange={(e) => setMinPrice(e.target.value)}
+          // value={minPrice}
+          onChange={(e) => handleSearch("minPrice", e.target.value)}
         />
 
         <input
           className="p-2 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
           type="number"
           placeholder="Max Price"
-          value={maxPrice}
-          onChange={(e) => setMaxPrice(e.target.value)}
+          // value={maxPrice}
+
+          onChange={(e) => handleSearch("maxPrice", e.target.value)}
         />
       </div>
 
