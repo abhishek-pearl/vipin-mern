@@ -22,7 +22,7 @@ const HeroSection = () => {
     >
       {["./slider-1.jpg", "./slider-2.jpg"].map((el, i) => {
         return (
-          <SwiperSlide className="px-8 py-4" key={i}>
+          <SwiperSlide className="" key={i}>
             <img src={el} className="h-[55vh] w-full object-cover" />
           </SwiperSlide>
         );
