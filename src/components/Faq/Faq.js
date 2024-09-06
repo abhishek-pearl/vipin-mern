@@ -20,7 +20,7 @@ const FaqsCard = (props) => {
       onClick={handleOpenAnswer}
     >
       <h4 className="cursor-pointer pb-5 flex items-center justify-between text-lg text-gray-700 font-medium">
-        {faqsList.q}
+        {faqsList.question}
         {state ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -59,14 +59,14 @@ const FaqsCard = (props) => {
         style={state ? { height: answerH } : { height: "0px" }}
       >
         <div>
-          <p className="text-gray-500">{faqsList.a}</p>
+          <p className="text-gray-500">{faqsList.answer}</p>
         </div>
       </div>
     </div>
   );
 };
 
-const Faq = () => {
+const Faq = ({ data }) => {
   const faqsList = [
     {
       q: "Home Loan Eligibility",
@@ -94,7 +94,7 @@ const Faq = () => {
         </p>
       </div> */}
       <div className="mt-14  mx-auto">
-        {faqsList.map((item, idx) => (
+        {data?.data?.map((item, idx) => (
           <FaqsCard idx={idx} faqsList={item} />
         ))}
       </div>

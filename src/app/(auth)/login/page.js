@@ -1,27 +1,39 @@
 "use client";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
+import { userStore } from "@/store/authStore";
+import { useRouter } from "next/navigation";
 
 export default () => {
+  const { user, error, loading, login, isUserLoggedIn } = userStore();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const router = useRouter();
 
   const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = (data) => {
     console.log(data);
+    login(data);
+
     // Handle form submission (e.g., send data to server)
   };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
+  useEffect(() => {
+    if (user?.success) {
+      router.push("/auctionProperties");
+    }
+  }, [user]);
 
   return (
     <main className="w-full h-screen flex flex-col items-center justify-center bg-gray-50 sm:px-4">
@@ -81,12 +93,22 @@ export default () => {
                 </p>
               )}
             </div>
-            <button
-              type="submit"
-              className="w-full px-4 py-2 text-white font-medium bg-red-600 hover:bg-red-500 active:bg-red-600 rounded-lg duration-150"
-            >
-              Login
-            </button>
+            {loading ? (
+              <button
+                disabled={loading}
+                type="button"
+                className="w-full px-4 py-2 text-white font-medium bg-red-600 hover:bg-red-500 active:bg-red-600 rounded-lg duration-150"
+              >
+                Loading...
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className="w-full px-4 py-2 text-white font-medium bg-red-600 hover:bg-red-500 active:bg-red-600 rounded-lg duration-150"
+              >
+                Login
+              </button>
+            )}
           </form>
         </div>
       </div>

@@ -4,20 +4,46 @@ import { useForm } from "react-hook-form";
 import { State, City } from "country-state-city";
 import Select from "react-select";
 import { useEffect, useState } from "react";
+import axios from "axios";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default () => {
   const [state, setState] = useState("");
   const [stateLists, setStateLists] = useState([]);
   const [cityList, setCityLists] = useState([]);
   const [city, setCity] = useState("");
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log({ ...data, city, state });
+    try {
+      setLoading(true);
+      const result = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/user/signup`,
+        {
+          ...data,
+          city,
+          state,
+        }
+      );
+      if (result?.data.status === "SUCCESS") {
+        toast.success("Succesfully Created!!");
+        router.push("/login");
+        setLoading(false);
+      }
+      console.log(result);
+    } catch (error) {
+      setLoading(false);
+
+      toast.error("Something Went Wrong...", { position: "top-center" });
+    }
     // Handle form submission (e.g., send data to server)
   };
 
@@ -113,14 +139,14 @@ export default () => {
               <label className="font-medium">Mobile Number</label>
               <input
                 type="text"
-                {...register("mobileNumber", {
+                {...register("phone", {
                   required: "Mobile Number is required",
                 })}
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-red-600 shadow-sm rounded-lg"
               />
-              {errors.mobileNumber && (
+              {errors.phone && (
                 <p className="text-red-500 text-sm mt-1">
-                  {errors.mobileNumber.message}
+                  {errors.phone.message}
                 </p>
               )}
             </div>
@@ -128,17 +154,18 @@ export default () => {
               <label className="font-medium">Pin Code</label>
               <input
                 type="text"
-                {...register("pinCode", {
+                {...register("pincode", {
                   required: "Pin Code is required",
                 })}
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-red-600 shadow-sm rounded-lg"
               />
-              {errors.pinCode && (
+              {errors.pincode && (
                 <p className="text-red-500 text-sm mt-1">
-                  {errors.pinCode.message}
+                  {errors.pincode.message}
                 </p>
               )}
             </div>
+
             <Select
               options={stateLists}
               // value={value || null}
