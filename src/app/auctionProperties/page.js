@@ -8,8 +8,10 @@ import React, { useEffect, useState } from "react";
 
 export default function page({ params, searchParams }) {
   // const searchParams = useSearchParams();
-  const { user, error, loading, login, isUserLoggedIn } = userStore();
+  const { user, error, login, isUserLoggedIn } = userStore();
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  console.log(isUserLoggedIn, "isUseLoggedIn");
 
   async function getAuctions(searchParams) {
     const filteredParams = Object.fromEntries(
@@ -22,13 +24,14 @@ export default function page({ params, searchParams }) {
     console.log(query, "query"); // This will only include non-empty parameters
 
     // Construct the full API URL
-
+    setLoading(true);
     const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/${
       isUserLoggedIn ? `auction` : `auction/properties`
     }?page=1?${query}`;
     const response = await axios(apiUrl, {
       withCredentials: true,
     });
+    setLoading(false);
     setData(response?.data?.data);
     console.log(response, "response");
 
@@ -38,7 +41,7 @@ export default function page({ params, searchParams }) {
   useEffect(() => {
     getAuctions(searchParams);
     console.log("params");
-  }, [searchParams]);
+  }, [searchParams, isUserLoggedIn]);
 
   return (
     <div className="p-8 space-y-10 min-h-screen">
@@ -51,7 +54,7 @@ export default function page({ params, searchParams }) {
       <FilterComponent />
 
       {/* Auction Listing */}
-      <AuctionsListing data={data} />
+      <AuctionsListing loading={loading} data={data} />
       <div></div>
     </div>
   );

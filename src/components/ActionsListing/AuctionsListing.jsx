@@ -2,10 +2,32 @@ import React from 'react'
 import Paginaiton from '../Pagination/Paginaiton';
 import Link from 'next/link';
 
-const AuctionsListing = ({ data }) => {
+const AuctionsListing = ({ loading, data }) => {
     return (
         <div className=" space-y-5 container mx-auto">
-            {data?.map((item) => {
+            {loading ? Array.from({ length: 5 }).map(item => {
+                return <div class="w-full border h-60 bg-white shadow-lg rounded-lg overflow-hidden flex animate-pulse">
+                    <div class="relative w-1/3 bg-gray-200"></div>
+                    <div class="w-2/3 p-6 bg-white text-red-500 flex flex-col justify-between">
+                        <div>
+                            <div class="h-6 bg-gray-200 rounded w-2/3 mb-2"></div>
+                            <div class="h-4 bg-gray-200 rounded w-full mt-2"></div>
+                        </div>
+                        <div class="mt-4">
+                            <div class="flex justify-between items-center">
+                                <div class="h-6 bg-gray-200 rounded w-1/4"></div>
+                                <div class="flex items-center text-sm">
+                                    <div class="h-4 bg-gray-200 rounded w-2/3"></div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center mt-4">
+                                <div class="h-4 bg-gray-200 rounded w-1/3"></div>
+                                <div class="h-8 bg-gray-200 rounded w-1/3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }) : data?.map((item) => {
                 return (
                     <div className="w-full border bg-white shadow-lg rounded-lg overflow-hidden flex  transition-transform duration-300">
                         <div className="relative w-1/3">
@@ -27,10 +49,10 @@ const AuctionsListing = ({ data }) => {
                                     {/* Debts Recovery Tribunal Auctions for Agricultural Land in
                                     Dindori, Nashik */}{item?.title}
                                 </h3>
-                                <p className="text-sm mt-2">
+                                {/* <p className="text-sm mt-2">
                                     All that piece and parcel of the agricultural land bearing
                                     (i) Gat No. 90 (P) ar...
-                                </p>
+                                </p> */}
                             </div>
                             <div className="mt-4">
                                 <div className="flex justify-between items-center">

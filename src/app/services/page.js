@@ -30,11 +30,6 @@ const page = () => {
       path: `/loan/Loan-Against-Property`,
     },
     {
-      title: "Balance Transfer",
-      icon: "https://cdn-icons-png.flaticon.com/128/9144/9144383.png",
-      path: `/loan/Balance-Transfer`,
-    },
-    {
       title: "ODCC",
       icon: "https://cdn-icons-png.flaticon.com/128/9144/9144383.png",
       path: `/loan/ODCC`,

@@ -124,7 +124,7 @@ export default function Loan({ features }) {
     <div className="py-14 bg-[#fff5f0]">
       <div className="max-w-screen-xl mx-auto px-4 text-gray-600 md:px-8">
         <h2 className="text-3xl font-semibold text-center mb-8">
-          Features & Benefits of ICICI Bank Home Loan
+          Features & Benefits
         </h2>
         <Swiper
           modules={[Navigation, Pagination]}
@@ -132,16 +132,16 @@ export default function Loan({ features }) {
           slidesPerView={4}
           navigation
           pagination={{ clickable: true }}
-          className="w-full"
+          className="w-full mx-auto"
         >
-          {features.map((feature, idx) => (
-            <SwiperSlide key={idx}>
+          {features?.map((feature, idx) => (
+            <SwiperSlide className=" mx-auto" key={idx}>
               <div class=" h-[25rem] w-full mx-auto bg-white p-6 rounded-xl shadow-md flex flex-col  items-start gap-2">
-                <div class=" mb-4 text-[#FF5722]">{feature.icon}</div>
+                <div class=" mb-4 text-[#FF5722]">{feature?.icon}</div>
                 <h3 class=" text-lg font-semibold text-gray-900">
-                  {feature.title}
+                  {feature?.title}
                 </h3>
-                <p class=" text-gray-600 mt-3">{feature.description}</p>
+                <p class=" text-gray-600 mt-3">{feature?.description}</p>
               </div>
             </SwiperSlide>
           ))}
