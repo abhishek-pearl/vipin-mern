@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 
 const GetLoanForm = ({ setLoanModal, loanModal }) => {
+  console.log(loanModal, "loanModal");
   const [mounted, setMounted] = useState(false);
   const [loading, setLoading] = useState(false);
   const {
