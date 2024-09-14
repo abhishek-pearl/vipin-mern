@@ -1,10 +1,12 @@
 "use client";
 
+import { userStore } from "@/store/authStore";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaDownload } from "react-icons/fa";
 
 const AuctionDetails = () => {
+  const { isUserLoggedIn } = userStore();
   const { auctionId } = useParams();
   const [singleAuction, setSingleAuction] = useState(null);
   async function getSingleAuction(auctionId) {
@@ -158,7 +160,7 @@ const AuctionDetails = () => {
       </div>
 
       {/* Bank Deatils */}
-      {singleAuction?.bankName && (
+      {isUserLoggedIn && (
         <div className="bg-blue-50 p-6 rounded-lg shadow space-y-4">
           <h2 className="text-xl font-semibold text-red-500 mb-4">
             Bank Details
