@@ -42,8 +42,11 @@ export const userStore = create(
         try {
           const response = await axios.post(
             `${process.env.NEXT_PUBLIC_API_URL}/user/signout`,
-
+            {}, // Empty body if no data is being passed
             {
+              headers: {
+                // add your necessary headers here
+              },
               withCredentials: true,
             }
           );

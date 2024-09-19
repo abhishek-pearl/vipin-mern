@@ -1,10 +1,14 @@
+"use client";
+
 import Faq from "@/components/Faq/Faq";
+import GetLoanForm from "@/components/GetLoanModal/GetLoanForm";
 import Loan from "@/components/Swiper/Loan";
 import loansData from "@/utils/loansData";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 export default function page({ params }) {
+  const [loanModal, setLoanModal] = useState(false);
   const { loanType } = params;
   console.log(loanType, "loanType");
   const loanData =
@@ -36,7 +40,12 @@ export default function page({ params }) {
               })}
             </ul>
             <div className="mt-6 flex space-x-4">
-              <button className="px-6 py-3 hover:bg-white border border-[#FF5722] hover:text-[#FF5722] bg-[#FF5722] text-white transition-all font-bold rounded-md">
+              <button
+                onClick={() => {
+                  setLoanModal(true);
+                }}
+                className="px-6 py-3 hover:bg-white border border-[#FF5722] hover:text-[#FF5722] bg-[#FF5722] text-white transition-all font-bold rounded-md"
+              >
                 Apply Now
               </button>
             </div>
@@ -116,8 +125,13 @@ export default function page({ params }) {
                 <span className="">Get Provisional Sanction</span>
               </li> */}
             </ul>
-            <button className="px-6 py-3 text-white bg-orange-500 rounded-full hover:bg-orange-600">
-              APPLY FOR HOME LOAN
+            <button
+              onClick={() => {
+                setLoanModal(true);
+              }}
+              className="px-6 py-3 text-white bg-orange-500 rounded-full hover:bg-orange-600"
+            >
+              APPLY NOW
             </button>
           </div>
           <div className="relative flex-1">
@@ -197,6 +211,7 @@ export default function page({ params }) {
           <Faq data={loanData?.faq1} />
         </div>
       </div>
+      <GetLoanForm setLoanModal={setLoanModal} loanModal={loanModal} />
     </div>
   );
 }

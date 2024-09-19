@@ -786,6 +786,149 @@ const loansData = [
       },
     ],
   },
+  {
+    type: "Balance-Transfer",
+    title: "Transfer Your Loan, Save More",
+    features: [
+      "Lower Interest Rates",
+      "Reduced EMIs",
+      "Flexible Repayment Options",
+    ],
+    description: {
+      dTitle: "Save More with Balance Transfer Loans",
+      dContent:
+        "XYZ Bank offers Balance Transfer Loans with interest rates as low as 8.5%* p.a., helping you reduce your monthly EMIs and overall interest burden. Transfer your existing high-interest loan to XYZ Bank and enjoy better terms and flexible repayment options. Whether you have a home loan, personal loan, or car loan, transferring your loan can save you significant costs.",
+    },
+    cta: "Transfer Now",
+    faq1: {
+      title: "Balance Transfer Loan FAQ",
+      data: [
+        {
+          question: "What is the interest rate for a Balance Transfer Loan?",
+          answer:
+            "The interest rate for Balance Transfer Loans starts from 8.5% p.a., depending on your credit profile, loan type, and outstanding amount.",
+        },
+        {
+          question: "How much can I save by transferring my existing loan?",
+          answer:
+            "By transferring your loan to XYZ Bank, you can save on interest payments with lower EMIs. The exact savings depend on your outstanding loan amount, current interest rate, and the tenure of your loan.",
+        },
+        {
+          question: "Which loans are eligible for a balance transfer?",
+          answer:
+            "You can transfer home loans, personal loans, car loans, and other secured loans with an outstanding balance to XYZ Bank.",
+        },
+      ],
+    },
+    faq2: {
+      title: "Balance Transfer Loan FAQ",
+      data: [
+        {
+          question: "What documents are required for a balance transfer?",
+          answer:
+            "Documents such as your existing loan statement, property documents (for home loans), ID proof, income proof, and bank account statements are required.",
+        },
+        {
+          question: "How long does the balance transfer process take?",
+          answer:
+            "The process typically takes 5 to 10 working days after all documents are submitted and verified by the bank.",
+        },
+        {
+          question: "Can I transfer my loan if I have a poor credit score?",
+          answer:
+            "While a good credit score is preferred, you may still be eligible for a balance transfer depending on the outstanding loan and your repayment history. A lower credit score may result in higher interest rates.",
+        },
+      ],
+    },
+    dos: {
+      dos: [
+        "Check the difference in interest rates before initiating a transfer.",
+        "Ensure you understand all processing fees and charges involved in the transfer.",
+        "Calculate potential savings to ensure the transfer is beneficial.",
+        "Gather all necessary documents, including your existing loan details.",
+      ],
+      donts: [
+        "Don't transfer your loan without reviewing all terms and conditions.",
+        "Avoid missing EMIs during the transfer process to prevent penalties.",
+        "Don’t transfer a loan if the cost of transfer outweighs the benefits.",
+        "Don’t delay in submitting documents as it could lead to delays in the transfer process.",
+      ],
+    },
+    apply: {
+      title: "How to Apply for a Balance Transfer Loan",
+      steps: [
+        "Submit a balance transfer request online or at a branch.",
+        "Provide your existing loan details and required documents.",
+        "Get loan approval after verification and property valuation (for home loans).",
+        "Transfer the outstanding amount to XYZ Bank and enjoy better terms.",
+      ],
+    },
+    featuresBenifits: [
+      {
+        title: "Lower Interest Rates",
+        description:
+          "Take advantage of interest rates as low as 8.5%* p.a. and save on your loan repayments.",
+        icon: (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-8 h-8"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M5.25 12.75l5.5 5.5L19.75 8.75"
+            />
+          </svg>
+        ),
+      },
+      {
+        title: "Reduced EMIs",
+        description:
+          "With a balance transfer, you can significantly reduce your monthly EMIs by switching to a lower interest rate.",
+        icon: (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-8 h-8"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 8v4l3 3m0 0H9m6 0h.01M3 12a9 9 0 1118 0 9 9 0 01-18 0z"
+            />
+          </svg>
+        ),
+      },
+      {
+        title: "Flexible Repayment Options",
+        description:
+          "Choose a repayment tenure that suits your financial plans, ranging from 5 to 20 years, depending on the loan type.",
+        icon: (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-8 h-8"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v6a1 1 0 01-1 1h-3m-4 4v-6m0 6H9m4 0h3"
+            />
+          </svg>
+        ),
+      },
+    ],
+  },
 ];
 
 export default loansData;
