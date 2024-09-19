@@ -9,16 +9,22 @@ export default function ServiceCards() {
             title: "Home Loan",
             icon: "https://cdn-icons-png.flaticon.com/128/9144/9144383.png",
             path: `/loan/Home-Loan`,
+            content:
+                "Get financing for purchasing or constructing your dream home with flexible repayment options.",
         },
         {
-            title: " Loan Against Property",
-            icon: "https://cdn-icons-png.flaticon.com/128/9144/9144383.png",
-            path: `/loan/Loan-Against-Property`,
+            title: "Personal Loan",
+            icon: "https://cdn-icons-png.flaticon.com/128/5571/5571497.png",
+            path: `/loan/Personal-Loan`,
+            content:
+                "Secure funds for your personal needs, such as medical emergencies or travel, with minimal documentation.",
         },
         {
-            title: "Auction Properties",
-            icon: "https://cdn-icons-png.flaticon.com/128/9144/9144383.png",
-            path: `/auctionProperties`,
+            title: "Car Loan",
+            icon: "https://cdn-icons-png.flaticon.com/128/11794/11794652.png",
+            path: `/loan/Car-Loan`,
+            content:
+                "Drive your dream car home with a low-interest car loan and flexible EMIs that suit your budget.",
         },
     ];
 
@@ -46,8 +52,7 @@ export default function ServiceCards() {
                                     <h3 className="text-xl font-semibold">{item?.title}</h3>
                                 </div>
                                 <div className="text-muted-foreground">
-                                    Get the funds you need for your personal needs. Apply now
-                                    and get approved in minutes.
+                                    {item?.content}
                                 </div>
                                 <div className="flex justify-end">
                                     <div
