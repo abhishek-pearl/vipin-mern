@@ -3,11 +3,11 @@ import AuctionsListing from "@/components/ActionsListing/AuctionsListing";
 import FilterComponent from "@/components/FilterComponent/FilterComponent";
 import { userStore } from "@/store/authStore";
 import axios from "axios";
-// import { useSearchParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import React, { Suspense, useEffect, useState } from "react";
 
 export default function page({ params, searchParams }) {
-  // const searchParams = useSearchParams();
+  const searchParams = useSearchParams();
   const { user, error, login, isUserLoggedIn } = userStore();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -54,7 +54,9 @@ export default function page({ params, searchParams }) {
       <FilterComponent />
 
       {/* Auction Listing */}
-      <AuctionsListing loading={loading} data={data} />
+      <Suspense fallback={<div>Loading Auctions...</div>}>
+        <AuctionsListing loading={loading} data={data} />
+      </Suspense>
       <div></div>
     </div>
   );
