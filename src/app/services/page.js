@@ -47,7 +47,7 @@ const page = () => {
         "Opt for Overdraft Cash Credit to manage your working capital needs with ease and flexibility.",
     },
     {
-      title: "Balance-Transfer",
+      title: "Balance Transfer",
       icon: "https://cdn-icons-png.flaticon.com/128/11539/11539636.png",
       path: `/loan/Balance-Transfer`,
       content:

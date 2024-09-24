@@ -27,15 +27,14 @@ const AuctionDetails = () => {
 
   function getDateComponents(dateString) {
     const date = new Date(dateString);
-  
+
     // Add leading zero to day and month if necessary
-    const day = String(date.getUTCDate()).padStart(2, '0');
-    const month = String(date.getUTCMonth() + 1).padStart(2, '0'); // Months are zero-indexed, so add 1
+    const day = String(date.getUTCDate()).padStart(2, "0");
+    const month = String(date.getUTCMonth() + 1).padStart(2, "0"); // Months are zero-indexed, so add 1
     const year = date.getUTCFullYear();
-  
+
     return `${day}-${month}-${year}`;
   }
-
 
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-8 ">
@@ -152,7 +151,8 @@ const AuctionDetails = () => {
                 Auction Start Time:{" "}
               </span>
               <span className="text-gray-800">
-              {getDateComponents(singleAuction?.auctionStartDate)}{" "}{singleAuction?.auctionStartTime}
+                {getDateComponents(singleAuction?.auctionStartDate)}{" "}
+                {singleAuction?.auctionStartTime}
               </span>
             </div>
             <div>
@@ -160,7 +160,8 @@ const AuctionDetails = () => {
                 Auction End Date:{" "}
               </span>
               <span className="text-gray-800">
-              {singleAuction?.auctionEndDate}{" "}{singleAuction?.auctionEndTime}
+                {getDateComponents(singleAuction?.auctionEndDate)}{" "}
+                {singleAuction?.auctionEndTime}
               </span>
             </div>
             <div>
@@ -237,32 +238,30 @@ const AuctionDetails = () => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {singleAuction?.downloads
-            ? singleAuction?.downloads?.map(
-                (file, index) => (
-                  <div
-                    key={index}
-                    className="border border-gray-200 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white relative"
+            ? singleAuction?.downloads?.map((file, index) => (
+                <div
+                  key={index}
+                  className="border border-gray-200 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white relative"
+                >
+                  <h3 className="text-lg font-semibold mb-3 text-gray-700">
+                    {file?.original_filename}
+                  </h3>
+                  <a
+                    target="_blank"
+                    href={file.url}
+                    download={file?.original_filename}
+                    className="inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-md shadow hover:bg-blue-700 transition-all duration-300"
                   >
-                    <h3 className="text-lg font-semibold mb-3 text-gray-700">
-                      {file?.original_filename}
-                    </h3>
-                    <a
-                      target="_blank"
-                      href={file.url}
-                      download={file?.original_filename}
-                      className="inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-md shadow hover:bg-blue-700 transition-all duration-300"
-                    >
-                      <FaDownload className="mr-2" />
-                      Download
-                    </a>
-                    <div className="absolute top-0 right-0 bg-blue-600 p-1 rounded-bl-xl">
-                      <span className="text-white text-xs font-semibold">
-                        File {index + 1}
-                      </span>
-                    </div>
+                    <FaDownload className="mr-2" />
+                    Download
+                  </a>
+                  <div className="absolute top-0 right-0 bg-blue-600 p-1 rounded-bl-xl">
+                    <span className="text-white text-xs font-semibold">
+                      File {index + 1}
+                    </span>
                   </div>
-                )
-              )
+                </div>
+              ))
             : "Please Log-in to View Auction Docs"}
         </div>
       </div>
