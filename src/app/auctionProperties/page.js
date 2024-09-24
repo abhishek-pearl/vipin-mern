@@ -3,7 +3,7 @@ import AuctionsListing from "@/components/ActionsListing/AuctionsListing";
 import FilterComponent from "@/components/FilterComponent/FilterComponent";
 import { userStore } from "@/store/authStore";
 import axios from "axios";
-import { useSearchParams } from "next/navigation";
+// import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 export default function page({ params, searchParams }) {
