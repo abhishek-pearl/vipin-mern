@@ -19,9 +19,7 @@ export default () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = (data) => {
-    console.log(data);
     login(data);
-
     // Handle form submission (e.g., send data to server)
   };
 

@@ -8,36 +8,57 @@ const page = () => {
       title: "Home Loan",
       icon: "https://cdn-icons-png.flaticon.com/128/9144/9144383.png",
       path: `/loan/Home-Loan`,
+      content:
+        "Get financing for purchasing or constructing your dream home with flexible repayment options.",
     },
     {
-      title: "Personal loan",
-      icon: "https://cdn-icons-png.flaticon.com/128/9144/9144383.png",
+      title: "Personal Loan",
+      icon: "https://cdn-icons-png.flaticon.com/128/5571/5571497.png",
       path: `/loan/Personal-Loan`,
+      content:
+        "Secure funds for your personal needs, such as medical emergencies or travel, with minimal documentation.",
     },
     {
-      title: "Car loan",
-      icon: "https://cdn-icons-png.flaticon.com/128/9144/9144383.png",
+      title: "Car Loan",
+      icon: "https://cdn-icons-png.flaticon.com/128/11794/11794652.png",
       path: `/loan/Car-Loan`,
+      content:
+        "Drive your dream car home with a low-interest car loan and flexible EMIs that suit your budget.",
     },
     {
-      title: "Business loan",
-      icon: "https://cdn-icons-png.flaticon.com/128/9144/9144383.png",
+      title: "Business Loan",
+      icon: "https://cdn-icons-png.flaticon.com/128/3146/3146444.png",
       path: `/loan/Business-Loan`,
+      content:
+        "Grow your business with a hassle-free loan, designed to meet your business needs and expansion plans.",
     },
     {
       title: "Loan Against Property",
-      icon: "https://cdn-icons-png.flaticon.com/128/9144/9144383.png",
+      icon: "https://cdn-icons-png.flaticon.com/128/1907/1907649.png",
       path: `/loan/Loan-Against-Property`,
+      content:
+        "Leverage the value of your property to secure a loan for personal or business needs at competitive rates.",
     },
     {
       title: "ODCC",
-      icon: "https://cdn-icons-png.flaticon.com/128/9144/9144383.png",
+      icon: "https://cdn-icons-png.flaticon.com/128/839/839860.png",
       path: `/loan/ODCC`,
+      content:
+        "Opt for Overdraft Cash Credit to manage your working capital needs with ease and flexibility.",
+    },
+    {
+      title: "Balance Transfer",
+      icon: "https://cdn-icons-png.flaticon.com/128/11539/11539636.png",
+      path: `/loan/Balance-Transfer`,
+      content:
+        "Balance Transfer refers to transferring of outstanding Home Loan Balance from one financial institution to another,",
     },
     {
       title: "Auction Properties",
-      icon: "https://cdn-icons-png.flaticon.com/128/9144/9144383.png",
+      icon: "https://cdn-icons-png.flaticon.com/128/8857/8857918.png",
       path: `/auctionProperties`,
+      content:
+        "Explore a wide range of properties available for auction and seize the best investment opportunities.",
     },
   ];
 
@@ -66,10 +87,7 @@ const page = () => {
                       </div>
                       <h3 className="text-xl font-semibold">{item?.title}</h3>
                     </div>
-                    <div className="text-muted-foreground">
-                      Get the funds you need for your personal needs. Apply now
-                      and get approved in minutes.
-                    </div>
+                    <div className="text-muted-foreground">{item?.content}</div>
                     <div className="flex justify-end">
                       <div
                         href="#"

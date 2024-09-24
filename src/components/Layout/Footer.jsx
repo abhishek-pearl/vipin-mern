@@ -46,15 +46,15 @@ const Footer = () => {
                     href="/services"
                     class="hover:underline "
                   >
-                    Service
+                    Services
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/blogs"
+                    href="/news"
                     class="hover:underline"
                   >
-                    Blogs
+                    News
                   </Link>
                 </li>
 

@@ -49,7 +49,7 @@ const LoanForm = () => {
       );
       setLoading(false);
       toast.success("Successfully Submitted...");
-      setLoanModal(false);
+      setShowForm(false);
       console.log(response, "response");
     } catch (error) {
       setLoading(false);

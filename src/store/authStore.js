@@ -28,7 +28,7 @@ export const userStore = create(
           console.log(response, "loginResponse");
 
           if (response.status != 200) {
-            toast.error("Login Failed", { position: "top-center" });
+            toast.error("Incorrect Email/Password", { position: "top-center" });
             throw new Error("Login failed");
           }
           toast.success("Logged In", { position: "top-center" });
@@ -42,8 +42,11 @@ export const userStore = create(
         try {
           const response = await axios.post(
             `${process.env.NEXT_PUBLIC_API_URL}/user/signout`,
-
+            {}, // Empty body if no data is being passed
             {
+              headers: {
+                // add your necessary headers here
+              },
               withCredentials: true,
             }
           );

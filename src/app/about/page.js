@@ -1,10 +1,22 @@
+"use client"
 import React from "react";
 
+import aboutImg from "../../../public/about.webp"
+import Image from "next/image";
+
 const page = () => {
+  
   return (
     <>
-      <section className="py-4 px-20 flex flex-col-reverse md:flex-row gap-6 md:justify-center">
-        <div className="w-full md:w-1/2 space-y-8">
+      <section className="py-10 px-20 flex flex-col gap-6 items-center">
+      <Image
+          className="w-full max-w-[1000px] max-h-[500px] "
+          src={aboutImg}
+          width={700}
+          height={320}
+
+        />
+        <div className="w-full space-y-8">
           <div className="w-full text-center">
             <h1 className="text-3xl w-fit text-gray-800  shadow-[0_4px#ff0000]">
               About Us
@@ -74,10 +86,7 @@ const page = () => {
             </span>
           </p>
         </div>
-        <div
-          className="w-full h-[300px] md:h-auto md:w-1/2"
-          style={{ backgroundImage: "url(/banner.jpeg)" }}
-        ></div>
+       
       </section>
     </>
   );

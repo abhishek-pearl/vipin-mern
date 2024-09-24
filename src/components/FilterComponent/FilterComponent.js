@@ -97,13 +97,18 @@ const FilterComponent = () => {
           onChange={(e) => handleSearch("category", e.target.value)}
         >
           <option value="">-- Category --</option>
-          <option value="commercial">Commercial</option>
-          <option value="golAuction">Gold Auction</option>
-          <option value="other">Ohter</option>
+          <option value="commercial">Gold Auctions</option>
+          <option value="golAuction">Industrials</option>
+          <option value="golAuction">Residential</option>
+          <option value="golAuction">Industrials</option>
+          <option value="golAuction">Scrap, Plant & Machinery</option>
+          <option value="other">Vehicle Auctions</option>
+          <option value="other">Others</option>
         </select>
 
         <Select
           options={stateLists}
+          placeholder="State"
           // value={value || null}
           onChange={(val) => {
             // resetField("City");
@@ -119,6 +124,7 @@ const FilterComponent = () => {
 
         <Select
           // value={value || null}
+          placeholder="City"
           options={cityList}
           onChange={(val) => {
             handleSearch("city", val.label);
@@ -142,7 +148,7 @@ const FilterComponent = () => {
             type="date"
             placeholder="Auction Start Date"
             // value={startDate}
-            onChange={(e) => handleSearch("startDate", e.target.value)}
+            onChange={(e) => handleSearch("auctionStart", e.target.value)}
           />
           <label className="absolute -bottom-7 left-2" htmlFor="">
             Start Date
@@ -155,7 +161,7 @@ const FilterComponent = () => {
             type="date"
             placeholder="Auction End Date"
             // value={endDate}
-            onChange={(e) => handleSearch("endDate", e.target.value)}
+            onChange={(e) => handleSearch("auctionEnd", e.target.value)}
           />
           <label className="absolute -bottom-7 left-2" htmlFor="">
             End Date

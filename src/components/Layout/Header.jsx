@@ -117,15 +117,15 @@ const Header = () => {
                     href="/services"
                     className="block py-2 pr-4 pl-3 text-white hover:shadow-[0_3px#ffffff] border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0  transition duration-300   "
                   >
-                    Service
+                    Services
                   </a>
                 </li>
                 <li>
                   <a
-                    href="blogs"
+                    href="/news"
                     className="block py-2 pr-4 pl-3 text-white hover:shadow-[0_3px#ffffff] border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0  transition duration-300   "
                   >
-                    Blogs
+                    News
                   </a>
                 </li>
 

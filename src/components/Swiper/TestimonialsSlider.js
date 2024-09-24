@@ -7,6 +7,58 @@ import "swiper/css/pagination";
 // import required modules
 import { Autoplay, Pagination } from "swiper/modules";
 const TestimonialsSlider = () => {
+  const testimonials = [
+    {
+      quote:
+        "The home loan process was smooth and hassle-free. I was able to buy my dream home with ease, thanks to their excellent customer service.",
+      name: "Sarah Johnson",
+      position: "Homeowner",
+      image: "https://api.uifaces.co/our-content/donated/ViAJ2oe1.jpg",
+    },
+    {
+      quote:
+        "The personal loan helped me cover medical expenses when I needed it the most. The approval process was quick, and I highly recommend them.",
+      name: "David Williams",
+      position: "Freelancer",
+      image: "https://api.uifaces.co/our-content/donated/bUkmHPKs.jpg",
+    },
+    {
+      quote:
+        "I couldn’t be happier with my new car! Their car loan option gave me great flexibility with repayments, making my dream come true.",
+      name: "Emily Davis",
+      position: "Marketing Manager",
+      image: "https://api.uifaces.co/our-content/donated/n4Ngwvi7.jpg",
+    },
+    {
+      quote:
+        "This business loan gave me the capital boost I needed to expand my company. The terms were straightforward, and I could start focusing on growth.",
+      name: "Michael Brown",
+      position: "CEO, BrownTech",
+      image: "https://api.uifaces.co/our-content/donated/WF5JOdpE.jpg",
+    },
+    {
+      quote:
+        "The loan against my property provided me with the funds I needed without any unnecessary complications. The interest rate was highly competitive too.",
+      name: "Jennifer Lee",
+      position: "Small Business Owner",
+      image: "https://api.uifaces.co/our-content/donated/2lG06eF-.jpg",
+    },
+    {
+      quote:
+        "ODCC helped manage my cash flow efficiently. The flexibility it provides made a huge difference in my business's financial health.",
+      name: "Robert Miller",
+      position: "Entrepreneur",
+      image: "https://api.uifaces.co/our-content/donated/KtCFjlD4.jpg",
+    },
+    {
+      quote:
+        "I managed to get a fantastic deal through the auction properties platform. The whole process was transparent and easy to follow.",
+      name: "Jessica Turner",
+      position: "Real Estate Investor",
+      image: "https://api.uifaces.co/our-content/donated/xZ4wg2Xj.jpg",
+    },
+  ];
+
   return (
     <section className="py-12 space-y-10 mb-10">
       <div className="flex justify-center">
@@ -27,31 +79,28 @@ const TestimonialsSlider = () => {
           }}
           className="mySwiper"
         >
-          {Array.from({ length: 5 }).map((item) => {
+          {testimonials?.map((item) => {
             return (
               <SwiperSlide>
                 <div className="max-w-3xl mx-auto">
                   <figure>
                     <blockquote>
                       <p className="text-gray-800 text-lg text-center font-base sm:text-xl">
-                        “Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit. Nunc et est hendrerit, porta nunc vitae, gravida
-                        justo. Nunc fermentum magna lorem, euismod volutpat arcu
-                        volutpat et.“
+                        “{item?.quote}“
                       </p>
                     </blockquote>
                     <div className="flex justify-center items-center gap-x-4 mt-6">
                       <img
-                        src="https://api.uifaces.co/our-content/donated/xZ4wg2Xj.jpg"
+                        src={item?.image}
                         className="w-16 h-16 rounded-full"
                         alt="Testimonial"
                       />
                       <div>
                         <span className="block text-gray-800 font-semibold">
-                          Martin Escobar
+                          {item?.name}
                         </span>
                         <span className="block text-gray-600 text-sm mt-0.5">
-                          Founder of Meta
+                          {item?.position}
                         </span>
                       </div>
                     </div>

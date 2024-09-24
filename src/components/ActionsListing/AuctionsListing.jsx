@@ -27,7 +27,7 @@ const AuctionsListing = ({ loading, data }) => {
                         </div>
                     </div>
                 </div>
-            }) : data?.map((item) => {
+            }) : (data?.length > 0 ? data?.map((item) => {
                 return (
                     <div className="w-full border bg-white shadow-lg rounded-lg overflow-hidden flex  transition-transform duration-300">
                         <div className="relative w-1/3">
@@ -71,7 +71,7 @@ const AuctionsListing = ({ loading, data }) => {
                                     </span>
                                     <Link
                                         href={`/auctionDetails/${item?.auctionId}`}
-                                        className="bg-white text-red-500 border-2 border-red-500 hover:ring-4 ring-red-500/30 transition-all px-4 py-2 rounded-lg  transition-colors duration-300">
+                                        className="bg-white text-red-500 border-2 border-red-500 hover:ring-4 ring-red-500/30  px-4 py-2 rounded-lg  transition-colors duration-300">
                                         View More
                                     </Link>
                                 </div>
@@ -79,7 +79,7 @@ const AuctionsListing = ({ loading, data }) => {
                         </div>
                     </div>
                 );
-            })}
+            }) : <div className='text-center min-h-[50vh] grid place-items-center'>No Data Found</div>)}
             <Paginaiton />
         </div>
     )
