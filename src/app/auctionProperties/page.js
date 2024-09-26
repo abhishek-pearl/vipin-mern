@@ -4,7 +4,7 @@ import FilterComponent from "@/components/FilterComponent/FilterComponent";
 import { userStore } from "@/store/authStore";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 
 export default function page({ params, searchParams }) {
   // const searchParams = useSearchParams();
@@ -44,18 +44,20 @@ export default function page({ params, searchParams }) {
   }, [searchParams, isUserLoggedIn]);
 
   return (
-    <div className="p-8 space-y-10 min-h-screen">
-      <div className="flex justify-center">
-        <div className=" w-fit text-4xl font-semibold shadow-[0_3px#ff0000]">
-          Auction Properties
+    <Suspense fallback={<>Loading...</>}>
+      <div className="p-8 space-y-10 min-h-screen">
+        <div className="flex justify-center">
+          <div className=" w-fit text-4xl font-semibold shadow-[0_3px#ff0000]">
+            Auction Properties
+          </div>
         </div>
-      </div>
-      {/* Filter Component */}
-      <FilterComponent />
+        {/* Filter Component */}
+        <FilterComponent />
 
-      {/* Auction Listing */}
-      <AuctionsListing loading={loading} data={data} />
-      <div></div>
-    </div>
+        {/* Auction Listing */}
+        <AuctionsListing loading={loading} data={data} />
+        <div></div>
+      </div>
+    </Suspense>
   );
 }
