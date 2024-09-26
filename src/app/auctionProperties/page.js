@@ -7,7 +7,7 @@ import { useSearchParams } from "next/navigation";
 import React, { Suspense, useEffect, useState } from "react";
 
 export default function page({ params, searchParams }) {
-  // const searchParams = useSearchParams();
+  const searchParams = useSearchParams();
   const { user, error, login, isUserLoggedIn } = userStore();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
