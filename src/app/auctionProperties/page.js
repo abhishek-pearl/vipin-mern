@@ -7,15 +7,14 @@ import { useSearchParams } from "next/navigation";
 import React, { Suspense, useEffect, useState } from "react";
 
 export default function page({ params, searchParams }) {
-  const searchParams = useSearchParams();
   const { user, error, login, isUserLoggedIn } = userStore();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   console.log(isUserLoggedIn, "isUseLoggedIn");
 
-  async function getAuctions(searchParams) {
+  async function getAuctions(searchParamS) {
     const filteredParams = Object.fromEntries(
-      Object.entries(searchParams).filter(([_, value]) => value)
+      Object.entries(searchParamS).filter(([_, value]) => value)
     );
 
     // Construct the query string from filteredParams
