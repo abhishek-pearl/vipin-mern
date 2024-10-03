@@ -20,7 +20,13 @@ const HeroSection = () => {
         delay: 3000,
       }}
     >
-      {["./slider-1.jpg", "./slider-2.jpg"].map((el, i) => {
+      {[
+        "./slider-1.jpg",
+        "./slider-2.jpg",
+        "/slider-3.avif",
+        "slider-4.avif",
+        "slider-5.jpg",
+      ].map((el, i) => {
         return (
           <SwiperSlide className="" key={i}>
             <img src={el} className="h-[55vh] w-full object-cover" />
