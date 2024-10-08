@@ -29,8 +29,8 @@ const AuctionsListing = ({ loading, data }) => {
                 </div>
             }) : (data?.length > 0 ? data?.map((item) => {
                 return (
-                    <div className="w-full border bg-white shadow-lg rounded-lg overflow-hidden flex  transition-transform duration-300">
-                        <div className="relative w-1/3">
+                    <div className="w-full border bg-white shadow-lg rounded-lg overflow-hidden flex flex-col md:flex-row  transition-transform duration-300">
+                        <div className="relative w-full md:w-1/3">
                             <img
                                 className="w-full h-full object-cover"
                                 src="https://media.istockphoto.com/id/1208718164/photo/sydney-housing-from-aerial-view.jpg?s=612x612&w=0&k=20&c=nIIUt47B428T7kayJNdKbZWOHUd6yOIDpgiT12TNqhI="
@@ -43,7 +43,7 @@ const AuctionsListing = ({ loading, data }) => {
                                 Residential
                             </div>
                         </div>
-                        <div className="w-2/3 p-6 bg-whtie text-red-500 flex flex-col justify-between">
+                        <div className="w-full md:w-2/3 p-6 bg-whtie text-red-500 flex flex-col justify-between">
                             <div>
                                 <h3 className="text-2xl font-bold">
                                     {/* Debts Recovery Tribunal Auctions for Agricultural Land in
@@ -54,7 +54,7 @@ const AuctionsListing = ({ loading, data }) => {
                                     (i) Gat No. 90 (P) ar...
                                 </p> */}
                             </div>
-                            <div className="mt-4">
+                            <div className="mt-4 flex flex-col justify-between">
                                 <div className="flex justify-between items-center">
                                     <span className="font-bold text-xl">₹ {Number(item?.reservePrice).toLocaleString("en-IN")}</span>
                                     <div className="flex items-center text-sm">
@@ -65,7 +65,7 @@ const AuctionsListing = ({ loading, data }) => {
                                         </span>
                                     </div>
                                 </div>
-                                <div className="flex justify-between items-center mt-4">
+                                <div className="flex md:flex-row flex-col md:justify-between gap-2 md:items-center mt-4  w-full">
                                     <span className="text-lg text-gray-300">
                                         Auction ID: #{item?.auctionId}
                                     </span>
