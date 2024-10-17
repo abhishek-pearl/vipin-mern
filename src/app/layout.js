@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
 import { Toaster } from "sonner";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +16,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className} bg-[#F9F6E8]`}>
-        <Header />
+      <Script
+        src="https://checkout.razorpay.com/v1/checkout.js"
+       />
+       <Header />
         {children}
         <Footer />
         <Toaster richColors position="top-center" />

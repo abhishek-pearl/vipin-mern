@@ -3,14 +3,31 @@ import AuctionsListing from "@/components/ActionsListing/AuctionsListing";
 import FilterComponent from "@/components/FilterComponent/FilterComponent";
 import { userStore } from "@/store/authStore";
 import axios from "axios";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React, { Suspense, useEffect, useState } from "react";
 
 export default function page({ params, searchParams }) {
   const { user, error, login, isUserLoggedIn } = userStore();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  console.log(isUserLoggedIn, "isUseLoggedIn");
+  const router = useRouter();
+
+    
+
+ 
+  if(!isUserLoggedIn)
+  {
+    router.push("login");
+  }
+  else if(isUserLoggedIn){
+    console.log(user.user, "isUseLoggedIn");
+
+    if(!user?.user.isSubscribed)
+    {
+      router.push("checkout");
+    }
+
+  }
 
   async function getAuctions(searchParamS) {
     const filteredParams = Object.fromEntries(
