@@ -7,27 +7,33 @@ import { useRouter, useSearchParams } from "next/navigation";
 import React, { Suspense, useEffect, useState } from "react";
 
 export default function page({ params, searchParams }) {
-  const { user, error, login, isUserLoggedIn } = userStore();
+  const { user, error, login,getUserData, isUserLoggedIn } = userStore();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
     
-
+  useEffect(()=>{
+    if(!isUserLoggedIn)
+      {
+        router.push("login");
+      }
+      else if(isUserLoggedIn){
+        console.log(user.user, "isUseLoggedIn");
+    
+        if(!user?.user.isSubscribed)
+        {
+          router.push("checkout");
+        }else
+        {
+          router.push("auctionProperties");
+        }
+        
+    
+      }
+  },[user])
  
-  if(!isUserLoggedIn)
-  {
-    router.push("login");
-  }
-  else if(isUserLoggedIn){
-    console.log(user.user, "isUseLoggedIn");
 
-    if(!user?.user.isSubscribed)
-    {
-      router.push("checkout");
-    }
-
-  }
 
   async function getAuctions(searchParamS) {
     const filteredParams = Object.fromEntries(
