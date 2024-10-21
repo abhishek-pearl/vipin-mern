@@ -1,23 +1,23 @@
 "use client";
+import { userStore } from "@/store/authStore";
 import axios from "axios";
 import React, { useState } from "react";
 import { toast } from "sonner";
 
 const page = () => {
   const [isLoading, setIsLoading] = useState();
-  const orderById = JSON.parse(sessionStorage.getItem("VipinGoswami"))?.state
-    ?.user?.user;
+  const { user, error, login, isUserLoggedIn } = userStore();
   async function handleCheckout() {
     setIsLoading(true);
     try {
-      if (!orderById.isSubscribed) {
+      if (!user?.isSubscribed) {
         const data = await axios.post(
           process.env.NEXT_REACT_APP_WORKING_ENVIRONMENT === "development"
             ? `${process.env.NEXT_PUBLIC_API_URL}/order/bookingOrder`
             : `${process.env.NEXT_PUBLIC_API_URL_PRODUCTION}/order/bookingOrder`,
           {
             amount: 300,
-            userId: orderById._id,
+            userId: user?._id,
             currency: "INR",
             order: "Annual Registration Charge",
           }
@@ -40,8 +40,8 @@ const page = () => {
             try {
               const validateResponse = await axios.post(
                 process.env.NEXT_REACT_APP_WORKING_ENVIRONMENT === "development"
-                  ? `${process.env.NEXT_PUBLIC_API_URL}/order/verifyOrder/${data.data.bookingOrderId}`
-                  : `${process.env.NEXT_PUBLIC_API_URL_PRODUCTION}/order/verifyOrder/${data.data.bookingOrderId}`,
+                  ? `${process.env.NEXT_PUBLIC_API_URL}/order/verifyOrder/${data?.data?.bookingOrderId}`
+                  : `${process.env.NEXT_PUBLIC_API_URL_PRODUCTION}/order/verifyOrder/${data?.data?.bookingOrderId}`,
                 body
               );
 
