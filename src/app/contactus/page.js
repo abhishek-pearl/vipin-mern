@@ -138,11 +138,23 @@ const Page = () => {
               >
                 Submit
               </button>
-            )}
+            )} 
           </form>
         </div>
         <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 flex flex-col gap-2">
-          <div className="text-2xl">Details:</div>
+          <div className="text-2xl">Details:
+          <div className="h-40 ">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3441.9963160787693!2d78.08464042547044!3d30.37946250262029!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s188%2C%20Rajpur%20Road%20In%20between%20Sai%20Baba%20Temple%20and%20Sakya%20Centre%20Buddhist%20Monastery%2C%20Uttarakhand%20248001%2C%20India!5e0!3m2!1sen!2sin!4v1729160174790!5m2!1sen!2sin"
+    className="w-full h-full border-0"
+    allowFullScreen
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+  ></iframe>
+</div>
+
+</div>
+
           <div className="flex flex-col gap-2 justify-center h-full text-lg">
             <div>
               <span className="font-semibold">Company name: </span>
