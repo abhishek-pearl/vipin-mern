@@ -14,7 +14,7 @@ const Header = () => {
     <>
       <header>
         <nav className="bg-gradient-to-r from-red-500 via-red-600 to-red-700 shadow-lg text-white px-4 lg:px-8 py-4">
-          <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl">
+          <div className="flex flex-wrap gap-4 justify-between items-center mx-auto max-w-screen-2xl">
             {/* Logo Section */}
             <Link href="/" className="flex items-center">
               <img

@@ -38,26 +38,20 @@ export default () => {
         router.push("/login");
         setLoading(false);
       }
-      console.log(result);
     } catch (error) {
       setLoading(false);
-
       toast.error("Something Went Wrong...", { position: "top-center" });
     }
-    // Handle form submission (e.g., send data to server)
   };
 
-  // This block of code is used to set Indian states dropdown Values.
   useEffect(() => {
     const states = State.getStatesOfCountry("IN");
     if (states?.length > 0) {
       setStateLists(
-        states.map((state) => {
-          return {
-            label: state?.name,
-            value: state?.isoCode,
-          };
-        })
+        states.map((state) => ({
+          label: state?.name,
+          value: state?.isoCode,
+        }))
       );
     }
   }, []);
@@ -65,35 +59,26 @@ export default () => {
   const fetchCitiesList = (state) => {
     const citiesList = City.getCitiesOfState("IN", state?.value);
     setCityLists(
-      citiesList.map((city) => {
-        return {
-          label: city?.name,
-          value: city?.name,
-        };
-      })
+      citiesList.map((city) => ({
+        label: city?.name,
+        value: city?.name,
+      }))
     );
   };
 
   return (
-    <main className="w-full h-[92.5vh] flex flex-col items-center justify-center bg-gray-50 sm:px-4">
-      <div className="w-full space-y-6 text-gray-600 sm:max-w-lg">
+    <main className="w-full min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4 sm:px-6 lg:px-8 py-10 ">
+      <div className="w-full space-y-6 text-gray-600 max-w-md mx-auto">
         <div className="text-center">
-          <div className="mt-5 space-y-2">
-            <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl">
-              Create an account
-            </h3>
-            <p className="">
-              Already have an account?{" "}
-              <Link
-                href="/login"
-                className="font-medium text-red-600 hover:text-red-500"
-              >
-                Log in
-              </Link>
-            </p>
-          </div>
+          <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl">Create an account</h3>
+          <p className="mt-2">
+            Already have an account?{" "}
+            <Link href="/login" className="font-medium text-red-600 hover:text-red-500">
+              Log in
+            </Link>
+          </p>
         </div>
-        <div className="bg-white shadow p-4 py-6 sm:p-6 sm:rounded-lg">
+        <div className="bg-white  p-6 rounded-lg">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             <div>
               <label className="font-medium">Full Name</label>
@@ -102,24 +87,17 @@ export default () => {
                 {...register("fullName", { required: "Name is required" })}
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-red-600 shadow-sm rounded-lg"
               />
-              {errors.name && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.name.message}
-                </p>
-              )}
+              {errors.fullName && <p className="text-red-500 text-sm mt-1">{errors.fullName.message}</p>}
             </div>
+
             <div>
               <label className="font-medium">Email</label>
               <input
                 type="email"
                 {...register("email", { required: "Email is required" })}
-                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-red-600 shadow-sm rounded-lg"
+                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-red-600  rounded-lg"
               />
-              {errors.email && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.email.message}
-                </p>
-              )}
+              {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
             </div>
 
             <div>
@@ -129,72 +107,58 @@ export default () => {
                 {...register("password", { required: "Password is required" })}
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-red-600 shadow-sm rounded-lg"
               />
-              {errors.password && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.password.message}
-                </p>
-              )}
+              {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
             </div>
+
             <div>
               <label className="font-medium">Mobile Number</label>
               <input
                 type="text"
-                {...register("phone", {
-                  required: "Mobile Number is required",
-                })}
+                {...register("phone", { required: "Mobile Number is required" })}
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-red-600 shadow-sm rounded-lg"
               />
-              {errors.phone && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.phone.message}
-                </p>
-              )}
+              {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>}
             </div>
+
             <div>
               <label className="font-medium">Pin Code</label>
               <input
                 type="text"
-                {...register("pincode", {
-                  required: "Pin Code is required",
-                })}
+                {...register("pincode", { required: "Pin Code is required" })}
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-red-600 shadow-sm rounded-lg"
               />
-              {errors.pincode && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.pincode.message}
-                </p>
-              )}
+              {errors.pincode && <p className="text-red-500 text-sm mt-1">{errors.pincode.message}</p>}
             </div>
 
-            <Select
-              options={stateLists}
-              // value={value || null}
-              onChange={(val) => {
-                // resetField("City");
-                // onChange(val);
-                setState(val.label);
+            <div>
+              <label className="font-medium">State</label>
+              <Select
+                options={stateLists}
+                onChange={(val) => {
+                  setState(val.label);
+                  fetchCitiesList(val);
+                }}
+                className="mt-2"
+              />
+            </div>
 
-                console.log(val);
-                fetchCitiesList(val);
-              }}
-              getOptionLabel={(e) => e.label}
-              getOptionValue={(e) => e.value}
-              // closeMenuOnSelect={true}
-            />
+            <div>
+              <label className="font-medium">City</label>
+              <Select
+                options={cityList}
+                onChange={(val) => {
+                  setCity(val.value);
+                }}
+                className="mt-2"
+              />
+            </div>
 
-            <Select
-              // value={value || null}
-              options={cityList}
-              onChange={(val) => {
-                setCity(val.value);
-                console.log(val);
-              }}
-            />
             <button
               type="submit"
-              className="w-full px-4 py-2 text-white font-medium bg-red-600 hover:bg-red-500 active:bg-red-600 rounded-lg duration-150"
+              className="w-full   mt-6 px-4 py-2 text-white font-medium bg-red-600 hover:bg-red-500 active:bg-red-600 rounded-lg"
+              disabled={loading}
             >
-              Create account
+              {loading ? "Creating account..." : "Create account"}
             </button>
           </form>
         </div>
