@@ -70,6 +70,16 @@ const Footer = () => {
                     Contact Us
                   </Link>
                 </li>
+                <li class="mb-4">
+                  <Link href="/privacyPolicy" class="hover:underline">
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li class="mb-4">
+                  <Link href="/termsAndCondition" class="hover:underline">
+                    Terms And Condition
+                  </Link>
+                </li>
 
               </ul>
             </div>
