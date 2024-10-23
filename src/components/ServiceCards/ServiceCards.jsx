@@ -20,11 +20,11 @@ export default function ServiceCards() {
                 "Secure funds for your personal needs, such as medical emergencies or travel, with minimal documentation.",
         },
         {
-            title: "Car Loan",
-            icon: "https://cdn-icons-png.flaticon.com/128/11794/11794652.png",
-            path: `/loan/Car-Loan`,
+            title: "Auction Properties",
+            icon: "https://cdn-icons-png.flaticon.com/128/8857/8857918.png",
+            path: `/auctionProperties`,
             content:
-                "Drive your dream car home with a low-interest car loan and flexible EMIs that suit your budget.",
+                "Explore a wide range of properties available for auction and seize the best investment opportunities.",
         },
     ];
 

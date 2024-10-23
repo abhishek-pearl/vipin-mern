@@ -23,7 +23,7 @@ export default () => {
     // Handle form submission (e.g., send data to server)
   };
 
-  const togglePasswordVisibility = () => {
+  const togglePasswordVisibility = () => { 
     setShowPassword(!showPassword);
   };
 
@@ -42,7 +42,7 @@ export default () => {
               Log in to your account
             </h3>
             <p className="">
-              Don't have an account?{" "}
+              Don't have an account?
               <Link
                 href="signUp"
                 className="font-medium text-red-600 hover:text-red-500"

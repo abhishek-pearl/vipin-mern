@@ -6,8 +6,8 @@ import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 const page = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const {user,getUserData} = userStore();
+  const [isLoading, setIsLoading] = useState();
+  const { user, error, login, isUserLoggedIn } = userStore();
   const router = useRouter();
 
   useEffect(()=>{
@@ -20,25 +20,25 @@ const page = () => {
   },[user]);
 
 
-  const orderById = JSON.parse(sessionStorage.getItem("VipinGoswami"))?.state
-    ?.user?.user;
+  // const orderById = JSON.parse(sessionStorage.getItem("VipinGoswami"))?.state
+  //   ?.user?.user;
+ 
   async function handleCheckout() {
     setIsLoading(true);
     try {
-      if (!orderById.isSubscribed) {
+      if (!user?.isSubscribed) {
         const data = await axios.post(
           process.env.NEXT_REACT_APP_WORKING_ENVIRONMENT === "development"
             ? `${process.env.NEXT_PUBLIC_API_URL}/order/bookingOrder`
             : `${process.env.NEXT_PUBLIC_API_URL_PRODUCTION}/order/bookingOrder`,
           {
             amount: 300,
-            userId: orderById._id,
+            userId: user?._id,
             currency: "INR",
             order: "Annual Registration Charge",
           }
         );
 
-        console.log("data", data.data);
         setIsLoading(false);
 
         const options = {
@@ -55,8 +55,8 @@ const page = () => {
             try {
               const validateResponse = await axios.post(
                 process.env.NEXT_REACT_APP_WORKING_ENVIRONMENT === "development"
-                  ? `${process.env.NEXT_PUBLIC_API_URL}/order/verifyOrder/${data.data.bookingOrderId}`
-                  : `${process.env.NEXT_PUBLIC_API_URL_PRODUCTION}/order/verifyOrder/${data.data.bookingOrderId}`,
+                  ? `${process.env.NEXT_PUBLIC_API_URL}/order/verifyOrder/${data?.data?.bookingOrderId}`
+                  : `${process.env.NEXT_PUBLIC_API_URL_PRODUCTION}/order/verifyOrder/${data?.data?.bookingOrderId}`,
                 body
               );
 
