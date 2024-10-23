@@ -62,6 +62,29 @@ export const userStore = create(
           set({ error: error.message, loading: false });
         }
       },
+      getUserData : async () =>{
+        set({ loading: true, error: null });
+        try {
+          const response = await axios.get(
+            `${process.env.NEXT_PUBLIC_API_URL}/user/userData`,
+           
+            {
+           withCredentials:true  
+              
+            }
+          );
+          console.log(response, "user Data fetch response");
+
+          if (response.status != 200) {
+            toast.error("Fetching User Data  failed !!", { position: "top-center" });
+            throw new Error("Fetching User Data  failed !!");
+          }
+          toast.success("User Data Refreshed !!", { position: "top-center" });
+          set({ user: response.data, isUserLoggedIn: true, loading: false });
+        } catch (error) {
+          set({ error: error.message, loading: false });
+        }
+      }
     }),
     {
       name: "VipinGoswami", // name of the item in the storage (must be unique)

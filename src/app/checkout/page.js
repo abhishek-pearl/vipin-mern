@@ -1,12 +1,28 @@
 "use client";
 import { userStore } from "@/store/authStore";
 import axios from "axios";
-import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 const page = () => {
   const [isLoading, setIsLoading] = useState();
   const { user, error, login, isUserLoggedIn } = userStore();
+  const router = useRouter();
+
+  useEffect(()=>{
+
+    if(user.user.isSubscribed)
+    {
+      router.push("auctionProperties");
+    }
+     
+  },[user]);
+
+
+  // const orderById = JSON.parse(sessionStorage.getItem("VipinGoswami"))?.state
+  //   ?.user?.user;
+ 
   async function handleCheckout() {
     setIsLoading(true);
     try {
@@ -23,7 +39,6 @@ const page = () => {
           }
         );
 
-        console.log("data", data.data);
         setIsLoading(false);
 
         const options = {
@@ -45,18 +60,21 @@ const page = () => {
                 body
               );
 
+              await getUserData();
               console.log("validateResponse", validateResponse);
             } catch (err) {
               toast.error(`Something Went Wrong ${err.message}`);
             }
           },
         };
+
         if (typeof window !== "undefined") {
           const razorpayInstance = new window.Razorpay(options);
           razorpayInstance.open();
         } else {
           console.error("Razorpay SDK is not available");
         }
+      
       }
     } catch (err) {
       console.log("error", err);
