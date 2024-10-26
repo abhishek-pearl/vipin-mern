@@ -14,7 +14,7 @@ const LoanForm = () => {
   const [mounted, setMounted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isFirstTime, setIsFirstTime] = useState(true);
-  const [loanModal, setLoanModal] = useState(true)
+  const [loanModal, setLoanModal] = useState(true);
 
   const {
     register,
@@ -28,17 +28,18 @@ const LoanForm = () => {
     return () => setMounted(false);
   }, []);
 
-  useEffect(() => {
-    if (mounted) {
-      if (localStorage.getItem('alreadyShown')) {
-        setIsFirstTime(false);
-        setShowBanner(false);
-        setShowForm(false);
-      } else {
-        localStorage.setItem('alreadyShown', 'true');
-      }
-    }
-  }, [mounted]);
+  // Removed localStorage usage to show banner and form every time
+  // useEffect(() => {
+  //   if (mounted) {
+  //     if (localStorage.getItem('alreadyShown')) {
+  //       setIsFirstTime(false);
+  //       setShowBanner(false);
+  //       setShowForm(false);
+  //     } else {
+  //       localStorage.setItem('alreadyShown', 'true');
+  //     }
+  //   }
+  // }, [mounted]);
 
   const submitLoan = async (data) => {
     try {
@@ -91,16 +92,13 @@ const LoanForm = () => {
           </button>
 
           <main className="w-auto h-fit flex shadow-[0_0_0_1px#ff0000] rounded-md bg-white">
-            <div
-
-            >
-              {/* Your form fields here */}
+            <div>
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-bold text-gray-800 mt-5">
                   Enquiry Form
                 </h3>
               </div>
-              <form onSubmit={handleSubmit(submitLoan)} className="space-y-5  h-fit px-6 py-5">
+              <form onSubmit={handleSubmit(submitLoan)} className="space-y-5 h-fit px-6 py-5">
                 <div>
                   <label className="font-medium">Name</label>
                   <input

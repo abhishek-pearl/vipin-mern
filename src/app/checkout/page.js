@@ -17,9 +17,12 @@ const page = () => {
             : `${process.env.NEXT_PUBLIC_API_URL_PRODUCTION}/order/bookingOrder`,
           {
             amount: 300,
-            userId: user?._id,
+            userId: user._id,
             currency: "INR",
             order: "Annual Registration Charge",
+          },
+          {
+            withCredentials: true,
           }
         );
 
