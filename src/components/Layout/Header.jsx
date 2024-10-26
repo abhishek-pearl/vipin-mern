@@ -4,9 +4,11 @@ import React, { useState } from "react";
 import GetLoanForm from "../GetLoanModal/GetLoanForm";
 import Link from "next/link";
 import { userStore } from "@/store/authStore";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
   const { user, error, loading, login, isUserLoggedIn, logout } = userStore();
+  const router = useRouter()
   const [loanModal, setLoanModal] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -40,7 +42,10 @@ const Header = () => {
 
               {isUserLoggedIn ? (
                 <button
-                  onClick={logout}
+                  onClick={() => {
+                    logout()
+                    router.push('/')
+                  }}
                   className="text-white bg-transparent border-2 border-white hover:bg-white hover:text-red-600 font-medium rounded-full px-5 py-2 transition duration-300"
                 >
                   Sign Out

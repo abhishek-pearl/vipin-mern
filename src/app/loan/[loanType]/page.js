@@ -67,8 +67,11 @@ export default function page({ params }) {
               {/* Placeholder image */}
               <picture>
                 <img
-                  className="max-w-5xl"
-                  src="https://www.icicibank.com/content/dam/icicibank/managed-assets/images/home-loan/home-loan-simplified.webp"
+                  className="max-w-5xl h-[25rem]"
+                  src={`${
+                    loanData?.heroImage ||
+                    "https://www.icicibank.com/content/dam/icicibank/managed-assets/images/home-loan/home-loan-simplified.webp"
+                  }`}
                   alt="Home Loan"
                 />
               </picture>

@@ -2,6 +2,8 @@ const loansData = [
   {
     type: "Home-Loan",
     title: "Home Loans Simplified",
+    heroImage:
+      "https://www.icicibank.com/content/dam/icicibank/managed-assets/images/home-loan/home-loan-simplified.webp",
     features: [
       "Instant Provisional Sanction",
       "Digital Application Process",
@@ -174,6 +176,8 @@ const loansData = [
   {
     type: "Personal-Loan",
     title: "Personal Loans Made Easy",
+    heroImage:
+      "https://img.freepik.com/free-vector/bank-loan-concept-illustration_114360-21880.jpg?t=st=1729924197~exp=1729927797~hmac=5274e6315b75fcd6c73c1d2ec45cb4922b911ff65e399deed1822473990caab2&w=740",
     features: [
       "Quick Approval Process",
       "Flexible Loan Amounts",
@@ -330,6 +334,8 @@ const loansData = [
   {
     type: "Car-Loan",
     title: "Drive Away with Our Car Loans",
+    heroImage:
+      "https://img.freepik.com/free-vector/banking-industry-concept-illustration_114360-17354.jpg?t=st=1729924424~exp=1729928024~hmac=dca87a5505de38d432015e475c8f8a501c077bbc7bbddea75766e30c0c74df74&w=740",
     features: [
       "Fast Approval Process",
       "Flexible Loan Amounts",
@@ -485,6 +491,8 @@ const loansData = [
   },
   {
     type: "Business-Loan",
+    heroImage:
+      "https://img.freepik.com/free-vector/banking-industry-concept-illustration_114360-13934.jpg?t=st=1729924462~exp=1729928062~hmac=59af806ffe9fca0846b71c373b9a3d130ce4bc388ab0b46d55a3334deac48162&w=1380",
     title: "Empower Your Business with Our Loans",
     features: [
       "Quick Loan Disbursal",
@@ -642,6 +650,8 @@ const loansData = [
   {
     type: "Loan-Against-Property",
     title: "Unlock the Value of Your Property",
+    heroImage:
+      "https://img.freepik.com/free-vector/salary-offer-from-hand-employer-happy-employees-tiny-rich-corporate-people-enjoy-money-profit-growth-bonuses-flat-vector-illustration-incentive-work-satisfaction-investment-concept_74855-21284.jpg?t=st=1729924504~exp=1729928104~hmac=725b87a6420a81b60c19be5aa29fd8b1d17ce311b6b361130ffde17c2ecb2439&w=1380",
     features: [
       "High Loan Amounts",
       "Flexible Repayment Options",
@@ -789,6 +799,8 @@ const loansData = [
   {
     type: "Balance-Transfer",
     title: "Transfer Your Loan, Save More",
+    heroImage:
+      "https://img.freepik.com/free-vector/credit-score-flat-composition-with-cityscape-background-doodle-human-characters-with-coins-new-house-vector-illustration_1284-83827.jpg?t=st=1729924546~exp=1729928146~hmac=463a9409fc2f1eb4d835c6772270d31e5d94b86fc5105dc09a60d6c08101331f&w=1380",
     features: [
       "Lower Interest Rates",
       "Reduced EMIs",

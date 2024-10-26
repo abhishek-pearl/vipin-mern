@@ -7,22 +7,18 @@ import { toast } from "sonner";
 
 const page = () => {
   const [isLoading, setIsLoading] = useState();
-  const { user, error, login, isUserLoggedIn } = userStore();
+  const { user, error, login, isUserLoggedIn, getUserData } = userStore();
   const router = useRouter();
 
-  useEffect(()=>{
-
-    if(user.user.isSubscribed)
-    {
+  useEffect(() => {
+    if (user?.user?.isSubscribed) {
       router.push("auctionProperties");
     }
-     
-  },[user]);
-
+  }, [user]);
 
   // const orderById = JSON.parse(sessionStorage.getItem("VipinGoswami"))?.state
   //   ?.user?.user;
- 
+
   async function handleCheckout() {
     setIsLoading(true);
     try {
@@ -33,14 +29,16 @@ const page = () => {
             : `${process.env.NEXT_PUBLIC_API_URL_PRODUCTION}/order/bookingOrder`,
           {
             amount: 300,
-            userId: user?._id,
+            userId: user._id,
             currency: "INR",
             order: "Annual Registration Charge",
+          },
+          {
+            withCredentials: true,
           }
         );
 
         setIsLoading(false);
-
         const options = {
           key: process.env.VITE_APP_RAZORPAY_KEY,
           amount: 300,
@@ -60,7 +58,9 @@ const page = () => {
                 body
               );
 
-              await getUserData();
+              if (validateResponse) {
+                await getUserData();
+              }
               console.log("validateResponse", validateResponse);
             } catch (err) {
               toast.error(`Something Went Wrong ${err.message}`);
@@ -74,7 +74,6 @@ const page = () => {
         } else {
           console.error("Razorpay SDK is not available");
         }
-      
       }
     } catch (err) {
       console.log("error", err);
