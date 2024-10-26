@@ -7,15 +7,16 @@ import { toast } from "sonner";
 
 const page = () => {
   const [isLoading, setIsLoading] = useState();
-  const { user, error, login, isUserLoggedIn } = userStore();
+  const { user, error, login, isUserLoggedIn ,getUserData } = userStore();
   const router = useRouter();
 
   useEffect(()=>{
 
-    if(user.user.isSubscribed)
+    if(user?.user?.isSubscribed)
     {
       router.push("auctionProperties");
     }
+
      
   },[user]);
 
@@ -36,11 +37,13 @@ const page = () => {
             userId: user?._id,
             currency: "INR",
             order: "Annual Registration Charge",
+          },
+          {
+            withCredentials:true
           }
         );
 
         setIsLoading(false);
-
         const options = {
           key: process.env.VITE_APP_RAZORPAY_KEY,
           amount: 300,
@@ -59,8 +62,12 @@ const page = () => {
                   : `${process.env.NEXT_PUBLIC_API_URL_PRODUCTION}/order/verifyOrder/${data?.data?.bookingOrderId}`,
                 body
               );
+              
+              if(validateResponse)
+              {
+                await getUserData();
 
-              await getUserData();
+              }
               console.log("validateResponse", validateResponse);
             } catch (err) {
               toast.error(`Something Went Wrong ${err.message}`);
