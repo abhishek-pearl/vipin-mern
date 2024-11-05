@@ -83,15 +83,15 @@ const LoanForm = () => {
       )}
 
       {isFirstTime && mounted && showForm && createPortal(
-        <div className="bg-black/30 backdrop-blur-sm fixed top-0 left-0 h-full w-full grid place-items-center z-50">
+        <div className="bg-black/30 backdrop-blur-sm fixed top-0 left-0 h-full w-full flex justify-end z-50">
           <button
             onClick={() => setShowForm(false)}
-            className="absolute top-3 right-3 text-white"
+            className="absolute left-0 top-3 right-3 text-white"
           >
             <IoMdClose size={30} />
           </button>
 
-          <main className="w-auto h-fit flex shadow-[0_0_0_1px#ff0000] rounded-md bg-white">
+          <main className="w-auto h-full flex shadow-[0_0_0_1px#ff0000] rounded-md bg-white">
             <div>
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-bold text-gray-800 mt-5">
