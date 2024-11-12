@@ -20,7 +20,7 @@ const FaqsCard = (props) => {
       onClick={handleOpenAnswer}
     >
       <h4 className="cursor-pointer pb-5 flex items-center justify-between text-lg text-gray-700 font-medium">
-        {faqsList.question}
+        {faqsList.que}
         {state ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +59,7 @@ const FaqsCard = (props) => {
         style={state ? { height: answerH } : { height: "0px" }}
       >
         <div>
-          <p className="text-gray-500">{faqsList.answer}</p>
+          <p className="text-gray-500">{faqsList.ans}</p>
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ const Faq = ({ data }) => {
         </p>
       </div> */}
       <div className="mt-14  mx-auto">
-        {data?.data?.map((item, idx) => (
+        {data?.map((item, idx) => (
           <FaqsCard idx={idx} faqsList={item} />
         ))}
       </div>
