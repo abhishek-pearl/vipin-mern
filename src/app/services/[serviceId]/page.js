@@ -185,7 +185,7 @@ export default function page({ params }) {
       {/* Dos and donts */}
       <div className="max-w-7xl  mx-auto space-y-2">
         <h1 className="text-2xl font-medium px-1">
-          Maximising Your Home Loan Approval: Dos and Don'ts
+          Maximising Your Loan Approval: Dos and Don'ts
         </h1>
         <div class="grid grid-cols-2 gap-1  p-6 bg-white shadow-md  rounded-lg">
           <div class="bg-red-600 text-white text-center py-3 font-medium rounded-tl-lg">
@@ -202,35 +202,6 @@ export default function page({ params }) {
           {data?.bottomSection.doAndDont?.map((ite) => {
             return <div class="bg-gray-50 p-4 border-b">{ite.dont}</div>;
           })}
-
-          {/* <div class="bg-gray-50 p-4 border-b">
-          Avoid applying for a Home Loan on multiple aggregator sites to
-          maintain approval chances.
-        </div>
-
-        <div class="bg-white p-4 border-b">
-          Plan for unexpected expenses wisely.
-        </div>
-        <div class="bg-white p-4 border-b">
-          Refrain from carrying excessive loans to maintain a favourable
-          creditworthiness.
-        </div>
-
-        <div class="bg-gray-50 p-4 border-b">
-          Keep all necessary paperwork organised.
-        </div>
-        <div class="bg-gray-50 p-4 border-b">
-          Avoid overspending on Credit Cards or delaying loan repayments to
-          prevent a negative impact on your credit score.
-        </div>
-
-        <div class="bg-white p-4 rounded-bl-lg">
-          Improve your credit before applying for a Home Loan.
-        </div>
-        <div class="bg-white p-4 rounded-br-lg">
-          Don't commit to a Home Loan beyond your means to ensure manageable
-          repayments.
-        </div> */}
         </div>
       </div>
 
@@ -238,7 +209,7 @@ export default function page({ params }) {
 
       {/* Faq for Home Loan */}
       <div className="container mx-auto space-y-6">
-        <div className="text-center text-4xl font-medium">Home Loan FAQs</div>
+        <div className="text-center text-4xl font-medium">Loan FAQs</div>
         <div className="border rounded-lg ">
           <Faq data={data?.bottomSection?.faq} />
         </div>

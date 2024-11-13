@@ -80,6 +80,10 @@ const page = () => {
       });
   }, []);
 
+  useEffect(() => {
+    console.log("data", data);
+  }, [data]);
+
   console.log(data, "my services");
 
   return (
@@ -95,7 +99,7 @@ const page = () => {
             {data &&
               data.map((item) => {
                 return (
-                  <Link href={`${item.path}`}>
+                  <Link href={`/services/${item?._id}`}>
                     <div className="w-full max-w-sm bg-white min-w-96 min-h-64 p-6 grid gap-6 shadow-[0_0_2px#ff0000] rounded-md hover:shadow-[0_0_0_3px#ff0000] transition duration-300">
                       <div className="flex items-center gap-4">
                         <div className="bg-muted rounded-md flex items-center justify-center aspect-square w-12">
