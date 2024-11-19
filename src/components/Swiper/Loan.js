@@ -137,9 +137,10 @@ export default function Loan({ features }) {
           {features?.map((feature, idx) => (
             <SwiperSlide className=" mx-auto" key={idx}>
               <div class=" h-[25rem] w-full mx-auto bg-white p-6 rounded-xl shadow-md flex flex-col  items-start gap-2">
-                <div class=" mb-4 text-[#FF5722]">{feature?.icon}</div>
+                {/* <div class=" mb-4 text-[#FF5722]">{feature?.icon}</div> */}
+                <img src={feature?.icon} className="w-10 h-10" />
                 <h3 class=" text-lg font-semibold text-gray-900">
-                  {feature?.title}
+                  {feature?.heading}
                 </h3>
                 <p class=" text-gray-600 mt-3">{feature?.description}</p>
               </div>
