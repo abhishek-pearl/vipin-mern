@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <LoanForm />
-      <div className="py-4">
+      <div className="">
         <HeroSection />
       </div>
       <ServiceCards />

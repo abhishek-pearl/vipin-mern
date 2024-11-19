@@ -53,7 +53,7 @@ export default function ServiceCards() {
           Our Services
         </div>
       </div>
-      <div className="flex flex-wrap gap-6 justify-start">
+      <div className="flex  flex-wrap gap-6 container mx-auto justify-center">
         {data &&
           data.map((item) => {
             return (

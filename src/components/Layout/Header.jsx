@@ -15,13 +15,13 @@ const Header = () => {
   return (
     <>
       <header>
-        <nav className="bg-gradient-to-r from-red-500 via-red-600 to-red-700 shadow-lg text-white px-4 lg:px-8 py-4">
+        <nav className="bg-white text-red-500 px-4 lg:px-8 py-4 border-b-4 border-red-500">
           <div className="flex flex-wrap gap-4 justify-between items-center mx-auto max-w-screen-2xl">
             {/* Logo Section */}
-            <Link href="/" className="flex items-center">
+            <Link href="/" className="flex items-center mx-auto md:mx-0">
               <img
-                src="/LogoSDL.jpeg"
-                className="mr-3 h-12 transition-transform transform hover:scale-105"
+                src="/LogoSDL.png"
+                className="mr-3 h-[5rem] transition-transform transform hover:scale-105"
                 alt="Logo"
               />
               {/* <span className="self-center text-xl font-semibold whitespace-nowrap">
@@ -35,7 +35,7 @@ const Header = () => {
             <div className="flex items-center lg:order-2 space-x-4">
               <button
                 onClick={() => setLoanModal(true)}
-                className="text-red-600 bg-white hover:bg-red-500 hover:text-white hover:shadow-lg font-medium rounded-full px-5 py-2 transition duration-300"
+                className="bg-red-500 text-white hover:shadow-lg text-[20px] rounded-full px-5 py-2 transition duration-300"
               >
                 Get a Loan
               </button>
@@ -46,7 +46,7 @@ const Header = () => {
                     logout()
                     router.push('/')
                   }}
-                  className="text-white bg-transparent border-2 border-white hover:bg-white hover:text-red-600 font-medium rounded-full px-5 py-2 transition duration-300"
+                  className="bg-red-500 h-full text-white hover:shadow-lg text-[20px] rounded-full px-5 py-2 transition duration-300"
                 >
                   Sign Out
                 </button>
@@ -54,15 +54,23 @@ const Header = () => {
                 <div className="space-x-3">
                   <Link
                     href="/signUp"
-                    className="text-white bg-transparent border-2 border-white hover:bg-white hover:text-red-600 font-medium rounded-full px-5 py-2 transition duration-300"
+
                   >
-                    Sign Up
+                    <button
+                      className="bg-red-500 text-white hover:shadow-lg text-[20px] rounded-full px-5 py-2 transition duration-300"
+                    >
+                      Sign Up
+                    </button>
                   </Link>
                   <Link
                     href="/login"
-                    className="text-white bg-transparent border-2 border-white hover:bg-white hover:text-red-600 font-medium rounded-full px-5 py-2 transition duration-300"
+
                   >
-                    Login
+                    <button
+                      className="bg-red-500 text-white hover:shadow-lg text-[20px] rounded-full px-5 py-2 transition duration-300"
+                    >
+                      Login
+                    </button>
                   </Link>
                 </div>
               )}
@@ -74,11 +82,11 @@ const Header = () => {
                 } justify-between items-center w-full lg:flex lg:w-auto lg:order-1`}
               id="mobile-menu-2"
             >
-              <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+              <ul className="flex flex-col mt-4 text-[24px] lg:flex-row lg:space-x-8 lg:mt-0">
                 <li>
                   <Link
                     href="/"
-                    className="block py-2 pr-4 pl-3 text-white hover:text-red-300 border-b border-transparent hover:border-red-300 lg:hover:border-transparent lg:hover:text-red-300 lg:p-0 transition duration-300"
+                    className="block py-2 pr-4 pl-3 text-red-500  border-b border-transparent  lg:hover:border-transparent  lg:p-0 transition duration-300"
                   >
                     Home
                   </Link>
@@ -86,7 +94,7 @@ const Header = () => {
                 <li>
                   <Link
                     href="/about"
-                    className="block py-2 pr-4 pl-3 text-white hover:text-red-300 border-b border-transparent hover:border-red-300 lg:hover:border-transparent lg:hover:text-red-300 lg:p-0 transition duration-300"
+                    className="block py-2 pr-4 pl-3 text-red-500  border-b border-transparent  lg:hover:border-transparent  lg:p-0 transition duration-300"
                   >
                     About
                   </Link>
@@ -94,7 +102,7 @@ const Header = () => {
                 <li>
                   <Link
                     href="/services"
-                    className="block py-2 pr-4 pl-3 text-white hover:text-red-300 border-b border-transparent hover:border-red-300 lg:hover:border-transparent lg:hover:text-red-300 lg:p-0 transition duration-300"
+                    className="block py-2 pr-4 pl-3 text-red-500  border-b border-transparent  lg:hover:border-transparent  lg:p-0 transition duration-300"
                   >
                     Services
                   </Link>
@@ -102,7 +110,7 @@ const Header = () => {
                 <li>
                   <Link
                     href="/news"
-                    className="block py-2 pr-4 pl-3 text-white hover:text-red-300 border-b border-transparent hover:border-red-300 lg:hover:border-transparent lg:hover:text-red-300 lg:p-0 transition duration-300"
+                    className="block py-2 pr-4 pl-3 text-red-500  border-b border-transparent  lg:hover:border-transparent  lg:p-0 transition duration-300"
                   >
                     News
                   </Link>
@@ -110,7 +118,7 @@ const Header = () => {
                 <li>
                   <Link
                     href="/contactus"
-                    className="block py-2 pr-4 pl-3 text-white hover:text-red-300 border-b border-transparent hover:border-red-300 lg:hover:border-transparent lg:hover:text-red-300 lg:p-0 transition duration-300"
+                    className="block py-2 pr-4 pl-3 text-red-500  border-b border-transparent  lg:hover:border-transparent  lg:p-0 transition duration-300"
                   >
                     Contact Us
                   </Link>
@@ -121,11 +129,11 @@ const Header = () => {
             {/* Mobile menu toggle button */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="inline-flex items-center p-2 ml-1 text-sm text-gray-100 rounded-lg lg:hidden hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-white"
+              className="inline-flex items-center p-2 ml-1 absolute right-[20px] top-[115px] text-sm text-red-500 rounded-lg lg:hidden  focus:outline-none "
               aria-controls="mobile-menu-2"
               aria-expanded={menuOpen ? "true" : "false"}
             >
-              <span className="sr-only">Open main menu</span>
+
               {menuOpen ? (
                 <svg
                   className="w-6 h-6"

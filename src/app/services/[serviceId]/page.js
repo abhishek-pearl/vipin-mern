@@ -33,7 +33,7 @@ export default function page({ params }) {
   console.log(data, "my single service");
 
   return (
-    <div className="space-y-12 pb-8 ">
+    <div className="space-y-12 pb-8 px-2 ">
       <div className="">
         <div className="container mx-auto  p-8 lg:p-12 xl:p-16 flex flex-col lg:flex-row items-center justify-between">
           <div className="lg:w-1/2">
@@ -78,7 +78,7 @@ export default function page({ params }) {
               {/* Placeholder image */}
               <picture>
                 <img
-                  className="max-w-5xl h-[25rem]"
+                  className=" h-[25rem]"
                   src={`${
                     data?.topSection?.banner ||
                     "https://www.icicibank.com/content/dam/icicibank/managed-assets/images/home-loan/home-loan-simplified.webp"

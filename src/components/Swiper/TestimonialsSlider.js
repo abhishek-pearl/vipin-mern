@@ -1,11 +1,8 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-
-// import required modules
 import { Autoplay, Pagination } from "swiper/modules";
+
 const TestimonialsSlider = () => {
   const testimonials = [
     {
@@ -62,70 +59,59 @@ const TestimonialsSlider = () => {
   return (
     <section className="py-12 space-y-10 mb-10">
       <div className="flex justify-center">
-        <div className=" w-fit text-3xl font-semibold shadow-[0_3px#ff0000]">
-          Testimonials
-        </div>
+        <h2 className="text-3xl font-semibold">Testimonials</h2>
       </div>
       <div className="max-w-screen-xl mx-auto px-4 md:px-8">
         <Swiper
           slidesPerView={1}
-          spaceBetween={30}
+          spaceBetween={20}
           breakpoints={{
-            // when window width is >= 320px
-            320: {
+            480: {
               slidesPerView: 1,
               spaceBetween: 20,
             },
-            // when window width is >= 480px
-            480: {
-              slidesPerView: 3,
+            768: {
+              slidesPerView: 2,
               spaceBetween: 30,
             },
-            // when window width is >= 640px
-            640: {
+            1024: {
               slidesPerView: 3,
               spaceBetween: 40,
             },
           }}
-          pagination={{
-            clickable: true,
-          }}
+          pagination={{ clickable: true }}
           modules={[Pagination, Autoplay]}
-          autoplay={{
-            delay: 3000,
-          }}
+          autoplay={{ delay: 3000 }}
           className="mySwiper"
         >
-          {testimonials?.map((item) => {
-            return (
-              <SwiperSlide>
-                <div className="max-w-3xl mx-auto">
-                  <figure>
-                    <blockquote>
-                      <p className="text-gray-800 text-lg text-center font-base sm:text-xl">
-                        “{item?.quote}“
-                      </p>
-                    </blockquote>
-                    <div className="flex justify-center items-center gap-x-4 mt-6">
-                      <img
-                        src={item?.image}
-                        className="w-16 h-16 rounded-full"
-                        alt="Testimonial"
-                      />
-                      <div>
-                        <span className="block text-gray-800 font-semibold">
-                          {item?.name}
-                        </span>
-                        <span className="block text-gray-600 text-sm mt-0.5">
-                          {item?.position}
-                        </span>
-                      </div>
+          {testimonials.map((item, index) => (
+            <SwiperSlide key={index}>
+              <div className="max-w-md mx-auto p-4 bg-white shadow-md rounded-md">
+                <figure>
+                  <blockquote>
+                    <p className="text-gray-800 text-lg text-center font-medium sm:text-xl">
+                      “{item.quote}“
+                    </p>
+                  </blockquote>
+                  <div className="flex justify-center items-center gap-x-4 mt-6">
+                    <img
+                      src={item.image}
+                      className="w-16 h-16 rounded-full"
+                      alt={item.name}
+                    />
+                    <div>
+                      <span className="block text-gray-800 font-semibold text-center">
+                        {item.name}
+                      </span>
+                      <span className="block text-gray-600 text-sm mt-0.5 text-center">
+                        {item.position}
+                      </span>
                     </div>
-                  </figure>
-                </div>
-              </SwiperSlide>
-            );
-          })}
+                  </div>
+                </figure>
+              </div>
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </section>

@@ -42,11 +42,20 @@ const LoanForm = () => {
   // }, [mounted]);
 
   const submitLoan = async (data) => {
+    console.log(data)
+    const formData = new FormData()
+    formData.append('document', data?.document[0])
+    formData.append('email', data?.email)
+    formData.append('loanRequired', data?.loanRequired)
+    formData.append('mobile', data?.mobile)
+    formData.append('name', data?.name)
+    formData.append('pincode', data?.pincode)
+    formData.append('typeOfLoan', data?.typeOfLoan)
     try {
       setLoading(true);
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/contact/enquiry`,
-        data
+        formData
       );
       setLoading(false);
       toast.success("Successfully Submitted...");
@@ -86,7 +95,7 @@ const LoanForm = () => {
         <div className="bg-black/30 backdrop-blur-sm fixed top-0 left-0 h-full w-full flex justify-end z-50">
           <button
             onClick={() => setShowForm(false)}
-            className="absolute left-0 top-3 right-3 text-white"
+            className="absolute top-3 right-0 text-black"
           >
             <IoMdClose size={30} />
           </button>
@@ -194,6 +203,20 @@ const LoanForm = () => {
                       {errors.loanRequirement.message}
                     </p>
                   )}
+                </div>
+                <div>
+                  <label className="font-medium">Upload Document</label>
+                  <input
+                    type="file"
+                    {...register("document")}
+                    className={`w-full mt-2 px-3 py-2 border rounded-lg shadow-sm focus:border-indigo-600 ${errors.email ? "border-red-500" : "border-gray-300"
+                      }`}
+                  />
+                  {/* {errors.email && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.email.message}
+                    </p>
+                  )} */}
                 </div>
                 <button
                   type="submit"
