@@ -15,7 +15,7 @@ export default function Home() {
       </div>
       <ServiceCards />
       <EmiCalculator />
-      <TestimonialsSlider />
+      {/* <TestimonialsSlider /> */}
     </>
   );
 }

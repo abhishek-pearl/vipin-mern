@@ -6,18 +6,16 @@ const Footer = () => {
     <footer class="bg-white text-white border-t pt-8">
       <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="grid gap-8">
-          <div class="mb-6 md:mb-0 mx-auto">
+          {/* <div class="mb-6 md:mb-0 mx-auto">
             <Link href="/" className="flex items-center">
               <img
                 src="/LogoSDL.png"
                 className="mr-3 h-[4rem]"
                 alt=""
               />
-              {/* <span className="self-center text-xl font-semibold whitespace-nowrap ">
-                SDLK
-              </span> */}
+             
             </Link>
-          </div>
+          </div> */}
           <div class="grid place-items-center text-red-500 ">
             <div className="grid text-xl ">
               {/* <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase ">

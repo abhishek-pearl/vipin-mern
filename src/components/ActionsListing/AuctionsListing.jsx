@@ -53,6 +53,11 @@ const AuctionsListing = ({ loading, data }) => {
                                     All that piece and parcel of the agricultural land bearing
                                     (i) Gat No. 90 (P) ar...
                                 </p> */}
+                                <p>
+                                    {
+                                        item?.description
+                                    }
+                                </p>
                             </div>
                             <div className="mt-4 flex flex-col justify-between">
                                 <div className="flex justify-between items-center">

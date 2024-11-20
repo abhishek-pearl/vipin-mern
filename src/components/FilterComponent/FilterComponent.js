@@ -97,13 +97,12 @@ const FilterComponent = () => {
           onChange={(e) => handleSearch("category", e.target.value)}
         >
           <option value="">-- Category --</option>
-          <option value="commercial">Gold Auctions</option>
-          <option value="golAuction">Industrials</option>
-          <option value="golAuction">Residential</option>
-          <option value="golAuction">Industrials</option>
-          <option value="golAuction">Scrap, Plant & Machinery</option>
-          <option value="other">Vehicle Auctions</option>
-          <option value="other">Others</option>
+          <option value="">Select property type</option>
+          <option value="residential">Residential</option>
+          <option value="commercial">Commercial</option>
+          <option value="industrial">Industrial</option>
+          <option value="vehical">Vehical</option>
+          <option value="agriculture">Agriculture</option>
         </select>
 
         <Select
@@ -113,7 +112,7 @@ const FilterComponent = () => {
           onChange={(val) => {
             // resetField("City");
             // onChange(val);
-            handleSearch("state", val.label);
+            handleSearch("state", val.value.toLowerCase());
             console.log(val);
             fetchCitiesList(val);
           }}
@@ -127,7 +126,7 @@ const FilterComponent = () => {
           placeholder="City"
           options={cityList}
           onChange={(val) => {
-            handleSearch("city", val.label);
+            handleSearch("city", val.value.toLowerCase());
             console.log(val);
           }}
         />
