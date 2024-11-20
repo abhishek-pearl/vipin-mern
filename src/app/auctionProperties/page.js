@@ -12,19 +12,19 @@ export default function page({ params, searchParams }) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  useEffect(() => {
-    if (!isUserLoggedIn) {
-      router.push("login");
-    } else if (isUserLoggedIn) {
-      console.log(user.user, "isUseLoggedIn");
+  // useEffect(() => {
+  //   if (!isUserLoggedIn) {
+  //     router.push("login");
+  //   } else if (isUserLoggedIn) {
+  //     console.log(user.user, "isUseLoggedIn");
 
-      if (!user?.user.isSubscribed) {
-        router.push("checkout");
-      } else {
-        router.push("auctionProperties");
-      }
-    }
-  }, [user]);
+  //     if (!user?.user.isSubscribed) {
+  //       router.push("checkout");
+  //     } else {
+  //       router.push("auctionProperties");
+  //     }
+  //   }
+  // }, [user]);
 
   async function getAuctions(searchParamS) {
     const filteredParams = Object.fromEntries(
@@ -40,7 +40,7 @@ export default function page({ params, searchParams }) {
     setLoading(true);
     const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/${
       isUserLoggedIn ? `auction` : `auction/properties`
-    }?page=1${query}`;
+    }?page=1&${query}`;
     const response = await axios.get(apiUrl, {
       withCredentials: true,
     });

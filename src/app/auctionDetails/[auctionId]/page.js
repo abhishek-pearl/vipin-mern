@@ -1,9 +1,11 @@
 "use client";
 
+import { userStore } from "@/store/authStore";
 import axios from "axios";
 import Image from "next/image";
+import Link from "next/link";
 // import { userStore } from "@/store/authStore";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaDownload } from "react-icons/fa";
 
@@ -11,9 +13,11 @@ const AuctionDetails = () => {
   // const { isUserLoggedIn } = userStore();
   const { auctionId } = useParams();
   const [singleAuction, setSingleAuction] = useState(null);
+  const router = useRouter();
+  const { user, error, login, getUserData, isUserLoggedIn } = userStore();
   async function getSingleAuction(auctionId) {
     const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/auction/${auctionId}`;
-    const response = await axios(apiUrl, {
+    const response = await axios.get(apiUrl, {
       withCredentials: true,
     });
     setSingleAuction(response?.data?.result);
@@ -35,6 +39,21 @@ const AuctionDetails = () => {
 
     return `${day}-${month}-${year}`;
   }
+
+  useEffect(() => {
+    if (!isUserLoggedIn) {
+      router.push("/login");
+    } else if (isUserLoggedIn) {
+      // router.back();
+      console.log(user.user, "isUseLoggedIn");
+
+      // if (!user?.user.isSubscribed) {
+      //   router.push("checkout");
+      // } else {
+      //   router.push("auctionProperties");
+      // }
+    }
+  }, [user]);
 
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-8 ">
@@ -241,20 +260,22 @@ const AuctionDetails = () => {
             ? singleAuction?.downloads?.map((file, index) => (
                 <div
                   key={index}
-                  className="border border-gray-200 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white relative"
+                  className="border border-gray-200 p-6  rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white relative"
                 >
                   <h3 className="text-lg font-semibold mb-3 text-gray-700">
                     {file?.original_filename}
                   </h3>
-                  <a
-                    target="_blank"
-                    href={file.url}
-                    download={file?.original_filename}
-                    className="inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-md shadow hover:bg-blue-700 transition-all duration-300"
-                  >
-                    <FaDownload className="mr-2" />
-                    Download
-                  </a>
+                  <div className="space-x-3">
+                    <a
+                      target="_blank"
+                      href={file.url}
+                      download={file?.original_filename}
+                      className="inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-md shadow hover:bg-blue-700 transition-all duration-300"
+                    >
+                      <FaDownload className="mr-2" />
+                      Download
+                    </a>
+                  </div>
                   <div className="absolute top-0 right-0 bg-blue-600 p-1 rounded-bl-xl">
                     <span className="text-white text-xs font-semibold">
                       File {index + 1}
@@ -263,6 +284,15 @@ const AuctionDetails = () => {
                 </div>
               ))
             : "Please Log-in to View Auction Docs"}
+        </div>
+        <div className="w-full grid place-items-center py-3">
+          <Link
+            href="/payRegister"
+            className="inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-md shadow hover:bg-blue-700 transition-all duration-300"
+          >
+            {/* <FaDownload className="mr-2" /> */}
+            Placing Bid
+          </Link>
         </div>
       </div>
     </div>

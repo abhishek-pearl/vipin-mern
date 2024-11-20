@@ -204,7 +204,7 @@ const LoanForm = () => {
                     </p>
                   )}
                 </div>
-                <div>
+                {/* <div>
                   <label className="font-medium">Upload Document</label>
                   <input
                     type="file"
@@ -212,12 +212,8 @@ const LoanForm = () => {
                     className={`w-full mt-2 px-3 py-2 border rounded-lg shadow-sm focus:border-indigo-600 ${errors.email ? "border-red-500" : "border-gray-300"
                       }`}
                   />
-                  {/* {errors.email && (
-                    <p className="text-red-500 text-sm mt-1">
-                      {errors.email.message}
-                    </p>
-                  )} */}
-                </div>
+                
+                </div> */}
                 <button
                   type="submit"
                   className={`w-full px-4 py-2 text-white font-medium bg-red-600 hover:bg-red-500 active:bg-red-600 rounded-lg duration-150 ${loading ? "opacity-50 cursor-not-allowed" : ""

@@ -52,7 +52,7 @@ const Header = () => {
                 </button>
               ) : (
                 <div className="space-x-3">
-                  <Link
+                  {/* <Link
                     href="/signUp"
 
                   >
@@ -71,7 +71,7 @@ const Header = () => {
                     >
                       Login
                     </button>
-                  </Link>
+                  </Link> */}
                 </div>
               )}
             </div>
