@@ -101,7 +101,7 @@ const FilterComponent = () => {
           <option value="residential">Residential</option>
           <option value="commercial">Commercial</option>
           <option value="industrial">Industrial</option>
-          <option value="vehical">Vehical</option>
+          <option value="vehicle">Vehicle</option>
           <option value="agriculture">Agriculture</option>
         </select>
 
