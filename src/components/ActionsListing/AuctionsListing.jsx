@@ -30,18 +30,16 @@ const AuctionsListing = ({ loading, data }) => {
             }) : (data?.length > 0 ? data?.map((item) => {
                 return (
                     <div className="w-full border bg-white shadow-lg rounded-lg overflow-hidden flex flex-col md:flex-row  transition-transform duration-300">
-                        <div className="relative w-full md:w-1/3">
+                        <div className="relative w-full h-[15rem] md:w-1/3">
                             <img
                                 className="w-full h-full object-cover"
-                                src="https://media.istockphoto.com/id/1208718164/photo/sydney-housing-from-aerial-view.jpg?s=612x612&w=0&k=20&c=nIIUt47B428T7kayJNdKbZWOHUd6yOIDpgiT12TNqhI="
-                                alt="Agricultural Land"
+                                src={item?.banner[0]?.url || "https://media.istockphoto.com/id/1208718164/photo/sydney-housing-from-aerial-view.jpg?s=612x612&w=0&k=20&c=nIIUt47B428T7kayJNdKbZWOHUd6yOIDpgiT12TNqhI="
+                                } alt={item?.category.toUpperCase() || "Agricultural Land"}
                             />
                             <div className="absolute top-2 left-2 bg-teal-600 text-white text-xs px-2 py-1 rounded-full">
-                                Agricultural Land
+                                {item?.category.toUpperCase() || "Agricultural Land"}
                             </div>
-                            <div className="absolute top-2 right-2 bg-yellow-400 text-white text-xs px-2 py-1 rounded-full">
-                                Residential
-                            </div>
+
                         </div>
                         <div className="w-full md:w-2/3 p-6 bg-whtie text-red-500 flex flex-col justify-between">
                             <div>
