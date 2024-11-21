@@ -85,7 +85,7 @@ const AuctionsListing = ({ loading, data }) => {
                     </div>
                 );
             }) : <div className='text-center min-h-[50vh] grid place-items-center'>No Data Found</div>)}
-            <Paginaiton />
+            {/* <Paginaiton /> */}
         </div>
     )
 }
