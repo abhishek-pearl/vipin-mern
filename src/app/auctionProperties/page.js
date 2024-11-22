@@ -26,8 +26,8 @@ export default function page({ params, searchParams }) {
   //   }
   // }, [user]);
 
+  console.log(searchParams, "searchParamS");
   async function getAuctions(searchParamS) {
-    console.log(searchParamS, "searchParamS");
     const filteredParams = Object.fromEntries(
       Object.entries(searchParamS).filter(([_, value]) => value)
     );
