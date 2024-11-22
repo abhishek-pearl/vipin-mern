@@ -91,7 +91,7 @@ const page = () => {
       <section className="p-4 py-16 space-y-14 ">
         <div className="flex justify-center">
           <div className=" w-fit text-3xl font-semibold shadow-[0_3px#ff0000]">
-            Our Services
+            Our Supporting Services
           </div>
         </div>
         <div className="flex justify-center">

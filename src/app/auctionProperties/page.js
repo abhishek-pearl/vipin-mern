@@ -42,12 +42,17 @@ export default function page({ params, searchParams }) {
       isUserLoggedIn ? `auction` : `auction/properties`
     }?page=1&${query}`;
     console.log(apiUrl, "apiUrl");
-    const response = await axios.get(apiUrl, {
-      withCredentials: true,
+    const response = await fetch(apiUrl, {
+      method: "GET", // or 'POST', 'PUT', etc., depending on your request
+      headers: {
+        "Content-Type": "application/json", // Adjust as necessary for your backend
+      },
+      credentials: "include", // This is equivalent to withCredentials: true in axios
     });
+    const result = await response.json();
     setLoading(false);
-    setData(response?.data?.data);
-    console.log(response, "response");
+    setData(result?.data);
+    console.log(result, "response");
 
     return response?.data;
   }
