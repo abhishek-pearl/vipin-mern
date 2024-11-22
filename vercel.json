@@ -1,8 +1,0 @@
-{
-  "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "https://vipin-backend-0kh7.onrender.com/api/v1/:path*"
-    }
-  ]
-}
