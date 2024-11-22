@@ -1,14 +1,13 @@
-"use client"
+"use client";
 import React from "react";
 
-import aboutImg from "../../../public/about.webp"
+import aboutImg from "../../../public/about.webp";
 import Image from "next/image";
 
 const page = () => {
-  
   return (
     <>
-      <section className="py-10 px-20 flex flex-col gap-6 items-center">
+      {/* <section className="py-10 px-20 flex flex-col gap-6 items-center">
       <Image
           className="w-full max-w-[1000px] max-h-[500px] "
           src={aboutImg}
@@ -87,7 +86,73 @@ const page = () => {
           </p>
         </div>
        
-      </section>
+      </section> */}
+      <div className="bg-gray-50 text-gray-800 py-10 px-6 md:px-20">
+        <h1 className="text-4xl font-bold text-center mb-8 text-gray-900">
+          About Us
+        </h1>
+        <p className="text-lg mb-6 text-gray-700">
+          Welcome to <span className="font-semibold">Dhan Laxmi Kuber</span>! We
+          are a passionate team dedicated to creating innovative solutions and
+          providing exceptional services. Our mission is to empower individuals,
+          simplify complex tasks, and bring communities together.
+        </p>
+
+        <h2 className="text-2xl font-semibold mb-4 text-gray-900">
+          Who We Are
+        </h2>
+        <p className="text-lg mb-6 text-gray-700">
+          At the heart of our company lies a commitment to excellence,
+          integrity, and creativity. We believe in pushing boundaries and
+          setting new standards in our industry. Our journey began with a simple
+          idea: to make a difference in people's lives. Since then, we've grown
+          into a trusted name for delivering outstanding results.
+        </p>
+
+        <h2 className="text-2xl font-semibold mb-4 text-gray-900">
+          What We Do
+        </h2>
+        <p className="text-lg mb-6 text-gray-700">
+          We specialize in delivering top-notch products and services tailored
+          to meet your needs. Whether you're looking for innovative solutions or
+          reliable support, we've got you covered. Our team combines expertise,
+          cutting-edge technology, and a customer-first approach to ensure
+          exceptional outcomes.
+        </p>
+
+        <h2 className="text-2xl font-semibold mb-4 text-gray-900">
+          Why Choose Us
+        </h2>
+        <ul className="list-disc list-inside text-lg text-gray-700 mb-6">
+          <li>
+            <span className="font-bold">Experience:</span> Years of expertise in
+            delivering solutions you can trust.
+          </li>
+          <li>
+            <span className="font-bold">Quality:</span> We prioritize excellence
+            and ensure the highest standards.
+          </li>
+          <li>
+            <span className="font-bold">Customer Focus:</span> Your satisfaction
+            drives us to exceed expectations.
+          </li>
+        </ul>
+
+        <h2 className="text-2xl font-semibold mb-4 text-gray-900">
+          Our Vision
+        </h2>
+        <p className="text-lg mb-6 text-gray-700">
+          Our vision is to inspire change and revolutionize our industry while
+          staying true to our core values. Together, we can build a brighter
+          future and create meaningful impacts.
+        </p>
+
+        <p className="text-lg text-gray-700">
+          Thank you for choosing{" "}
+          <span className="font-semibold">Dhan Laxmi Kuber</span>. We’re excited
+          to be part of your journey!
+        </p>
+      </div>
     </>
   );
 };

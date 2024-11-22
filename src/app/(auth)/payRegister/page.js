@@ -87,8 +87,29 @@ export default function Component() {
               <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
             )}
           </div>
-
           <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Phone Number *
+            </label>
+            <input
+              type="tel"
+              {...register("phoneNumber", {
+                required: "Phone number is required",
+                pattern: {
+                  value: /^[0-9]{10}$/,
+                  message: "Please enter a valid 10-digit phone number",
+                },
+              })}
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            />
+            {errors.phoneNumber && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.phoneNumber.message}
+              </p>
+            )}
+          </div>
+
+          {/* <div>
             <label className="block text-sm font-medium text-gray-700">
               E-mail *
             </label>
@@ -108,9 +129,9 @@ export default function Component() {
                 {errors.email.message}
               </p>
             )}
-          </div>
+          </div> */}
 
-          <div className="relative">
+          {/* <div className="relative">
             <label className="block text-sm font-medium text-gray-700">
               Password *
             </label>
@@ -143,9 +164,9 @@ export default function Component() {
                 {errors.password.message}
               </p>
             )}
-          </div>
+          </div> */}
 
-          <div className="relative">
+          {/* <div className="relative">
             <label className="block text-sm font-medium text-gray-700">
               Confirm Password *
             </label>
@@ -176,8 +197,24 @@ export default function Component() {
                 {errors.confirmPassword.message}
               </p>
             )}
-          </div>
+          </div> */}
 
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              State
+            </label>
+            <input
+              type="text"
+              {...register("state", { required: "State is required" })}
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            />
+            <p className="text-sm text-gray-500 mt-1">
+              State at which you are looking to buy / sell property
+            </p>
+            {errors.state && (
+              <p className="text-red-500 text-sm">{errors.state.message}</p>
+            )}
+          </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
               City
@@ -209,28 +246,6 @@ export default function Component() {
             </p>
             {errors.locality && (
               <p className="text-red-500 text-sm">{errors.locality.message}</p>
-            )}
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Phone Number *
-            </label>
-            <input
-              type="tel"
-              {...register("phoneNumber", {
-                required: "Phone number is required",
-                pattern: {
-                  value: /^[0-9]{10}$/,
-                  message: "Please enter a valid 10-digit phone number",
-                },
-              })}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            />
-            {errors.phoneNumber && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.phoneNumber.message}
-              </p>
             )}
           </div>
 

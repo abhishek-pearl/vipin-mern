@@ -40,14 +40,14 @@ const Footer = () => {
                     Services
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link
                     href="/news"
                     class="hover:underline"
                   >
                     News
                   </Link>
-                </li>
+                </li> */}
                 <li class="mb-4">
                   <Link href="/contactus" class="hover:underline">
                     Contact Us

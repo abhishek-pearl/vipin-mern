@@ -91,7 +91,7 @@ const LoanForm = () => {
         document.body
       )}
 
-      {isFirstTime && mounted && showForm && createPortal(
+      {/* {isFirstTime && mounted && showForm && createPortal(
         <div className="bg-black/30 backdrop-blur-sm fixed top-0 left-0 h-full w-full flex justify-end z-50">
           <button
             onClick={() => setShowForm(false)}
@@ -204,16 +204,7 @@ const LoanForm = () => {
                     </p>
                   )}
                 </div>
-                {/* <div>
-                  <label className="font-medium">Upload Document</label>
-                  <input
-                    type="file"
-                    {...register("document")}
-                    className={`w-full mt-2 px-3 py-2 border rounded-lg shadow-sm focus:border-indigo-600 ${errors.email ? "border-red-500" : "border-gray-300"
-                      }`}
-                  />
-                
-                </div> */}
+
                 <button
                   type="submit"
                   className={`w-full px-4 py-2 text-white font-medium bg-red-600 hover:bg-red-500 active:bg-red-600 rounded-lg duration-150 ${loading ? "opacity-50 cursor-not-allowed" : ""
@@ -227,7 +218,7 @@ const LoanForm = () => {
           </main>
         </div>,
         document.body
-      )}
+      )} */}
     </>
   );
 };
