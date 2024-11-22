@@ -41,6 +41,7 @@ export default function page({ params, searchParams }) {
     const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/${
       isUserLoggedIn ? `auction` : `auction/properties`
     }?page=1&${query}`;
+    console.log(apiUrl, "apiUrl");
     const response = await axios.get(apiUrl, {
       withCredentials: true,
     });
