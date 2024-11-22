@@ -27,6 +27,7 @@ export default function page({ params, searchParams }) {
   // }, [user]);
 
   async function getAuctions(searchParamS) {
+    console.log(searchParamS, "searchParamS");
     const filteredParams = Object.fromEntries(
       Object.entries(searchParamS).filter(([_, value]) => value)
     );
@@ -42,6 +43,7 @@ export default function page({ params, searchParams }) {
       isUserLoggedIn ? `auction` : `auction/properties`
     }?page=1&${query}`;
     console.log(apiUrl, "apiUrl");
+    console.log(query, "query");
     const response = await fetch(apiUrl, {
       method: "GET", // or 'POST', 'PUT', etc., depending on your request
       headers: {
