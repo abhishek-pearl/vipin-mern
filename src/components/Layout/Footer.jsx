@@ -32,14 +32,14 @@ const Footer = () => {
                     About
                   </a>
                 </li>
-                <li class="mb-4">
+                {/* <li class="mb-4">
                   <Link
                     href="/services"
                     class="hover:underline "
                   >
                     Services
                   </Link>
-                </li>
+                </li> */}
                 {/* <li>
                   <Link
                     href="/news"
@@ -48,6 +48,7 @@ const Footer = () => {
                     News
                   </Link>
                 </li> */}
+
                 <li class="mb-4">
                   <Link href="/contactus" class="hover:underline">
                     Contact Us
@@ -56,6 +57,11 @@ const Footer = () => {
                 <li class="mb-4">
                   <Link href="/privacyPolicy" class="hover:underline">
                     Privacy Policy
+                  </Link>
+                </li>
+                <li class="mb-4">
+                  <Link href="/refundPolicy" class="hover:underline">
+                    Refund Policy
                   </Link>
                 </li>
                 <li class="mb-4">

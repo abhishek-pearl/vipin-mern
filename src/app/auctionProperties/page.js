@@ -6,11 +6,12 @@ import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { Suspense, useEffect, useState } from "react";
 
-export default function page({ params, searchParams }) {
+export default function page({ params }) {
   const { user, error, login, getUserData, isUserLoggedIn } = userStore();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   // useEffect(() => {
   //   if (!isUserLoggedIn) {
@@ -26,7 +27,7 @@ export default function page({ params, searchParams }) {
   //   }
   // }, [user]);
 
-  console.log(searchParams, "searchParamS");
+  console.log(searchParams, "searchParams");
   async function getAuctions(searchParamS) {
     const filteredParams = Object.fromEntries(
       Object.entries(searchParamS).filter(([_, value]) => value)
