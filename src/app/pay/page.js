@@ -1,4 +1,5 @@
 import News from "./News";
+import { FaRupeeSign } from "react-icons/fa";
 
 const page = () => {
   return (
@@ -15,7 +16,7 @@ const page = () => {
             needs.
           </p>
           <p className="text-lg font-semibold text-gray-700 mt-4">
-            Price: Rs.150
+            Price: <FaRupeeSign />.150
           </p>
           <button
             className="mt-4 w-full bg-red-600 text-white py-2 rounded-md hover:bg-red-700 transition duration-300"
