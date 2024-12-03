@@ -54,12 +54,10 @@ export default function Component() {
               <label key={type} className="flex items-center gap-2">
                 <input
                   type="radio"
-                  value={type.toLowerCase()}
-                  checked={selectedUserType === type.toLowerCase()}
-                  onChange={() => setSelectedUserType(type.toLowerCase())}
+                  value={type.toLowerCase()} // Sets the value as lowercase (e.g., "buyer")
                   {...register("userType", {
                     required: "Please select a user type",
-                  })}
+                  })} // Registers the input with react-hook-form
                   className="w-4 h-4 text-blue-600"
                 />
                 <span className="text-gray-700">{type}</span>

@@ -40,19 +40,19 @@ const Header = () => {
                 Get a Loan
               </button> */}
 
-              {isUserLoggedIn ? (<></>
-                // <button
-                //   onClick={() => {
-                //     logout()
-                //     router.push('/')
-                //   }}
-                //   className="bg-red-500 h-full text-white hover:shadow-lg text-[20px] rounded-full px-5 py-2 transition duration-300"
-                // >
-                //   Sign Out
-                // </button>
+              {isUserLoggedIn ? (
+                <button
+                  onClick={() => {
+                    logout()
+                    router.push('/')
+                  }}
+                  className="bg-red-500 h-full text-white hover:shadow-lg text-[20px] rounded-full px-5 py-2 transition duration-300"
+                >
+                  Sign Out
+                </button>
               ) : (
                 <div className="space-x-3">
-                  {/* <Link
+                  <Link
                     href="/signUp"
 
                   >
@@ -71,7 +71,7 @@ const Header = () => {
                     >
                       Login
                     </button>
-                  </Link> */}
+                  </Link>
                 </div>
               )}
             </div>
@@ -99,30 +99,30 @@ const Header = () => {
                     About
                   </Link>
                 </li>
-                {/* <li>
+                <li>
                   <Link
                     href="/services"
                     className="block py-2 pr-4 pl-3 text-red-500  border-b border-transparent  lg:hover:border-transparent  lg:p-0 transition duration-300"
                   >
                     Services
                   </Link>
-                </li> */}
-                {/* <li>
+                </li>
+                <li>
                   <Link
                     href="/news"
                     className="block py-2 pr-4 pl-3 text-red-500  border-b border-transparent  lg:hover:border-transparent  lg:p-0 transition duration-300"
                   >
                     News
                   </Link>
-                </li> */}
-                <li>
+                </li>
+                {/* <li>
                   <Link
                     href="/pay"
                     className="block py-2 pr-4 pl-3 text-red-500  border-b border-transparent  lg:hover:border-transparent  lg:p-0 transition duration-300"
                   >
                     Pay
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link
                     href="/contactus"
