@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
+import axios from "axios";
 
 export default function Component() {
   const [showPassword, setShowPassword] = useState(false);
@@ -18,6 +19,21 @@ export default function Component() {
 
   const onSubmit = (data) => {
     console.log({ ...data, userType: selectedUserType });
+    axios.post('http://localhost:8000/api/v1/payment/order',{
+      data:{
+         amount:1000
+      }
+
+      
+    },{
+      withCredentials:true
+    })
+    .then(res => {
+      window.location.href = res.data;
+    })
+    .catch(err=>{
+      console.log(err,"error");
+    })
   };
   // const onSubmit = async (data) => {
   //   console.log({ ...data, city, state });
@@ -47,7 +63,7 @@ export default function Component() {
   return (
     <div className="w-full max-w-4xl mx-auto p-6">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        <div>
+        {/* <div>
           <p className="text-gray-700 mb-4">I am a</p>
           <div className="flex gap-6">
             {["Buyer", "Seller", "Investor", "Agent"].map((type) => (
@@ -71,7 +87,7 @@ export default function Component() {
               {errors.userType.message}
             </p>
           )}
-        </div>
+        </div> */}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
