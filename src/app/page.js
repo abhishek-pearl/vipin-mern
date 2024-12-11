@@ -13,13 +13,13 @@ export default function Home() {
       <div className="">
         <HeroSection />
       </div>
-      {/* <ServiceCards /> */}
-      <div>
+      <ServiceCards />
+      {/* <div>
         <h1 className="text-center text-6xl font-extrabold p-6">
           Our Consulting Services
         </h1>
         <img className="mx-auto" src="consulting.webp" alt="" srcset="" />
-      </div>
+      </div> */}
       <EmiCalculator />
       {/* <TestimonialsSlider /> */}
     </>

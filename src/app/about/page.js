@@ -7,14 +7,13 @@ import Image from "next/image";
 const page = () => {
   return (
     <>
-      {/* <section className="py-10 px-20 flex flex-col gap-6 items-center">
-      <Image
+      <section className="py-10 px-20 flex flex-col gap-6 items-center">
+        {/* <Image
           className="w-full max-w-[1000px] max-h-[500px] "
           src={aboutImg}
           width={700}
           height={320}
-
-        />
+        /> */}
         <div className="w-full space-y-8">
           <div className="w-full text-center">
             <h1 className="text-3xl w-fit text-gray-800  shadow-[0_4px#ff0000]">
@@ -85,9 +84,8 @@ const page = () => {
             </span>
           </p>
         </div>
-       
-      </section> */}
-      <div className="bg-gray-50 text-gray-800 py-10 px-6 md:px-20">
+      </section>
+      {/* <div className="bg-gray-50 text-gray-800 py-10 px-6 md:px-20">
         <h1 className="text-4xl font-bold text-center mb-8 text-gray-900">
           About Us
         </h1>
@@ -152,7 +150,7 @@ const page = () => {
           <span className="font-semibold">Dhan Laxmi Kuber</span>. We’re excited
           to be part of your journey!
         </p>
-      </div>
+      </div> */}
     </>
   );
 };

@@ -17,52 +17,71 @@ export default function Component() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log({ ...data, userType: selectedUserType });
-    axios.post('http://localhost:8000/api/v1/payment/order',{
-      data:{
-         amount:1000
-      }
+  // const onSubmit = (data) => {
+  //   console.log({ ...data, userType: selectedUserType });
+  //   axios.post('http://localhost:8000/api/v1/payment/order',{
+  //     data:{
+  //        amount:1000
+  //     }
 
       
-    },{
-      withCredentials:true
-    })
-    .then(res => {
-      window.location.href = res.data;
-    })
-    .catch(err=>{
-      console.log(err,"error");
-    })
-  };
-  // const onSubmit = async (data) => {
-  //   console.log({ ...data, city, state });
-  //   try {
-  //     setLoading(true);
-  //     const result = await axios.post(
-  //       `${process.env.NEXT_PUBLIC_API_URL}/user/signup`,
-  //       {
-  //         ...data,
-  //         city,
-  //         state,
-  //       }
-  //     );
-  //     if (result?.data.status === "SUCCESS") {
-  //       toast.success("Succesfully Created!!");
-  //       router.push("/login");
-  //       setLoading(false);
-  //     }
-  //   } catch (error) {
-  //     setLoading(false);
-  //     toast.error("Something Went Wrong...", { position: "top-center" });
-  //   }
+  //   },{
+  //     withCredentials:true
+  //   })
+  //   .then(res => {
+  //     window.location.href = res.data;
+  //   })
+  //   .catch(err=>{
+  //     console.log(err,"error");
+  //   })
   // };
+  async function onSubmittion(data)  {
+    try {
+      // setLoading(true);
+      const payload ={
+        amount:parseInt(data.amount),
+        number:data.phoneNumber,
+        budget:data.budget,
+        state:data.state,
+        auctionType:data.propertyType,
+        locality:data.locality,
+        city:data.city,
+        name:data.name
+
+      }
+
+      console.log("data",payload);
+
+      axios.post('http://localhost:8000/api/v1/payment/order',{
+            ...payload
+      
+            
+          },{
+            withCredentials:true
+          })
+          .then(res => {
+            window.location.href = res.data;
+          })
+          .catch(err=>{
+            console.log(err,"error");
+          })
+      // if (result?.data.status === "SUCCESS") {
+      //   toast.success("Succesfully Created!!");
+      //   router.push("/login");
+      //   setLoading(false);
+
+      // }
+    } catch (error) {
+      // setLoading(false);
+      toast.error("Something Went Wrong...", { position: "top-center" });
+    }
+  };
 
   const password = watch("password");
 
   return (
     <div className="w-full max-w-4xl mx-auto p-6">
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={handleSubmit(onSubmittion)} className="space-y-6">
         {/* <div>
           <p className="text-gray-700 mb-4">I am a</p>
           <div className="flex gap-6">
@@ -70,12 +89,10 @@ export default function Component() {
               <label key={type} className="flex items-center gap-2">
                 <input
                   type="radio"
-                  value={type.toLowerCase()}
-                  checked={selectedUserType === type.toLowerCase()}
-                  onChange={() => setSelectedUserType(type.toLowerCase())}
+                  value={type.toLowerCase()} // Sets the value as lowercase (e.g., "buyer")
                   {...register("userType", {
                     required: "Please select a user type",
-                  })}
+                  })} // Registers the input with react-hook-form
                   className="w-4 h-4 text-blue-600"
                 />
                 <span className="text-gray-700">{type}</span>
@@ -326,7 +343,24 @@ export default function Component() {
               </p>
             )}
           </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Consultancy Fee *
+            </label>
+            <input
+              type="amount"
+              value={1500}
+              // defaultValue={1500}
+              disabled
+              {...register("amount")}
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            />
+            {errors.amount && (
+              <p className="text-red-500 text-sm mt-1">{errors.amount.message}</p>
+            )}
+          </div>
         </div>
+        
         <div className="flex items-center gap-2">
           <input
             type="checkbox"
@@ -345,6 +379,8 @@ export default function Component() {
         {errors.agreeToTerms && (
           <p className="text-red-500 text-sm">{errors.agreeToTerms.message}</p>
         )}
+
+
 
         <button
           type="submit"
