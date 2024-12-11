@@ -46,8 +46,9 @@ export default function Component() {
         auctionType:data.propertyType,
         locality:data.locality,
         city:data.city,
-        name:data.name
-
+        name:data.name,
+        userType:data.userType
+        
       }
       console.log("data",data);
 
@@ -82,7 +83,7 @@ export default function Component() {
   return (
     <div className="w-full max-w-4xl mx-auto p-6">
       <form onSubmit={handleSubmit(onSubmittion)} className="space-y-6">
-        {/* <div>
+        <div>
           <p className="text-gray-700 mb-4">I am a</p>
           <div className="flex gap-6">
             {["Buyer", "Seller", "Investor", "Agent"].map((type) => (
@@ -104,7 +105,7 @@ export default function Component() {
               {errors.userType.message}
             </p>
           )}
-        </div> */}
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
