@@ -1,4 +1,3 @@
-import News from "./News";
 import { FaRupeeSign } from "react-icons/fa";
 
 const page = () => {
