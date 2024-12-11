@@ -15,7 +15,7 @@ export default function Component() {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({defaultValues:{amount:1500}});
 
   // const onSubmit = (data) => {
   //   console.log({ ...data, userType: selectedUserType });
@@ -49,10 +49,10 @@ export default function Component() {
         name:data.name
 
       }
+      console.log("data",data);
 
-      console.log("data",payload);
 
-      axios.post('http://localhost:8000/api/v1/payment/order',{
+      axios.post(`${process.env.NEXT_PUBLIC_API_URL_PRODUCTION}/payment/order`,{
             ...payload
       
             
@@ -349,7 +349,7 @@ export default function Component() {
             </label>
             <input
               type="amount"
-              value={1500}
+              // value={1500}
               // defaultValue={1500}
               disabled
               {...register("amount")}
