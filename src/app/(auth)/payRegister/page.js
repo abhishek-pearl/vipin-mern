@@ -46,6 +46,7 @@ export default function Component() {
         locality: data.locality,
         city: data.city,
         name: data.name,
+        userType: data.userType,
       };
       console.log("data", data);
 
