@@ -86,7 +86,7 @@ export default () => {
         </div>
         <div className="bg-white  p-6 rounded-lg">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-            <div>
+            {/* <div>
               <p className="text-gray-700 mb-4">I am a</p>
               <div className="flex gap-6">
                 {["Buyer", "Seller", "Investor", "Agent"].map((type) => (
@@ -110,7 +110,7 @@ export default () => {
                   {errors.userType.message}
                 </p>
               )}
-            </div>
+            </div> */}
             <div>
               <label className="font-medium">Full Name</label>
               <input

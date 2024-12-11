@@ -15,7 +15,7 @@ export default function Component() {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm({defaultValues:{amount:1500}});
+  } = useForm({ defaultValues: { amount: 1500 } });
 
   // const onSubmit = (data) => {
   //   console.log({ ...data, userType: selectedUserType });
@@ -24,7 +24,6 @@ export default function Component() {
   //        amount:1000
   //     }
 
-      
   //   },{
   //     withCredentials:true
   //   })
@@ -35,36 +34,37 @@ export default function Component() {
   //     console.log(err,"error");
   //   })
   // };
-  async function onSubmittion(data)  {
+  async function onSubmittion(data) {
     try {
       // setLoading(true);
-      const payload ={
-        amount:parseInt(data.amount),
-        number:data.phoneNumber,
-        budget:data.budget,
-        state:data.state,
-        auctionType:data.propertyType,
-        locality:data.locality,
-        city:data.city,
-        name:data.name
+      const payload = {
+        amount: parseInt(data.amount),
+        number: data.phoneNumber,
+        budget: data.budget,
+        state: data.state,
+        auctionType: data.propertyType,
+        locality: data.locality,
+        city: data.city,
+        name: data.name,
+      };
+      console.log("data", data);
 
-      }
-      console.log("data",data);
-
-
-      axios.post(`${process.env.NEXT_PUBLIC_API_URL_PRODUCTION}/payment/order`,{
-            ...payload
-      
-            
-          },{
-            withCredentials:true
-          })
-          .then(res => {
-            window.location.href = res.data;
-          })
-          .catch(err=>{
-            console.log(err,"error");
-          })
+      axios
+        .post(
+          `${process.env.NEXT_PUBLIC_API_URL_PRODUCTION}/payment/order`,
+          {
+            ...payload,
+          },
+          {
+            withCredentials: true,
+          }
+        )
+        .then((res) => {
+          window.location.href = res.data;
+        })
+        .catch((err) => {
+          console.log(err, "error");
+        });
       // if (result?.data.status === "SUCCESS") {
       //   toast.success("Succesfully Created!!");
       //   router.push("/login");
@@ -75,14 +75,14 @@ export default function Component() {
       // setLoading(false);
       toast.error("Something Went Wrong...", { position: "top-center" });
     }
-  };
+  }
 
   const password = watch("password");
 
   return (
     <div className="w-full max-w-4xl mx-auto p-6">
       <form onSubmit={handleSubmit(onSubmittion)} className="space-y-6">
-        {/* <div>
+        <div>
           <p className="text-gray-700 mb-4">I am a</p>
           <div className="flex gap-6">
             {["Buyer", "Seller", "Investor", "Agent"].map((type) => (
@@ -104,7 +104,7 @@ export default function Component() {
               {errors.userType.message}
             </p>
           )}
-        </div> */}
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
@@ -356,11 +356,13 @@ export default function Component() {
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
             />
             {errors.amount && (
-              <p className="text-red-500 text-sm mt-1">{errors.amount.message}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {errors.amount.message}
+              </p>
             )}
           </div>
         </div>
-        
+
         <div className="flex items-center gap-2">
           <input
             type="checkbox"
@@ -379,8 +381,6 @@ export default function Component() {
         {errors.agreeToTerms && (
           <p className="text-red-500 text-sm">{errors.agreeToTerms.message}</p>
         )}
-
-
 
         <button
           type="submit"
