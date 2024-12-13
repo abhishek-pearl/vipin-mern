@@ -6,11 +6,12 @@ import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { Suspense, useEffect, useState } from "react";
 
-export default function page({ searchParams }) {
+export default function page() {
   const { user, error, login, getUserData, isUserLoggedIn } = userStore();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   // useEffect(() => {
   //   if (!isUserLoggedIn) {
