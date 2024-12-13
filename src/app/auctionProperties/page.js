@@ -13,20 +13,6 @@ export default function page() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // useEffect(() => {
-  //   if (!isUserLoggedIn) {
-  //     router.push("login");
-  //   } else if (isUserLoggedIn) {
-  //     console.log(user.user, "isUseLoggedIn");
-
-  //     if (!user?.user.isSubscribed) {
-  //       router.push("checkout");
-  //     } else {
-  //       router.push("auctionProperties");
-  //     }
-  //   }
-  // }, [user]);
-
   console.log(searchParams, "searchParams");
   async function getAuctions(searchParamS) {
     const filteredParams = Object.fromEntries(
