@@ -2,60 +2,60 @@
 import AuctionsListing from "@/components/ActionsListing/AuctionsListing";
 import FilterComponent from "@/components/FilterComponent/FilterComponent";
 import { userStore } from "@/store/authStore";
-import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { Suspense, useEffect, useState } from "react";
 
-export default function page() {
+export default function Page() {
   const { user, error, login, getUserData, isUserLoggedIn } = userStore();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const searchParams = useSearchParams();
 
-  console.log(searchParams, "searchParams");
-  async function getAuctions(searchParamS) {
-    const filteredParams = Object.fromEntries(
-      Object.entries(searchParamS).filter(([_, value]) => value)
-    );
+  // Wrapping searchParams usage inside Suspense
+  const SearchParamsWrapper = () => {
+    const searchParams = useSearchParams();
 
-    // Construct the query string from filteredParams
-    const query = new URLSearchParams(filteredParams).toString();
+    useEffect(() => {
+      getAuctions(Object.fromEntries(searchParams.entries()));
+    }, [searchParams, isUserLoggedIn]);
 
-    console.log(query, "query"); // This will only include non-empty parameters
+    async function getAuctions(searchParamS) {
+      const filteredParams = Object.fromEntries(
+        Object.entries(searchParamS).filter(([_, value]) => value)
+      );
 
-    // Construct the full API URL
-    setLoading(true);
-    const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/${
-      isUserLoggedIn ? `auction` : `auction/properties`
-    }?page=1&${query}`;
-    console.log(apiUrl, "apiUrl");
-    console.log(query, "query");
-    const response = await fetch(apiUrl, {
-      method: "GET", // or 'POST', 'PUT', etc., depending on your request
-      headers: {
-        "Content-Type": "application/json", // Adjust as necessary for your backend
-      },
-      credentials: "include", // This is equivalent to withCredentials: true in axios
-    });
-    const result = await response.json();
-    setLoading(false);
-    setData(result?.data);
-    console.log(result, "response");
+      const query = new URLSearchParams(filteredParams).toString();
 
-    return response?.data;
-  }
+      setLoading(true);
+      const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/${
+        isUserLoggedIn ? `auction` : `auction/properties`
+      }?page=1&${query}`;
+      console.log(apiUrl, "apiUrl");
 
-  useEffect(() => {
-    getAuctions(searchParams);
-    console.log(searchParams, "searchParams");
-  }, [searchParams, isUserLoggedIn]);
+      const response = await fetch(apiUrl, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+      const result = await response.json();
+      setLoading(false);
+      setData(result?.data);
+      console.log(result, "response");
+
+      return result?.data;
+    }
+
+    return null; // This component doesn't render anything
+  };
 
   return (
-    <Suspense fallback={<>Loading...</>}>
+    <Suspense fallback={<div>Loading...</div>}>
+      <SearchParamsWrapper />
       <div className="p-8 space-y-10 min-h-screen">
         <div className="flex justify-center">
-          <div className=" w-fit text-4xl font-semibold  shadow-[0_3px#ff0000]">
+          <div className="w-fit text-4xl font-semibold shadow-[0_3px#ff0000]">
             Auction Properties
           </div>
         </div>
