@@ -3,69 +3,65 @@ import AuctionsListing from "@/components/ActionsListing/AuctionsListing";
 import FilterComponent from "@/components/FilterComponent/FilterComponent";
 import { userStore } from "@/store/authStore";
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { Suspense, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Page() {
-  const { user, error, login, getUserData, isUserLoggedIn } = userStore();
+  const { isUserLoggedIn } = userStore();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
 
-  // Wrapping searchParams usage inside Suspense
-  const SearchParamsWrapper = () => {
-    const searchParams = useSearchParams();
+  const getAuctions = async () => {
+    // Extract query parameters
+    const searchParamsObject = Object.fromEntries(searchParams.entries());
+    const filteredParams = Object.fromEntries(
+      Object.entries(searchParamsObject).filter(([_, value]) => value)
+    );
 
-    useEffect(() => {
-      getAuctions(Object.fromEntries(searchParams.entries()));
-    }, [searchParams, isUserLoggedIn]);
+    const query = new URLSearchParams(filteredParams).toString();
 
-    async function getAuctions(searchParamS) {
-      const filteredParams = Object.fromEntries(
-        Object.entries(searchParamS).filter(([_, value]) => value)
-      );
+    const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/${
+      isUserLoggedIn ? "auction" : "auction/properties"
+    }?page=1&${query}`;
+    console.log("Fetching auctions from API:", apiUrl);
 
-      const query = new URLSearchParams(filteredParams).toString();
-
-      setLoading(true);
-      const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/${
-        isUserLoggedIn ? `auction` : `auction/properties`
-      }?page=1&${query}`;
-      console.log(apiUrl, "apiUrl");
-
+    setLoading(true);
+    try {
       const response = await fetch(apiUrl, {
         method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         credentials: "include",
       });
       const result = await response.json();
+      setData(result?.data || []);
+      console.log("Auctions data:", result);
+    } catch (error) {
+      console.error("Failed to fetch auctions:", error);
+    } finally {
       setLoading(false);
-      setData(result?.data);
-      console.log(result, "response");
-
-      return result?.data;
     }
-
-    return null; // This component doesn't render anything
   };
 
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <SearchParamsWrapper />
-      <div className="p-8 space-y-10 min-h-screen">
-        <div className="flex justify-center">
-          <div className="w-fit text-4xl font-semibold shadow-[0_3px#ff0000]">
-            Auction Properties
-          </div>
-        </div>
-        {/* Filter Component */}
-        <FilterComponent />
+  useEffect(() => {
+    if (searchParams) {
+      console.log(
+        "Search params detected:",
+        Object.fromEntries(searchParams.entries())
+      );
+      getAuctions();
+    }
+  }, [searchParams, isUserLoggedIn]);
 
-        {/* Auction Listing */}
-        <AuctionsListing loading={loading} data={data} />
-        <div></div>
+  return (
+    <div className="p-8 space-y-10 min-h-screen">
+      <div className="flex justify-center">
+        <div className="w-fit text-4xl font-semibold shadow-[0_3px#ff0000]">
+          Auction Properties
+        </div>
       </div>
-    </Suspense>
+      <FilterComponent />
+      <AuctionsListing loading={loading} data={data} />
+    </div>
   );
 }
