@@ -1,3 +1,4 @@
+import { instance } from "@/utils/axiosInterceptor";
 import axios from "axios";
 import { toast } from "sonner";
 import { create } from "zustand";
@@ -18,7 +19,7 @@ export const userStore = create(
         console.log("Zustand");
         set({ loading: true, error: null });
         try {
-          const response = await axios.post(
+          const response = await instance.post(
             `${process.env.NEXT_PUBLIC_API_URL}/user/signin`,
             { email, password },
             {

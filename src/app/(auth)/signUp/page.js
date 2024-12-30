@@ -86,31 +86,7 @@ export default () => {
         </div>
         <div className="bg-white  p-6 rounded-lg">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-            {/* <div>
-              <p className="text-gray-700 mb-4">I am a</p>
-              <div className="flex gap-6">
-                {["Buyer", "Seller", "Investor", "Agent"].map((type) => (
-                  <label key={type} className="flex items-center gap-2">
-                    <input
-                      type="radio"
-                      value={type.toLowerCase()}
-                      checked={selectedUserType === type.toLowerCase()}
-                      onChange={() => setSelectedUserType(type.toLowerCase())}
-                      {...register("userType", {
-                        required: "Please select a user type",
-                      })}
-                      className="w-4 h-4 text-blue-600"
-                    />
-                    <span className="text-gray-700">{type}</span>
-                  </label>
-                ))}
-              </div>
-              {errors.userType && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.userType.message}
-                </p>
-              )}
-            </div> */}
+ 
             <div>
               <label className="font-medium">Full Name</label>
               <input

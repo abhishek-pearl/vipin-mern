@@ -21,7 +21,7 @@ const Footer = () => {
               {/* <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase ">
                 Resources
               </h2> */}
-              <ul class=" font-medium grid place-items-center md:place-items-start md:flex gap-3  mx-auto">
+              <ul class=" font-medium grid place-items-center md:place-items-start md:flex gap-3 md:gap-6  mx-auto">
                 <li class="mb-4">
                   <Link href="/" class="hover:underline">
                     Home
@@ -78,7 +78,7 @@ const Footer = () => {
 
       </div>
       {/* <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" /> */}
-      <div class="grid place-items-center bg-red-500 text-white py-4 ">
+      {/* <div class="grid place-items-center bg-red-500 text-white py-4 ">
         <span class="text-sm md:text-xl   ">
           © 2024{" "}
           <Link href="/" class="hover:underline">
@@ -87,7 +87,7 @@ const Footer = () => {
           . All Rights Reserved. Developed By <a href="https://www.pearlorganisation.com/" target="_blank" rel="noopener noreferrer">Pearl Organisation</a>
         </span>
 
-      </div>
+      </div> */}
     </footer>
   );
 };
