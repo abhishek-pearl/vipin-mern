@@ -1,17 +1,30 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import GetLoanForm from "../GetLoanModal/GetLoanForm";
 import Link from "next/link";
 import { userStore } from "@/store/authStore";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const Header = () => {
   const { user, error, loading, login, isUserLoggedIn, logout } = userStore();
   const router = useRouter()
   const [loanModal, setLoanModal] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [triggerAuth,setTriggerAuth] = useState(false);
+  const path = usePathname();
+  
+  useEffect(()=>{
+      if(path == '/auctionProperties')
+      {
+        setTriggerAuth(true);
+      }
+      else
+      {
+        setTriggerAuth(false);
 
+      }
+  },[path]);
   return (
     <>
       <header>
@@ -32,7 +45,7 @@ const Header = () => {
 
 
             {/* Action Buttons */}
-            <div className="flex items-center lg:order-2 space-x-4">
+            {triggerAuth && <div className="flex items-center lg:order-2 space-x-4">
               {/* <button
                 onClick={() => setLoanModal(true)}
                 className="bg-red-500 text-white hover:shadow-lg text-[20px] rounded-full px-5 py-2 transition duration-300"
@@ -74,7 +87,7 @@ const Header = () => {
                   </Link>
                 </div>
               )}
-            </div>
+            </div>}
 
             {/* Main Menu */}
             <div
