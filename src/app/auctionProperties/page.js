@@ -2,16 +2,17 @@
 import AuctionsListing from "@/components/ActionsListing/AuctionsListing";
 import FilterComponent from "@/components/FilterComponent/FilterComponent";
 import { userStore } from "@/store/authStore";
+import { instance } from "@/utils/axiosInterceptor";
 import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { Suspense, useEffect, useState } from "react";
 
-export default function page({ searchParams }) {
+export default function page({  }) {
   const { user, error, login, getUserData, isUserLoggedIn } = userStore();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-
+  const searchParams = useSearchParams();
   // useEffect(() => {
   //   if (!isUserLoggedIn) {
   //     router.push("login");
@@ -44,16 +45,20 @@ export default function page({ searchParams }) {
     }?page=1&${query}`;
     console.log(apiUrl, "apiUrl");
     console.log(query, "query");
-    const response = await fetch(apiUrl, {
-      method: "GET", // or 'POST', 'PUT', etc., depending on your request
-      headers: {
-        "Content-Type": "application/json", // Adjust as necessary for your backend
-      },
-      credentials: "include", // This is equivalent to withCredentials: true in axios
+    // const response = await fetch(apiUrl, {
+    //   method: "GET", // or 'POST', 'PUT', etc., depending on your request
+    //   headers: {
+    //     "Content-Type": "application/json", // Adjust as necessary for your backend
+    //   },
+    //   credentials: "include", // This is equivalent to withCredentials: true in axios
+    // });
+
+    const response = await instance.get(apiUrl,{
+      withCredentials:true
     });
-    const result = await response.json();
+    const result =  response;
     setLoading(false);
-    setData(result?.data);
+    setData(result?.data?.data);
     console.log(result, "response");
 
     return response?.data;

@@ -1,5 +1,6 @@
 "use client";
 
+import { instance } from "@/utils/axiosInterceptor";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,7 +12,7 @@ export default function ServiceCards() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    axios
+    instance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/services`)
       .then((res) => {
         setData(res?.data?.data);
@@ -21,7 +22,6 @@ export default function ServiceCards() {
       });
   }, []);
 
-  console.log(data, "my services");
   // const cardsData = [
   //     {
   //         title: "Home Loan",

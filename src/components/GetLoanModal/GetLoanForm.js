@@ -25,7 +25,7 @@ const GetLoanForm = ({ setLoanModal, loanModal }) => {
   const submitLoan = async (data) => {
     try {
       setLoading(true);
-      const response = await axios.post(
+      const response = await instance.post(
         `${process.env.NEXT_PUBLIC_API_URL}/contact/enquiry`,
         data
       );

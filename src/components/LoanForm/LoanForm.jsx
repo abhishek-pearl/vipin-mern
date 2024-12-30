@@ -53,7 +53,7 @@ const LoanForm = () => {
     formData.append('typeOfLoan', data?.typeOfLoan)
     try {
       setLoading(true);
-      const response = await axios.post(
+      const response = await instance.post(
         `${process.env.NEXT_PUBLIC_API_URL}/contact/enquiry`,
         formData
       );

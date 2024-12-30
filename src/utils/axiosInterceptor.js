@@ -1,78 +1,85 @@
-
 import axios from "axios";
-
-
+import jwt from "jsonwebtoken"; 
 // Creating new axios instance
 export const instance = axios.create({
     withCredentials: true,
     baseURL: `${
         process.env.NEXT_REACT_APP_WORKING_ENVIRONMENT === "development"
-        ? process.env.NEXT_PUBLIC_API_URL
-        : process.env.NEXT_PUBLIC_API_URL_PRODUCTION
+            ? process.env.NEXT_PUBLIC_API_URL
+            : process.env.NEXT_PUBLIC_API_URL_PRODUCTION
     }`,
+});
 
-  });
+// Request interceptor
+instance.interceptors.request.use(
+    async (request) => {
+      
+      let cookies ='' ;
+      if(document?.cookie)
+      {
+        const cookieHeader = document?.cookie;
+         cookies = cookieHeader.split(";").reduce((acc, cookie) => {
+          const [key, value] = cookie.split("=").map((item) => item.trim());
+          acc[key] = value;
+          return acc;
+      }, {});
 
+      if (cookies?.DHANLAXMI_ACCESS_TOKEN) {
+        const decode = jwt.decode(cookies?.DHANLAXMI_ACCESS_TOKEN);
+        console.log("Token Expiration Time:", decode.exp);
 
+        // Check if the token is about to expire (or already expired)
+        const currentTime = Math.floor(Date.now() / 1000); // Current time in seconds
+        if (decode.exp < currentTime) {
+          console.log("Access token expired. Fetching new tokens...");
 
-// instance.interceptors.response.use(
-//   (response) => {
-//     // response
-//     console.log("shashank!!");
-// },
-//   async (error) => {
-//     console.log(error,"dfsfsdfsdf")
+          try {
+            // Make a request to the /refreshToken endpoint
+            const response = await axios.post(
+              `${process.env.NEXT_PUBLIC_API_URL}/user/refresh`,
+              {},
+              { withCredentials: true } // Ensure cookies are sent
+            );
 
-//     let errorMessage = "";
-//     let originalRequest = error.config;
+          
+            // return response;
+            
 
-//     if (
-//       error.response.status === 401 ||
-//       (error.response.status === 403 && !originalRequest._retry)
-//     ) {
-//       originalRequest._retry = true;
-//       try {
-//           await instance.post(
-//             "/user/refresh",
-//             {
-//               withCredentials: true,
-//             }
-//           );
-//           return instance(originalRequest); 
-//       } catch (error) {
-//         return Promise.reject(error);
-//       }
-//     }
-
-//     switch (Number(error.response.status)) {
-//       case 400:
-//         errorMessage = error.response.data.message || "Bad Request";
-//         break;
-//         case 401:
-//           errorMessage = error.response.data.message || "Unauthorized Access";
-//           break;
+          } catch (error) {
+            console.error("Error refreshing token:", error);
+            return Promise.reject(error);
+          }
+        }
   
-//       case 404:
-//         errorMessage = error.response.data.message || "Resource Not Found";
-//         break;
+      }
+    }
+     
+    return request;
+    },
+    (error) => {
+        console.log("[AXIOS REQUEST ERROR]", error);
+        return Promise.reject(error);
+    }
+);
 
-//       case 500:
-//         errorMessage = error.response.data.message || "Internal Server Error";
-//         break;
+// Response interceptor
+instance.interceptors.response.use(
+    (response) => {
+        console.log("[AXIOS RESPONSE]", response);
+        return response; // Must return response
+    },
+    (error) => {
+        console.log("[AXIOS RESPONSE ERROR]", error);
+        return Promise.reject(error);
+    }
+);
 
-//       default:
-//         errorMessage =
-//           error.response.data.message ||
-//           "Sorry, something went wrong. Please try again later.";
-//     }
-//     return Promise.reject(errorMessage);
-//   }
-// );
+// Server/Client distinction
+// const isServer = typeof window === "undefined";
+// if (isServer) {
+//     console.log("[AXIOS] [SERVER] Initializing");
+// } else {
+//     console.log("[AXIOS] [CLIENT] Initializing");
+// }
 
 
-instance.interceptors.request.use((config)=>{
-  console.log("nothing relaxed af !!");
-  return config;
-},(error)=>{
-  return Promise.reject(error);
-})
