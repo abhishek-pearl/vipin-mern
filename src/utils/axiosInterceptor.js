@@ -64,9 +64,24 @@ instance.interceptors.request.use(
 
 // Response interceptor
 instance.interceptors.response.use(
-    (response) => {
-        console.log("[AXIOS RESPONSE]", response);
-        return response; // Must return response
+    async (response) => {
+        console.log("[AXIOS RESPONSE]", response.status);
+        try{
+          if(response.status == 403)
+          {
+            const response = await axios.post(
+              `${process.env.NEXT_PUBLIC_API_URL}/user/refresh`,
+              {},
+              { withCredentials: true } // Ensure cookies are sent
+            ); 
+          }
+          
+        }
+        catch(err){
+          console.log("Something Wrong Occured !!",err);
+        }
+         // Must return response
+         return response;
     },
     (error) => {
         console.log("[AXIOS RESPONSE ERROR]", error);
