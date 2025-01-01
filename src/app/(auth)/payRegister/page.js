@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { EyeIcon, EyeOffIcon } from "lucide-react";
-import axios from "axios";
+import { instance } from "@/utils/axiosInterceptor";
 
 export default function Component() {
   const [showPassword, setShowPassword] = useState(false);
@@ -50,7 +49,7 @@ export default function Component() {
       };
       console.log("data", data);
 
-      axios
+      instance
         .post(
           `${process.env.NEXT_PUBLIC_API_URL_PRODUCTION}/payment/order`,
           {
@@ -315,28 +314,28 @@ export default function Component() {
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
             >
               <option value="">Select budget range</option>
-              <option value="0.5-5">50,000 - 5 Lakhs</option>
-              <option value="5-10">5 Lakhs - 10 Lakhs</option>
-              <option value="10-15">10 Lakhs - 15 Lakhs</option>
-              <option value="15-20">15 Lakhs - 20 Lakhs</option>
-              <option value="20-25">20 Lakhs - 25 Lakhs</option>
-              <option value="25-30">25 Lakhs - 30 Lakhs</option>
-              <option value="30-35">30 Lakhs - 35 Lakhs</option>
-              <option value="35-40">35 Lakhs - 40 Lakhs</option>
-              <option value="40-45">40 Lakhs - 45 Lakhs</option>
-              <option value="45-50">45 Lakhs - 50 Lakhs</option>
-              <option value="50-55">50 Lakhs - 55 Lakhs</option>
-              <option value="55-60">55 Lakhs - 60 Lakhs</option>
-              <option value="60-65">60 Lakhs - 65 Lakhs</option>
-              <option value="65-70">65 Lakhs - 70 Lakhs</option>
-              <option value="70-75">70 Lakhs - 75 Lakhs</option>
-              <option value="75-80">75 Lakhs - 80 Lakhs</option>
-              <option value="80-85">80 Lakhs - 85 Lakhs</option>
-              <option value="85-90">85 Lakhs - 90 Lakhs</option>
-              <option value="90-95">90 Lakhs - 95 Lakhs</option>
-              <option value="95-100">95 Lakhs - 1 Crore</option>
-              <option value="95-100">1 Crore - 5 Crore</option>
-              <option value="95-100">5 Crore - 10 Crore+</option>
+              <option value="0.5-5 lakh">50,000 - 5 Lakhs</option>
+              <option value="5-10 lakh">5 Lakhs - 10 Lakhs</option>
+              <option value="10-15 lakh">10 Lakhs - 15 Lakhs</option>
+              <option value="15-20 lakh">15 Lakhs - 20 Lakhs</option>
+              <option value="20-25 lakh">20 Lakhs - 25 Lakhs</option>
+              <option value="25-30 lakh">25 Lakhs - 30 Lakhs</option>
+              <option value="30-35 lakh">30 Lakhs - 35 Lakhs</option>
+              <option value="35-40 lakh">35 Lakhs - 40 Lakhs</option>
+              <option value="40-45 lakh">40 Lakhs - 45 Lakhs</option>
+              <option value="45-50 lakh">45 Lakhs - 50 Lakhs</option>
+              <option value="50-55 lakh">50 Lakhs - 55 Lakhs</option>
+              <option value="55-60 lakh">55 Lakhs - 60 Lakhs</option>
+              <option value="60-65 lakh">60 Lakhs - 65 Lakhs</option>
+              <option value="65-70 lakh">65 Lakhs - 70 Lakhs</option>
+              <option value="70-75 lakh">70 Lakhs - 75 Lakhs</option>
+              <option value="75-80 lakh">75 Lakhs - 80 Lakhs</option>
+              <option value="80-85 lakh">80 Lakhs - 85 Lakhs</option>
+              <option value="85-90 lakh">85 Lakhs - 90 Lakhs</option>
+              <option value="90-95 Crore">90 Lakhs - 95 Lakhs</option>
+              <option value="95-100 Crore">95 Lakhs - 1 Crore</option>
+              <option value="95-100 Crore">1 Crore - 5 Crore</option>
+              <option value="95-100 Crore">5 Crore - 10 Crore+</option>
             </select>
             {errors.budget && (
               <p className="text-red-500 text-sm mt-1">
