@@ -3,7 +3,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer class="bg-white text-white border-t pt-8">
+    <footer class="bg-red-500  text-white border-t pt-8">
       <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="grid gap-8">
           {/* <div class="mb-6 md:mb-0 mx-auto">
@@ -16,7 +16,7 @@ const Footer = () => {
              
             </Link>
           </div> */}
-          <div class="grid place-items-center text-red-500 ">
+          <div class="grid place-items-center text-white ">
             <div className="grid text-xl ">
               {/* <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase ">
                 Resources

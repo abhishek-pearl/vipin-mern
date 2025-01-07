@@ -42,50 +42,12 @@ const Header = () => {
 
 
 
-            {/* Action Buttons */}
-            {triggerAuth && <div className="flex items-center lg:order-2 space-x-4">
 
-
-              {isUserLoggedIn ? (
-                <button
-                  onClick={() => {
-                    logout()
-                    router.push('/')
-                  }}
-                  className="bg-red-500 h-full text-white hover:shadow-lg text-[20px] rounded-full px-5 py-2 transition duration-300"
-                >
-                  Sign Out
-                </button>
-              ) : (
-                <div className="space-x-3">
-                  <Link
-                    href="/signUp"
-
-                  >
-                    <button
-                      className="bg-red-500 text-white hover:shadow-lg text-[20px] rounded-full px-5 py-2 transition duration-300"
-                    >
-                      Sign Up
-                    </button>
-                  </Link>
-                  <Link
-                    href="/login"
-
-                  >
-                    <button
-                      className="bg-red-500 text-white hover:shadow-lg text-[20px] rounded-full px-5 py-2 transition duration-300"
-                    >
-                      Login
-                    </button>
-                  </Link>
-                </div>
-              )}
-            </div>}
 
             {/* Main Menu */}
             <div
               className={`${menuOpen ? "block" : "hidden"
-                } justify-between items-center w-full lg:flex lg:w-auto lg:order-1`}
+                } justify-between items-center w-full lg:flex lg:w-auto lg:order-1 gap-5`}
               id="mobile-menu-2"
             >
               <ul className="flex flex-col mt-4 text-[24px] lg:flex-row lg:space-x-8 lg:mt-0">
@@ -137,16 +99,56 @@ const Header = () => {
                     Contact Us
                   </Link>
                 </li>
-                <li>
-                  <button
-                    onClick={() => setLoanModal(true)}
-                    className="bg-red-500 text-white hover:shadow-lg text-[20px] rounded-full px-5 py-2 transition duration-300"
-                  >
-                    Get a Loan
-                  </button>
-                </li>
+
               </ul>
+              {/* Action Buttons */}
+              <div className="flex gap-5">
+                {triggerAuth && <div className="flex items-center lg:order-2 space-x-4">
+
+
+                  {isUserLoggedIn ? (
+                    <button
+                      onClick={() => {
+                        logout()
+                        router.push('/')
+                      }}
+                      className="bg-red-500 h-full text-white hover:shadow-lg text-[20px] rounded-full px-5 py-2 transition duration-300"
+                    >
+                      Sign Out
+                    </button>
+                  ) : (
+                    <div className="space-x-3">
+                      <Link
+                        href="/signUp"
+
+                      >
+                        <button
+                          className="bg-red-500 text-white hover:shadow-lg text-[20px] rounded-full px-5 py-2 transition duration-300"
+                        >
+                          Sign Up
+                        </button>
+                      </Link>
+                      <Link
+                        href="/login"
+
+                      >
+                        <button
+                          className="bg-red-500 text-white hover:shadow-lg text-[20px] rounded-full px-5 py-2 transition duration-300"
+                        >
+                          Login
+                        </button>
+                      </Link>
+                    </div>
+                  )}
+                </div>}<button
+                  onClick={() => setLoanModal(true)}
+                  className="bg-red-500 text-white hover:shadow-lg text-[20px] rounded-full px-5 py-2 transition duration-300"
+                >
+                  Get a Loan
+                </button>
+              </div>
             </div>
+
 
             {/* Mobile menu toggle button */}
 
