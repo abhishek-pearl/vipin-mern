@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 // import Swiper and modules styles
 import "swiper/css";
@@ -6,8 +6,29 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
+import axios from "axios";
 
 const HeroSection = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.NEXT_PUBLIC_API_URL}/banner`)
+      .then((res) => {
+        setData(res?.data?.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    console.log("banner", data);
+  }, [data]);
+
+  console.log(data, "my banners");
   return (
     <Swiper
       className="z-55 "
@@ -20,19 +41,17 @@ const HeroSection = () => {
         delay: 3000,
       }}
     >
-      {[
-        "./slider-1.jpg",
-        "./slider-2.jpg",
-        "/slider-3.avif",
-        "slider-4.avif",
-        "slider-5.jpg",
-      ].map((el, i) => {
-        return (
-          <SwiperSlide className="" key={i}>
-            <img src={el} className="h-[55vh] w-full object-cover" />
-          </SwiperSlide>
-        );
-      })}
+      {data &&
+        data.map((el, i) => {
+          return (
+            <SwiperSlide className="" key={i}>
+              <img
+                src={el?.banner}
+                className="h-[55vh] w-full object-contain"
+              />
+            </SwiperSlide>
+          );
+        })}
     </Swiper>
   );
 };
