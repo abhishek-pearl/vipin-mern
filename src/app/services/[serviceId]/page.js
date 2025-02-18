@@ -74,11 +74,11 @@ export default function page({ params }) {
           </div>
 
           <div className="mt-8 lg:mt-0 lg:w-1/2 flex items-center justify-center relative">
-            <div className="w-full max-w-xs lg:max-w-md">
+            <div className="w-full max-w-xs lg:max-w-3xl">
               {/* Placeholder image */}
               <picture>
                 <img
-                  className=" h-[25rem]"
+                  className=" h-[30rem] w-full"
                   src={`${
                     data?.topSection?.banner ||
                     "https://www.icicibank.com/content/dam/icicibank/managed-assets/images/home-loan/home-loan-simplified.webp"

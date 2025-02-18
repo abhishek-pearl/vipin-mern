@@ -3,61 +3,53 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer class="bg-red-500  text-white border-t pt-4">
+    <footer class="bg-red-500  text-white border-t py-4">
       <div class="mx-auto w-full max-w-screen-xl ">
         <div class="grid gap-8">
 
           <div class="grid place-items-center text-white ">
-            <div className="grid text-xl ">
-              {/* <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase ">
-                Resources
-              </h2> */}
-              <ul class=" font-medium grid place-items-center md:place-items-start md:flex gap-3 md:gap-6  mx-auto">
-                <li class="mb-4">
-                  <Link href="/" class="hover:underline">
+            <div className="grid text-base lg:text-md xl:text-xl ">
+
+              <ul className="font-medium 
+              grid grid-cols-3 md:flex md:gap-6 px-6">
+                <li className="mb-2 md:mb-0">
+                  <Link href="/" className="hover:underline">
                     Home
                   </Link>
                 </li>
-                <li>
-                  <a href="/about" class="hover:underline">
+                <li className="mb-2 md:mb-0">
+                  <Link href="/about" className="hover:underline">
                     About
-                  </a>
+                  </Link>
                 </li>
-                <li class="mb-4">
-                  <Link
-                    href="/services"
-                    class="hover:underline "
-                  >
+                <li className="mb-2 md:mb-0">
+                  <Link href="/services" className="hover:underline">
                     Services
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href="/news"
-                    class="hover:underline"
-                  >
+                <li className="mb-2 md:mb-0">
+                  <Link href="/news" className="hover:underline">
                     News
                   </Link>
                 </li>
-
-                <li class="mb-4">
-                  <Link href="/contactus" class="hover:underline">
+                <li className="mb-2 md:mb-0">
+                  <Link href="/contactus" className="hover:underline">
                     Contact Us
                   </Link>
                 </li>
-                <li class="mb-4">
-                  <Link href="/privacyPolicy" class="hover:underline">
+                <li className="mb-2 md:mb-0">
+                  <Link href="/privacyPolicy" className="hover:underline">
                     Privacy Policy
                   </Link>
                 </li>
-                <li class="mb-4">
-                  <Link href="/refundPolicy" class="hover:underline">
+                <li className="mb-2 md:mb-0">
+                  <Link href="/refundPolicy" className="hover:underline">
                     Refund Policy
                   </Link>
                 </li>
-                <li class="mb-4">
-                  <Link href="/termsAndCondition" class="hover:underline">
-                    Terms And Condition
+                <li className="mb-2 md:mb-0">
+                  <Link href="/termsAndCondition" className="hover:underline line-clamp-1">
+                    Terms & Conditions
                   </Link>
                 </li>
               </ul>
@@ -68,17 +60,7 @@ const Footer = () => {
         </div>
 
       </div>
-      {/* <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" /> */}
-      {/* <div class="grid place-items-center bg-red-500 text-white py-4 ">
-        <span class="text-sm md:text-xl   ">
-          © 2024{" "}
-          <Link href="/" class="hover:underline">
-            SDLK™
-          </Link>
-          . All Rights Reserved. Developed By <a href="https://www.pearlorganisation.com/" target="_blank" rel="noopener noreferrer">Pearl Organisation</a>
-        </span>
 
-      </div> */}
     </footer>
   );
 };
