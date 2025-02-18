@@ -1,5 +1,6 @@
 "use client";
 import { userStore } from "@/store/authStore";
+import { instance } from "@/utils/axiosInterceptor";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -23,7 +24,7 @@ const page = () => {
     setIsLoading(true);
     try {
       if (!user?.isSubscribed) {
-        const data = await axios.post(
+        const data = await instance.post(
           process.env.NEXT_REACT_APP_WORKING_ENVIRONMENT === "development"
             ? `${process.env.NEXT_PUBLIC_API_URL}/order/bookingOrder`
             : `${process.env.NEXT_PUBLIC_API_URL_PRODUCTION}/order/bookingOrder`,
@@ -51,7 +52,7 @@ const page = () => {
             const body = { ...res };
             console.log("bodyyy", body);
             try {
-              const validateResponse = await axios.post(
+              const validateResponse = await instance.post(
                 process.env.NEXT_REACT_APP_WORKING_ENVIRONMENT === "development"
                   ? `${process.env.NEXT_PUBLIC_API_URL}/order/verifyOrder/${data?.data?.bookingOrderId}`
                   : `${process.env.NEXT_PUBLIC_API_URL_PRODUCTION}/order/verifyOrder/${data?.data?.bookingOrderId}`,

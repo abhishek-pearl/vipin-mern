@@ -7,6 +7,7 @@ import { IoMdClose } from "react-icons/io";
 import { toast } from "sonner";
 import GetLoanForm from "../GetLoanModal/GetLoanForm";
 import { useForm } from "react-hook-form";
+import { instance } from "@/utils/axiosInterceptor";
 
 const LoanForm = () => {
   const [showBanner, setShowBanner] = useState(true);
@@ -44,7 +45,7 @@ const LoanForm = () => {
   const submitLoan = async (data) => {
     console.log(data)
     const formData = new FormData()
-    formData.append('document', data?.document[0])
+    // formData.append('document', data?.document[0])
     formData.append('email', data?.email)
     formData.append('loanRequired', data?.loanRequired)
     formData.append('mobile', data?.mobile)
@@ -91,7 +92,7 @@ const LoanForm = () => {
         document.body
       )}
 
-      {/* {isFirstTime && mounted && showForm && createPortal(
+      {isFirstTime && mounted && showForm && createPortal(
         <div className="bg-black/30 backdrop-blur-sm fixed top-0 left-0 h-full w-full flex justify-end z-50">
           <button
             onClick={() => setShowForm(false)}
@@ -218,7 +219,7 @@ const LoanForm = () => {
           </main>
         </div>,
         document.body
-      )} */}
+      )}
     </>
   );
 };

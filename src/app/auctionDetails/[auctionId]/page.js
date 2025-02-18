@@ -1,6 +1,7 @@
 "use client";
 
 import { userStore } from "@/store/authStore";
+import { instance } from "@/utils/axiosInterceptor";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,7 +18,7 @@ const AuctionDetails = () => {
   const { user, error, login, getUserData, isUserLoggedIn } = userStore();
   async function getSingleAuction(auctionId) {
     const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/auction/${auctionId}`;
-    const response = await axios.get(apiUrl, {
+    const response = await instance.get(apiUrl, {
       withCredentials: true,
     });
     setSingleAuction(response?.data?.result);
