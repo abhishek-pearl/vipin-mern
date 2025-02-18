@@ -8,14 +8,33 @@ import { toast } from "sonner";
 import GetLoanForm from "../GetLoanModal/GetLoanForm";
 import { useForm } from "react-hook-form";
 import { instance } from "@/utils/axiosInterceptor";
+import OffersDisplay from "./OfferDisplay";
 
 const LoanForm = () => {
   const [showBanner, setShowBanner] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [showAd, setShowAd] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isFirstTime, setIsFirstTime] = useState(true);
   const [loanModal, setLoanModal] = useState(true);
+  const [adsData, setAdsData] = useState([]);
+  const [showAdModal, setShowAdModal] = useState(false);
+
+
+  const getAds = async () => {
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/ad/single?showBanner=true`)
+    console.log(response?.data?.data, "response")
+    if (response?.data?.data) {
+      setAdsData(response?.data?.data?.banner)
+      setShowAdModal(true)
+    }
+
+  }
+  useEffect(() => {
+    getAds()
+  }, [])
+
 
   const {
     register,
@@ -95,7 +114,10 @@ const LoanForm = () => {
       {isFirstTime && mounted && showForm && createPortal(
         <div className="bg-black/30 backdrop-blur-sm fixed top-0 left-0 h-full w-full flex justify-end z-50">
           <button
-            onClick={() => setShowForm(false)}
+            onClick={() => {
+              setShowForm(false)
+              // showAdModal && setShowAd(true)
+            }}
             className="absolute top-3 right-0 text-black"
           >
             <IoMdClose size={30} />
@@ -216,6 +238,21 @@ const LoanForm = () => {
                 </button>
               </form>
             </div>
+          </main>
+        </div>,
+        document.body
+      )}
+      {isFirstTime && mounted && showAd && createPortal(
+        <div className="bg-black/30 backdrop-blur-sm fixed top-0 left-0 h-full w-full grid place-items-center z-50">
+          <button
+            onClick={() => setShowAd(false)}
+            className="absolute top-3 right-3 text-white"
+          >
+            <IoMdClose size={30} />
+          </button>
+
+          <main className="max-w-7xl min-h-[90vh] w-full flex  rounded-sm">
+            <OffersDisplay data={adsData} />
           </main>
         </div>,
         document.body

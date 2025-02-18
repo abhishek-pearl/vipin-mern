@@ -8,21 +8,9 @@ import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { instance } from "@/utils/axiosInterceptor";
 
-const GetLoanForm = ({ setLoanModal, loanModal }) => {
-  console.log(loanModal, "loanModal");
-  const [mounted, setMounted] = useState(false);
+export default function page() {
+  const [loanModal, setLoanModal] = useState(true);
   const [loading, setLoading] = useState(false);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  useEffect(() => {
-    setMounted(true);
-    return () => setMounted(false);
-  }, []);
-
   const submitLoan = async (data) => {
     try {
       setLoading(true);
@@ -40,22 +28,16 @@ const GetLoanForm = ({ setLoanModal, loanModal }) => {
       console.log(error.message);
     }
   };
-
-  if (!mounted || !loanModal) return null;
-
-  return createPortal(
-    <div className="bg-black/30 fixed top-0 left-0 h-full w-full flex items-center justify-end z-50">
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  return (
+    <div className="grid place-items-center py-4">
       <div className="bg-white w-full max-w-lg h-full p-6 rounded-l-lg shadow-lg relative overflow-y-auto">
-        <button
-          onClick={() => setLoanModal(false)}
-          className="absolute top-3 right-3 text-black"
-        >
-          <IoMdClose size={30} />
-        </button>
         <div className="text-center mb-8">
-          <h3 className="text-2xl font-bold text-gray-800 mt-5">
-            Enquiry Form
-          </h3>
+          <h3 className="text-2xl font-bold text-gray-800 mt-5">Get Loan</h3>
         </div>
         <form onSubmit={handleSubmit(submitLoan)} className="space-y-5">
           <div>
@@ -143,41 +125,41 @@ const GetLoanForm = ({ setLoanModal, loanModal }) => {
             )}
           </div>
           {/* <div>
-            <p className="font-medium mb-1 text-gray-500">
-              Loan Requirement Amoutn
-            </p>
-            <div className="flex gap-x-4">
-              <label className="relative flex items-center justify-center w-1/2 bg-gray-50 px-4 py-3 font-medium text-gray-700 rounded-xl">
-                <input
-                  type="radio"
-                  {...register("loanRequired", {
-                    required: "Please select if loan is required",
-                  })}
-                  value="yes"
-                  className="peer hidden"
-                />
-                <div className="peer-checked:border-transparent peer-checked:bg-red-400 peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-red-400 ring-offset-2"></div>
-                <span className="pointer-events-none z-10">Yes</span>
-              </label>
-              <label className="relative flex items-center justify-center w-1/2 bg-gray-50 px-4 py-3 font-medium text-gray-700 rounded-xl">
-                <input
-                  type="radio"
-                  {...register("loanRequired", {
-                    required: "Please select if loan is required",
-                  })}
-                  value="no"
-                  className="peer hidden"
-                />
-                <div className="peer-checked:border-transparent peer-checked:bg-red-400 peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-red-400 ring-offset-2"></div>
-                <span className="pointer-events-none z-10">No</span>
-              </label>
-            </div>
-            {errors.loanRequired && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.loanRequired.message}
-              </p>
-            )}
-          </div> */}
+                  <p className="font-medium mb-1 text-gray-500">
+                    Loan Requirement Amoutn
+                  </p>
+                  <div className="flex gap-x-4">
+                    <label className="relative flex items-center justify-center w-1/2 bg-gray-50 px-4 py-3 font-medium text-gray-700 rounded-xl">
+                      <input
+                        type="radio"
+                        {...register("loanRequired", {
+                          required: "Please select if loan is required",
+                        })}
+                        value="yes"
+                        className="peer hidden"
+                      />
+                      <div className="peer-checked:border-transparent peer-checked:bg-red-400 peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-red-400 ring-offset-2"></div>
+                      <span className="pointer-events-none z-10">Yes</span>
+                    </label>
+                    <label className="relative flex items-center justify-center w-1/2 bg-gray-50 px-4 py-3 font-medium text-gray-700 rounded-xl">
+                      <input
+                        type="radio"
+                        {...register("loanRequired", {
+                          required: "Please select if loan is required",
+                        })}
+                        value="no"
+                        className="peer hidden"
+                      />
+                      <div className="peer-checked:border-transparent peer-checked:bg-red-400 peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-red-400 ring-offset-2"></div>
+                      <span className="pointer-events-none z-10">No</span>
+                    </label>
+                  </div>
+                  {errors.loanRequired && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.loanRequired.message}
+                    </p>
+                  )}
+                </div> */}
           <div>
             <label className="font-medium">Loan Requirement Amount</label>
             <input
@@ -206,9 +188,6 @@ const GetLoanForm = ({ setLoanModal, loanModal }) => {
           </button>
         </form>
       </div>
-    </div>,
-    document.body
+    </div>
   );
-};
-
-export default GetLoanForm;
+}

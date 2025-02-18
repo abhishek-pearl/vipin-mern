@@ -25,15 +25,18 @@ const News = () => {
             News
           </h1>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full min-h-[50vh]">
-            {data && data.map((item) => { 
+        <div className="flex flex-wrap gap-6 w-full min-h-[50vh]">
+          {data &&
+            data.map((item) => {
               return (
-                <Link href={`${item.url}`}>
+                <Link href={`${item.url}`} target="_blank">
                   <div className="w-full max-w-sm bg-white p-6 grid gap-6 shadow-[0_0_2px#ff0000] rounded-md hover:shadow-[0_0_0_3px#ff0000] transition duration-300">
                     <div className="flex items-center gap-4">
                       <h3 className="text-xl font-semibold">{item?.title}</h3>
                     </div>
-                    <div className="text-muted-foreground">{item?.description}</div>
+                    <div className="text-muted-foreground line-clamp-2">
+                      {item?.description}
+                    </div>
                     <div className="flex justify-end">
                       <div
                         href="#"
@@ -46,7 +49,7 @@ const News = () => {
                 </Link>
               );
             })}
-          </div>
+        </div>
       </section>
     </>
   );
