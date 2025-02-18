@@ -6,11 +6,34 @@ import { createPortal } from "react-dom";
 import { IoMdClose } from "react-icons/io";
 import { toast } from "sonner";
 import { useForm } from "react-hook-form";
+import { instance } from "@/utils/axiosInterceptor";
 
 const GetLoanForm = ({ setLoanModal, loanModal }) => {
   console.log(loanModal, "loanModal");
   const [mounted, setMounted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [serviceTypes,setServiceTypes] = useState(null);
+
+
+  async function getData()
+  {
+     try{
+    
+      const res = await instance.get(`${process.env.NEXT_PUBLIC_API_URL}/services/serviceTitles`);
+      setServiceTypes(res?.data?.data);
+
+     }catch(err)
+     {
+      console.log(err);
+     }
+  }
+
+  useEffect(()=>{
+    getData();
+
+
+  },[])
+  
   const {
     register,
     handleSubmit,
