@@ -5,11 +5,12 @@ import GetLoanForm from "../GetLoanModal/GetLoanForm";
 import Link from "next/link";
 import { userStore } from "@/store/authStore";
 import { usePathname, useRouter } from "next/navigation";
+import CommonLoanForm from "../CommonLoanForm";
 
 const Header = () => {
   const { user, error, loading, login, isUserLoggedIn, logout } = userStore();
   const router = useRouter()
-  const [loanModal, setLoanModal] = useState(false);
+  const [showForm, setShowForm] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [triggerAuth, setTriggerAuth] = useState(false);
   const path = usePathname();
@@ -35,9 +36,7 @@ const Header = () => {
                 className="mr-3 h-[5rem] transition-transform transform hover:scale-105"
                 alt="Logo"
               />
-              {/* <span className="self-center text-xl font-semibold whitespace-nowrap">
-                SDLK
-              </span> */}
+            
             </Link>
 
 
@@ -141,7 +140,7 @@ const Header = () => {
                     </div>
                   )}
                 </div>}<button
-                  onClick={() => setLoanModal(true)}
+                  onClick={() => setShowForm(true)}
                   className="bg-red-500 text-white hover:shadow-lg text-[20px] rounded-full px-5 py-2 transition duration-300"
                 >
                   Get a Loan
@@ -193,7 +192,7 @@ const Header = () => {
 
       {/* Loan Modal */}
       <div>
-        <GetLoanForm setLoanModal={setLoanModal} loanModal={loanModal} />
+        <CommonLoanForm setShowForm={setShowForm} showForm={showForm}  />
       </div>
     </>
   );
