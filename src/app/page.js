@@ -9,7 +9,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [adsData, setAdsData] = useState([]);
+  const [adsData, setAdsData] = useState(null);
   const getAds = async () => {
     const response = await axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/ad/single?showBanner=true`
@@ -32,8 +32,9 @@ export default function Home() {
       <div className="flex min-h-screen">
         {/* Left Sticky Ads */}
         <div className="sticky top-0 h-[50vh] w-48  p-3 space-y-3">
-          {adsData?.slice(0, 2)?.map((item, index) => (
-            <img key={index} src={item} alt="" />
+          {adsData && adsData?.slice(0, 2)?.map((item, index) => (
+            <a href={item?.ad_url}>            <img key={index} src={item?.secure_url} alt="" />
+</a>
           ))}
         </div>
 

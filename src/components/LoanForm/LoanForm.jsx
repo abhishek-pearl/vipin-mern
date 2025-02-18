@@ -19,7 +19,7 @@ const LoanForm = () => {
   const [loading, setLoading] = useState(false);
   const [isFirstTime, setIsFirstTime] = useState(true);
   const [loanModal, setLoanModal] = useState(true);
-  const [adsData, setAdsData] = useState([]);
+  const [adsData, setAdsData] = useState(null);
   const [showAdModal, setShowAdModal] = useState(false);
 
   const [serviceTypes,setServiceTypes] = useState(null);
@@ -140,7 +140,7 @@ const LoanForm = () => {
           </button>
 
           <main className="max-w-7xl min-h-[90vh] w-full flex  rounded-sm">
-            <OffersDisplay data={adsData} />
+            {adsData &&<OffersDisplay data={adsData} />}
           </main>
         </div>,
         document.body
