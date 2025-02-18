@@ -32,10 +32,13 @@ export default function Home() {
       <div className="flex min-h-screen">
         {/* Left Sticky Ads */}
         <div className="sticky top-0 h-[50vh] w-48  p-3 space-y-3">
-          {adsData && adsData?.slice(0, 2)?.map((item, index) => (
-            <a href={item?.ad_url}>            <img key={index} src={item?.secure_url} alt="" />
-</a>
-          ))}
+          {adsData &&
+            adsData?.slice(0, 2)?.map((item, index) => (
+              <a href={item?.ad_url}>
+                {" "}
+                <img key={index} src={item?.secure_url} alt="" />
+              </a>
+            ))}
         </div>
 
         {/* Main Content */}
@@ -47,9 +50,13 @@ export default function Home() {
 
         {/* Right Sticky Ads */}
         <div className="sticky top-0 right-0 h-[50vh] w-48  p-3">
-          {adsData?.slice(2, 4)?.map((item, index) => (
-            <img key={index} src={item} alt="" />
-          ))}
+          {adsData &&
+            adsData?.slice(2, 4)?.map((item, index) => (
+              <a href={item?.ad_url}>
+                {" "}
+                <img key={index} src={item?.secure_url} alt="" />
+              </a>
+            ))}
         </div>
       </div>
     </>

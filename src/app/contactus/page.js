@@ -167,23 +167,29 @@ const Page = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-2 justify-center h-full text-base">
-            <div>
-              <span className="font-semibold text-nowrap">
-                Company name: {contactData?.name}
-              </span>
-            </div>
-            <div>
-              <span className="font-semibold">Phone: {contactData?.phone}</span>
-            </div>
-            <div>
-              <span className="font-semibold">E-Mail: </span>{" "}
-              {contactData?.email}
-            </div>
-            <div>
-              <span className="font-semibold">Address: </span>{" "}
-              {contactData?.address}
-            </div>
+          <div className="divide-y-2 space-y-3">
+            {contactData?.map((item) => {
+              return (
+                <div className="flex flex-col gap-2 justify-center h-fit text-base">
+                  <div>
+                    <span className="font-semibold text-nowrap">
+                      Company name: {item?.name}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="font-semibold">Phone: {item?.phone}</span>
+                  </div>
+                  <div>
+                    <span className="font-semibold">E-Mail: </span>{" "}
+                    {item?.email}
+                  </div>
+                  <div>
+                    <span className="font-semibold">Address: </span>{" "}
+                    {item?.address}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
