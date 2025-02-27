@@ -26,8 +26,8 @@ const Header = () => {
   }, [path]);
   return (
     <>
-      <header>
-        <nav className="bg-white text-red-500 px-4 lg:px-8 py-4 border-b-4 border-red-500">
+      <header className=" pt-28">
+        <nav className="bg-white text-red-500 px-4 lg:px-8 py-4 border-b-4 border-red-500 fixed top-0 w-full z-50">
           <div className="flex flex-wrap gap-4 justify-between items-center mx-auto max-w-screen-2xl">
             {/* Logo Section */}
             <Link href="/" className="flex items-center mx-auto md:mx-0">
@@ -36,7 +36,7 @@ const Header = () => {
                 className="mr-3 h-[5rem] transition-transform transform hover:scale-105"
                 alt="Logo"
               />
-            
+
             </Link>
 
 
@@ -192,7 +192,7 @@ const Header = () => {
 
       {/* Loan Modal */}
       <div>
-        <CommonLoanForm setShowForm={setShowForm} showForm={showForm}  />
+        <CommonLoanForm setShowForm={setShowForm} showForm={showForm} />
       </div>
     </>
   );

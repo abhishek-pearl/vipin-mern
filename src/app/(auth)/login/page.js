@@ -23,7 +23,7 @@ export default () => {
     // Handle form submission (e.g., send data to server)
   };
 
-  const togglePasswordVisibility = () => { 
+  const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
@@ -107,6 +107,15 @@ export default () => {
                 Login
               </button>
             )}
+            <button
+              type="button"
+              onClick={() => {
+                router.push("/forgotPassword");
+              }}
+              className="w-full px-4 py-2 text-red-600 font-medium hover:bg-slate-200 bg-slate-100   rounded-lg duration-150"
+            >
+              Forgot Password
+            </button>
           </form>
         </div>
       </div>

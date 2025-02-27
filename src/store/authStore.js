@@ -16,7 +16,6 @@ export const userStore = create(
     (set) => ({
       ...initialState,
       login: async ({ email, password }) => {
-        console.log("Zustand");
         set({ loading: true, error: null });
         try {
           const response = await instance.post(
@@ -35,7 +34,9 @@ export const userStore = create(
           toast.success("Logged In", { position: "top-center" });
           set({ user: response.data, isUserLoggedIn: true, loading: false });
         } catch (error) {
-          set({ error: error.message, loading: false });
+          console.log(error?.response?.data);
+          toast.error(error?.response?.data?.message);
+          set({ error: error?.response?.data?.message, loading: false });
         }
       },
       logout: async () => {
@@ -63,21 +64,22 @@ export const userStore = create(
           set({ error: error.message, loading: false });
         }
       },
-      getUserData : async () =>{
+      getUserData: async () => {
         set({ loading: true, error: null });
         try {
           const response = await axios.get(
             `${process.env.NEXT_PUBLIC_API_URL}/user/userData`,
-           
+
             {
-           withCredentials:true  
-              
+              withCredentials: true,
             }
           );
           console.log(response, "user Data fetch response");
 
           if (response.status != 200) {
-            toast.error("Fetching User Data  failed !!", { position: "top-center" });
+            toast.error("Fetching User Data  failed !!", {
+              position: "top-center",
+            });
             throw new Error("Fetching User Data  failed !!");
           }
           toast.success("User Data Refreshed !!", { position: "top-center" });
@@ -85,7 +87,7 @@ export const userStore = create(
         } catch (error) {
           set({ error: error.message, loading: false });
         }
-      }
+      },
     }),
     {
       name: "VipinGoswami", // name of the item in the storage (must be unique)
