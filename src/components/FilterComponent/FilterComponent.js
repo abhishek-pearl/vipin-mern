@@ -86,11 +86,11 @@ const FilterComponent = () => {
           onChange={(e) => setCategory(e.target.value)}
         >
           <option value="">-- Category --</option>
-          <option value="residential">Residential</option>
-          <option value="commercial">Commercial</option>
-          <option value="industrials">Industrials</option>
-          <option value="vehicle">Vehicle</option>
-          <option value="agriculture">Agriculture</option>
+          <option value="Residential">Residential</option>
+          <option value="Commercial">Commercial</option>
+          <option value="Industrials">Industrials</option>
+          <option value="Vehicle">Vehicle</option>
+          <option value="Agriculture">Agriculture</option>
         </select>
 
         <Select

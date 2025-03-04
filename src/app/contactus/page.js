@@ -152,9 +152,8 @@ const Page = () => {
             <div className="h-48 mb-6">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d56002.12983529824!2d77.24902967942033!3d28.68566440595361!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1740145028561!5m2!1sen!2sin"
-                width="600"
-                height="450"
-                style={{ border: 0 }}
+                // width="600"
+                style={{ border: 0, width: "100%", height: "100%" }}
                 allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
@@ -164,7 +163,7 @@ const Page = () => {
               {contactData?.map((item, index) => (
                 <div key={index} className="pt-4">
                   <div className=" font-semibold text-gray-800">
-                    Company name: {item?.name}
+                    {item?.name}
                   </div>
                   <div className="text-gray-600">Phone: {item?.phone}</div>
                   <div className="text-gray-600">E-Mail: {item?.email}</div>
