@@ -33,8 +33,9 @@ export default function page({ params }) {
   console.log(data, "my single service");
 
   return (
-    <div className="space-y-12 pb-8 px-2 ">
-      <div className="">
+    <div className="space-y-12 pb-8 px-2  ">
+      <div className="bg-no-repeat bg-cover bg-center"
+      style={{backgroundImage:`url("https://www.icicibank.com/content/dam/icicibank/managed-assets/images/home-loan/home-loan-simplified.webp")`}}>
         <div className="container mx-auto  p-8 lg:p-12 xl:p-16 flex flex-col lg:flex-row items-center justify-between">
           <div className="lg:w-1/2">
             <p className="text-sm  font-semibold uppercase tracking-wider">
@@ -73,12 +74,12 @@ export default function page({ params }) {
             </div>
           </div>
 
-          <div className="mt-8 lg:mt-0 lg:w-1/2 flex items-center justify-center relative">
+          <div className="mt-8 lg:mt-0 lg:w-1/2 flex items-center h-full w-full  justify-center relative">
             <div className="w-full max-w-xs lg:max-w-3xl">
               {/* Placeholder image */}
               <picture>
                 <img
-                  className=" h-[30rem] w-full"
+                  className=" h-[30rem] object-contain w-full"
                   src={`${
                     data?.topSection?.banner ||
                     "https://www.icicibank.com/content/dam/icicibank/managed-assets/images/home-loan/home-loan-simplified.webp"
