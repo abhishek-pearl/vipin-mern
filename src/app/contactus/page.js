@@ -151,12 +151,10 @@ const Page = () => {
             </div>
             <div className="h-48 mb-6">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d56002.12983529824!2d77.24902967942033!3d28.68566440595361!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1740145028561!5m2!1sen!2sin"
-                // width="600"
+                src="https://maps.google.com/maps?q=28.685664,77.249030&hl=en&z=14&output=embed"
                 style={{ border: 0, width: "100%", height: "100%" }}
-                allowfullscreen=""
                 loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
+                title="Google Map"
               ></iframe>
             </div>
             <div className="divide-y-2 space-y-4">

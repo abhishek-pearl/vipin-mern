@@ -34,9 +34,59 @@ export default function page({ params }) {
 
   return (
     <div className="space-y-12 pb-8 px-2  ">
-      <div className="bg-no-repeat bg-cover bg-center"
-      style={{backgroundImage:`url("https://www.icicibank.com/content/dam/icicibank/managed-assets/images/home-loan/home-loan-simplified.webp")`}}>
-        <div className="container mx-auto  p-8 lg:p-12 xl:p-16 flex flex-col lg:flex-row items-center justify-between">
+      <div
+        className="bg-no-repeat bg-cover bg-center"
+        // style={{
+        //   backgroundImage: `url("https://www.icicibank.com/content/dam/icicibank/managed-assets/images/home-loan/home-loan-simplified.webp")`,
+        // }}
+      >
+        <div className="flex flex-col lg:flex-row items-center justify-between bg-[#FEF1E9] px-6 md:px-10 py-10 md:py-16">
+          <div className="max-w-xl text-center lg:text-left">
+            <p className="text-sm  font-semibold uppercase tracking-wider">
+              {loanTitle?.map((item, idx) => {
+                if (idx === 0) {
+                  return <span className="text-blue-800">{item} </span>;
+                } else {
+                  return <span className="text-[#FF5722]">{item} </span>;
+                }
+              })}
+            </p>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+              {data?.topSection?.heading}
+            </h1>
+            <ul className="mt-5 space-y-2 text-gray-700">
+              {data?.topSection?.features?.map((ite) => {
+                return (
+                  <li key={ite._id} className="flex items-center">
+                    <span className="mr-2">🔗</span>
+                    {ite.title}
+                  </li>
+                );
+              })}
+            </ul>
+            <div className="mt-6 flex space-x-4">
+              <button
+                onClick={() => {
+                  setLoanModal(true);
+                }}
+                className="px-6 py-3 hover:bg-white border border-[#FF5722] hover:text-[#FF5722] bg-[#FF5722] text-white transition-all font-bold rounded-md"
+              >
+                Apply Now
+              </button>
+            </div>
+          </div>
+          <div className="w-full lg:w-1/2 mt-8 lg:mt-0 flex justify-center">
+            <img
+              src={`${
+                data?.topSection?.banner ||
+                "https://www.icicibank.com/content/dam/icicibank/managed-assets/images/home-loan/home-loan-simplified.webp"
+              }`}
+              alt="Home Loan"
+              className="w-full max-w-sm md:max-w-md lg:max-w-full rounded-lg"
+            />
+          </div>
+        </div>
+        {/* <div className="container mx-auto  p-8 lg:p-12 xl:p-16 flex flex-col lg:flex-row items-center justify-between">
           <div className="lg:w-1/2">
             <p className="text-sm  font-semibold uppercase tracking-wider">
               {loanTitle?.map((item, idx) => {
@@ -49,8 +99,6 @@ export default function page({ params }) {
             </p>
             <h1 className="mt-2 text-5xl font-bold text-gray-900 leading-tight">
               {data?.topSection?.heading}
-              {/* Home Loans <br />{" "}
-            <span className="text-[#FF5722]">simplified</span> */}
             </h1>
             <ul className="mt-6 space-y-2 font-medium text-gray-700">
               {data?.topSection?.features?.map((ite) => {
@@ -76,7 +124,7 @@ export default function page({ params }) {
 
           <div className="mt-8 lg:mt-0 lg:w-1/2 flex items-center h-full w-full  justify-center relative">
             <div className="w-full max-w-xs lg:max-w-3xl">
-              {/* Placeholder image */}
+        
               <picture>
                 <img
                   className=" h-[30rem] object-contain w-full"
@@ -88,36 +136,23 @@ export default function page({ params }) {
                 />
               </picture>
             </div>
-            {/* <div className="absolute top-4 right-4 p-2 bg-white rounded-md shadow-md">
-        <p className="text-xs text-gray-600">
-          Scan to check your pre-approved offer
-        </p>
-        <img
-          src="https://via.placeholder.com/80"
-          alt="QR Code Placeholder"
-          className="mt-2"
-        />
-      </div> */}
           </div>
-        </div>
+        </div> */}
       </div>
 
-      {/* //-------------// */}
       <div className="container mx-auto border-2 text-center px-8 rounded-xl py-4 gap-3 bg-[#FF5722]/10 border-[#FF5722]">
         <h1 className="font-bold text-3xl">
           <span className="text-[#FF5722]">
             {" "}
             {data?.midSection?.topContent?.heading}
           </span>
-          {/* Get Home Loan Online Up to{" "}
-        <span className="text-[#FF5722]">₹ 5 Crore*</span> */}
         </h1>
         <p className="text-lg font-medium">
           {" "}
           {data?.midSection?.topContent?.description}
         </p>
       </div>
-      {/* Faq */}
+
       <Faq data={data?.midSection?.faq} />
 
       <div className="flex flex-col items-center justify-center ">
@@ -125,7 +160,6 @@ export default function page({ params }) {
           <div className="flex-1 space-y-4">
             <h1 className="text-4xl font-bold text-gray-800">
               {data?.midSection?.stepsToAvailLoan?.heading}
-              {/* Avail your Home Loan in just 5 steps */}
             </h1>
             <ul className="space-y-4 text-gray-600">
               {data?.midSection?.stepsToAvailLoan?.steps?.map((item, idx) => {
@@ -136,23 +170,6 @@ export default function page({ params }) {
                   </li>
                 );
               })}
-
-              {/* <li className="flex items-center space-x-2">
-              <span>2</span>
-              <span>Check your eligibility</span>
-            </li>
-            <li className="flex items-center space-x-2">
-              <span>3</span>
-              <span>Pay the processing fee</span>
-            </li>
-            <li className="flex items-center space-x-2">
-              <span>4</span>
-              <span>Upload Documents</span>
-            </li>
-            <li className="flex items-center space-x-2">
-              <span>5</span>
-              <span className="">Get Provisional Sanction</span>
-            </li> */}
             </ul>
             <button
               onClick={() => {

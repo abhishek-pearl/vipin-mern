@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 
 const News = () => {
   const [data, setData] = useState(null);
+  const [images, setImages] = useState({}); // Store fetched OG images
 
   useEffect(() => {
     axios
@@ -12,46 +13,71 @@ const News = () => {
       .then((res) => {
         setData(res?.data?.result);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => console.log(err));
   }, []);
 
+  // Fetch OG images
+  useEffect(() => {
+    if (data) {
+      data.forEach((item) => {
+        axios
+          .get(`https://api.microlink.io/?url=${item.url}`)
+          .then((res) => {
+            setImages((prev) => ({
+              ...prev,
+              [item.url]: res.data.data.image.url,
+            }));
+          })
+          .catch(() => {
+            setImages((prev) => ({ ...prev, [item.url]: "/default-news.jpg" })); // Fallback image
+          });
+      });
+    }
+  }, [data]);
+
   return (
-    <>
-      <section className="py-14 px-20 flex flex-col space-y-10">
-        <div className="w-full text-center flex justify-center">
-          <h1 className="text-3xl w-fit text-gray-800  shadow-[0_4px#ff0000]">
-            News
-          </h1>
-        </div>
-        <div className="flex flex-wrap gap-6 w-full min-h-[50vh]">
-          {data &&
-            data.map((item) => {
-              return (
-                <Link href={`${item.url}`} target="_blank">
-                  <div className="w-full max-w-sm bg-white p-6 grid gap-6 shadow-[0_0_2px#ff0000] rounded-md hover:shadow-[0_0_0_3px#ff0000] transition duration-300">
-                    <div className="flex items-center gap-4">
-                      <h3 className="text-xl font-semibold">{item?.title}</h3>
-                    </div>
-                    <div className="text-muted-foreground line-clamp-2">
-                      {item?.description}
-                    </div>
-                    <div className="flex justify-end">
-                      <div
-                        href="#"
-                        className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-[0_0_2px#ff0000] hover:text-white hover:bg-red-500 focus:outline-none focus:ring-1 disabled:pointer-events-none transition duration-300"
-                      >
-                        Know More
-                      </div>
-                    </div>
+    <section className="py-14 px-6 md:px-20 flex flex-col space-y-10 min-h-screen">
+      <div className="w-full text-center">
+        <h1 className="text-4xl font-bold text-gray-900 border-b-4 border-red-500 pb-2">
+          Latest News
+        </h1>
+      </div>
+
+      {/* News Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        {data &&
+          data.map((item, index) => (
+            <Link key={index} href={item.url} target="_blank">
+              <div className="w-full bg-white rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 overflow-hidden cursor-pointer">
+                {/* OG Image */}
+                <img
+                  src={images[item.url]}
+                  alt={item.title}
+                  loading
+                  className="w-full h-48 object-cover"
+                />
+
+                {/* Content */}
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                    {item?.title}
+                  </h3>
+                  <p className="text-gray-600 line-clamp-2">
+                    {item?.description}
+                  </p>
+
+                  {/* CTA Button */}
+                  <div className="flex justify-end mt-4">
+                    <span className="inline-flex h-9 items-center justify-center rounded-md bg-red-500 px-4 py-2 text-sm font-medium text-white shadow-md hover:bg-red-600 transition-all duration-300">
+                      Read More
+                    </span>
                   </div>
-                </Link>
-              );
-            })}
-        </div>
-      </section>
-    </>
+                </div>
+              </div>
+            </Link>
+          ))}
+      </div>
+    </section>
   );
 };
 
