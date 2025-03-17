@@ -30,15 +30,20 @@ export default function Home() {
       <div className="">
         <HeroSection />
       </div>
-      <Tagline/>
+      <Tagline />
       <div className="flex min-h-screen">
         {/* Left Sticky Ads */}
-        <div className="sticky top-28 h-[50vh] w-64  p-3">
+        <div className="sticky top-28 h-[50vh] w-64  p-3 bg-yellow-500">
           {adsData &&
             adsData?.slice(0, 2)?.map((item, index) => (
-              <a href={item?.ad_url} className="mb-4">
+              <a href={item?.ad_url} className="mb-4 mt-4 pt-4">
                 {" "}
-                <img key={index} src={item?.secure_url} alt="" />
+                <img
+                  key={index}
+                  src={item?.secure_url}
+                  alt=""
+                  className="mt-4 rounded-md"
+                />
               </a>
             ))}
         </div>
@@ -51,12 +56,17 @@ export default function Home() {
         </div>
 
         {/* Right Sticky Ads */}
-        <div className="sticky top-28 right-0 h-[50vh] w-64  p-3">
+        <div className="sticky top-28 right-0 h-[50vh] w-64  p-6 bg-pink-500">
           {adsData &&
             adsData?.slice(2, 4)?.map((item, index) => (
-              <a href={item?.ad_url} className="mb-4">
+              <a href={item?.ad_url} className="mt-4 mb-4">
                 {" "}
-                <img key={index} src={item?.secure_url} alt="" />
+                <img
+                  key={index}
+                  src={item?.secure_url}
+                  alt=""
+                  className="mt-4 rounded-md"
+                />
               </a>
             ))}
         </div>

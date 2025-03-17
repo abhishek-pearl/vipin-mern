@@ -45,7 +45,10 @@ const HeroSection = () => {
         data.map((el, i) => {
           return (
             <SwiperSlide className="" key={i}>
-              <img src={el?.banner} className="h-[55vh] w-full object-cover" />
+              <img
+                src={el?.banner}
+                className="min-h-[750px] max-h-[750px] w-full object-fit"
+              />
             </SwiperSlide>
           );
         })}

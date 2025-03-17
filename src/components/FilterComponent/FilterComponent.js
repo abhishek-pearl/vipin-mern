@@ -52,10 +52,10 @@ const FilterComponent = () => {
     if (category) params.set("category", category);
     else params.delete("category");
 
-    if (state) params.set("state", state.toLowerCase());
+    if (state) params.set("state", state);
     else params.delete("state");
 
-    if (city) params.set("city", city.toLowerCase());
+    if (city) params.set("city", city);
     else params.delete("city");
 
     if (bank) params.set("bankName", bank);

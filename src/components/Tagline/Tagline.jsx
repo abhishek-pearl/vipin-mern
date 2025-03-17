@@ -8,7 +8,7 @@ const Tagline = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/api/v1/tagline");
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/tagline`);
         setItems(res.data.data);
       } catch (err) {
         console.log(err);
@@ -26,7 +26,7 @@ const Tagline = () => {
           .filter((item) => item.isActive === true)
           .map((item) => (
             <div key={item._id}>
-              {item.isActive ===true ? (
+              {item.isActive === true ? (
                 <div>
                   <h1 className="text-2xl md:text-4xl font-bold mb-4 drop-shadow-lg">
                     {item.heading}
